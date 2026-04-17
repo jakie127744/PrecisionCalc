@@ -513,6 +513,57 @@ input, select { font-family: var(--font-body); }
   .partner-grid { grid-template-columns: 1fr; }
 }
 
+/* ─── Sidebar History Items ────────────────────────────────── */
+.sidebar-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 8px;
+}
+.sidebar-history-item {
+  background: var(--surface-container);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sidebar-history-item:hover {
+  background: var(--surface-container-high);
+  border-color: var(--primary-glow);
+  transform: translateY(-1px);
+}
+.history-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.history-tool-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+.history-time {
+  font-size: 0.65rem;
+  color: var(--on-surface-variant);
+}
+.history-item-value {
+  font-family: var(--font-headline);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--on-surface);
+}
+.history-item-label {
+  font-size: 0.75rem;
+  color: var(--on-surface-variant);
+  font-weight: 500;
+}
+
 
 .ad-slot {
   background: rgba(255,255,255,0.015);
@@ -1438,7 +1489,29 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
     min-height: 380px;
   }
   .feature-side-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr;/* ─── Tool Loader Overlay ───────────────────────────────────── */
+#tool-loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 17, 26, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--primary-glow);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
     gap: 12px;
   }
 
@@ -1492,15 +1565,29 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
    PRINT STYLES
    ══════════════════════════════════════════════════════════════ */
 @media print {
-  .topbar, .sidebar, .ad-rail, .ad-zone, .site-footer, .bottom-nav { display: none !important; }
-  .app-shell { display: block; }
-  body { background: #fff; color: #000; }
-  .input-card, .result-card, .table-card, .seo-card {
-    border: 1px solid #ccc;
-    box-shadow: none;
-    background: #fff;
-    color: #000;
+  body { background: white !important; color: black !important; padding: 0 !important; margin: 0 !important; }
+  .sidebar, .top-bar, .bottom-nav, .ad-rail, .ad-slot, .footer, .tool-header-actions, .form-row, .share-btn, .action-btn, #tool-loader-overlay { 
+    display: none !important; 
   }
-  .result-value { color: #000 !important; }
-  .brand-text    { color: #000 !important; }
+  .app-shell { display: block !important; margin: 0 !important; padding: 0 !important; }
+  .main-content { margin: 0 !important; padding: 0 !important; width: 100% !important; max-width: none !important; top: 0 !important; }
+  .tool-container { box-shadow: none !important; border: 1px solid #eee !important; padding: 20px !important; margin: 0 !important; }
+  .result-card { background: #f9f9f9 !important; border: 1px solid #ddd !important; color: black !important; }
+  .result-value, .result-label { color: black !important; text-shadow: none !important; }
+  .result-glow { border: none !important; background: none !important; }
+  h1 { font-size: 24pt !important; margin-bottom: 20px !important; color: black !important; }
+  .amort-table th { background: #eee !important; color: black !important; }
+  .amort-table td { border-bottom: 1px solid #eee !important; }
+  
+  /* Add PrecisionCalc Branding to Print */
+  #active-tool-view::before {
+    content: "PrecisionCalc.com — Professional Tool Report";
+    display: block;
+    font-size: 10pt;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+  }
 }

@@ -119,6 +119,7 @@ registerTool({
       `;
       resultCard.classList.add('active');
       pulseResult('bmi');
+      recordCalculation('bmi', 'Body Mass Index', fmt.number(bmi, 1));
     };
 
     window.bmiCalc = bmiCalc;

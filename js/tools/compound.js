@@ -42,6 +42,7 @@ registerTool({
     `,
   id:       'compound',
   name:     'Compound Interest',
+  allowPrint: true,
   category: 'Finance',
   icon:         '📈',
   materialIcon: 'monitoring',

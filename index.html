@@ -8,17 +8,29 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://precisioncalc.com/" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="PrecisionCalc — Free Online Calculators" />
-  <meta property="og:description" content="Mortgage, BMI, TDEE, Unit Converter & more. All free, fast, and real-time." />
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://precisioncalc.com/" />
+  <meta property="og:title" content="PrecisionCalc — Free Online Calculators" />
+  <meta property="og:description" content="Mortgage, BMI, TDEE, Unit Converter & more. All free, fast, and real-time." />
+  <meta property="og:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://precisioncalc.com/" />
+  <meta property="twitter:title" content="PrecisionCalc — Free Online Calculators" />
+  <meta property="twitter:description" content="Mortgage, BMI, TDEE, Unit Converter & more. All free, fast, and real-time." />
+  <meta property="twitter:image" content="https://precisioncalc.com/og-image.png" />
 
   <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0c111a" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -158,6 +170,13 @@
           <span class="sidebar-section-title">⏱ Recent</span>
           <div id="recent-tools" class="sidebar-items">
             <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">💾 Saved Results</span>
+          <div id="sidebar-history" class="sidebar-items sidebar-history-list">
+            <span class="sidebar-empty">No results saved yet</span>
           </div>
         </div>
 
@@ -424,74 +443,16 @@
     </button>
   </nav>
 
-  <!-- Scripts -->
+  <!-- Core Logic -->
   <script src="js/registry.js" defer></script>
+  
+  <!-- Pre-loaded Home Page Tools -->
   <script src="js/tools/mortgage.js" defer></script>
   <script src="js/tools/compound.js" defer></script>
-  <script src="js/tools/salary.js" defer></script>
-  <script src="js/tools/emi.js" defer></script>
-  <script src="js/tools/credit-card-payoff.js" defer></script>
-  <script src="js/tools/roi.js" defer></script>
-  <script src="js/tools/retirement.js" defer></script>
-  <script src="js/tools/amortization.js" defer></script>
-  <script src="js/tools/autoloan.js" defer></script>
-  <script src="js/tools/freelancetax.js" defer></script>
-  <script src="js/tools/inflation.js" defer></script>
-  <script src="js/tools/simple-interest.js" defer></script>
   <script src="js/tools/bmi.js" defer></script>
-  <script src="js/tools/tdee.js" defer></script>
-  <script src="js/tools/water.js" defer></script>
-  <script src="js/tools/macro.js" defer></script>
-  <script src="js/tools/bodyfat.js" defer></script>
-  <script src="js/tools/bac.js" defer></script>
-  <script src="js/tools/pregnancy.js" defer></script>
-  <script src="js/tools/onerepmax.js" defer></script>
-  <script src="js/tools/percentage.js" defer></script>
-  <script src="js/tools/fraction.js" defer></script>
-  <script src="js/tools/scientific.js" defer></script>
-  <script src="js/tools/prime.js" defer></script>
-  <script src="js/tools/quadratic.js" defer></script>
-  <script src="js/tools/pythagorean.js" defer></script>
-  <script src="js/tools/stddev.js" defer></script>
-  <script src="js/tools/aspect.js" defer></script>
-  <script src="js/tools/binaryhex.js" defer></script>
-  <script src="js/tools/age.js" defer></script>
-  <script src="js/tools/duration.js" defer></script>
-  <script src="js/tools/tip.js" defer></script>
-  <script src="js/tools/password.js" defer></script>
-  <script src="js/tools/gpa.js" defer></script>
-  <script src="js/tools/grade.js" defer></script>
-  <script src="js/tools/final-grade.js" defer></script>
-  <script src="js/tools/word-counter.js" defer></script>
-  <script src="js/tools/study-planner.js" defer></script>
-  <script src="js/tools/scientific-notation.js" defer></script>
   <script src="js/tools/kitchen.js" defer></script>
 
-  <script src="js/tools/unit.js" defer></script>
-  <script src="js/tools/triangle.js" defer></script>
-  <script src="js/tools/circle.js" defer></script>
-  <script src="js/tools/parallelogram.js" defer></script>
-  <script src="js/tools/cylinder.js" defer></script>
-  <script src="js/tools/rectangle.js" defer></script>
-  <script src="js/tools/sphere.js" defer></script>
-  <script src="js/tools/cone.js" defer></script>
-  <script src="js/tools/cube.js" defer></script>
-  <script src="js/tools/polygon.js" defer></script>
-  <script src="js/tools/trapezoid.js" defer></script>
-  <script src="js/tools/ellipse.js" defer></script>
-  <script src="js/tools/logarithm.js" defer></script>
-  <script src="js/tools/exponent.js" defer></script>
-  <script src="js/tools/gcdlcm.js" defer></script>
-  <script src="js/tools/matrix.js" defer></script>
-  <script src="js/tools/factorial.js" defer></script>
-  <script src="js/tools/matrix-ops.js" defer></script>
-  <script src="js/tools/savings-goal.js" defer></script>
-  <script src="js/tools/date-diff.js" defer></script>
-  <script src="js/tools/time-zone.js" defer></script>
-  <script src="js/tools/cooking-convert.js" defer></script>
-  <script src="js/tools/gas.js" defer></script>
-  <script src="js/tools/idealweight.js" defer></script>
-  <script src="js/tools/tip-split.js" defer></script>
+  <!-- Main Application -->
   <script src="js/app.js" defer></script>
 </body>
 </html>

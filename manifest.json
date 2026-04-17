@@ -1,0 +1,17 @@
+{
+  "name": "PrecisionCalc — Financial & Health Hub",
+  "short_name": "PrecisionCalc",
+  "description": "Premium professional calculators for finance, health, and daily life.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0c111a",
+  "theme_color": "#00ff88",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

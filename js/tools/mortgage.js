@@ -6,6 +6,7 @@
 registerTool({
   id:       'mortgage',
   name:     'Mortgage Calculator',
+  allowPrint: true,
   category: 'Finance',
   icon:         '🏠',
   materialIcon: 'home',
@@ -114,6 +115,7 @@ registerTool({
       `;
       resultCard.classList.add('active');
       pulseResult('mortgage');
+      recordCalculation('mortgage', 'Monthly payment', fmt.currency(monthly));
 
       // Amortization table
       extraArea.innerHTML = buildAmortTable(principal, r, n, monthly);

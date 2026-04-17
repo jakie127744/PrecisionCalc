@@ -5,8 +5,10 @@
  */
 
 /* ─── State ─────────────────────────────────────────────────── */
-const RECENT_KEY = 'calcgrid_recent';
-const MAX_RECENT = 3;
+const RECENT_KEY = 'PRECISION_CALC_RECENT';
+const HISTORY_KEY = 'PRECISION_CALC_HISTORY';
+const MAX_RECENT = 10;
+const MAX_HISTORY = 10;
 let currentTool  = null;
 
 /* ─── Share Tool ────────────────────────────────────────────── */
@@ -66,12 +68,21 @@ window.addEventListener('DOMContentLoaded', () => {
   wireSidebar();
   wireMobileSearch();
   route();
+
+  // Register Service Worker for PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW Registered'))
+        .catch(err => console.log('SW Failed', err));
+    });
+  }
 });
 
 window.addEventListener('hashchange', route);
 
 /* ─── Router ────────────────────────────────────────────────── */
-function route() {
+async function route() {
   const hash   = window.location.hash.replace('#', '').trim();
   const toolId = hash || null;
 
@@ -80,10 +91,43 @@ function route() {
     return;
   }
 
-  const tool = window.PrecisionCalcRegistry?.[toolId];
-  if (!tool) { showHome(); return; }
+  // Attempt lazy load
+  try {
+    const tool = await fetchTool(toolId);
+    if (!tool) { showHome(); return; }
+    loadTool(tool);
+  } catch (e) {
+    console.error('Tool load failed:', e);
+    showHome();
+  }
+}
 
-  loadTool(tool);
+async function fetchTool(id) {
+  // If already registered, return it
+  if (window.PrecisionCalcRegistry?.[id]) return window.PrecisionCalcRegistry[id];
+  
+  // Create loading indicator in UI if needed (UX tip)
+  const overlay = document.createElement('div');
+  overlay.id = 'tool-loader-overlay';
+  overlay.innerHTML = '<div class="loader"></div>';
+  document.body.appendChild(overlay);
+
+  return new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `js/tools/${id}.js`;
+    script.defer = true;
+    script.onload = () => {
+      document.body.removeChild(overlay);
+      const tool = window.PrecisionCalcRegistry?.[id];
+      if (tool) resolve(tool);
+      else reject(new Error(`Tool ${id} registered but not found in registry.`));
+    };
+    script.onerror = () => {
+      document.body.removeChild(overlay);
+      reject(new Error(`Failed to load tool script: ${id}`));
+    };
+    document.head.appendChild(script);
+  });
 }
 
 /* ─── Home Screen ───────────────────────────────────────────── */
@@ -115,6 +159,7 @@ function showHome() {
 
   renderCompleteGrid(document.getElementById('complete-grid'));
   renderRecentNav();
+  renderHistoryNav();
   closeSidebar();
 }
 
@@ -242,6 +287,11 @@ function buildToolShell(tool) {
         </div>
       </div>
       <div class="tool-header-actions">
+        ${tool.allowPrint ? `
+          <button class="action-btn" onclick="window.print()" title="Download PDF / Print Report">
+            <span class="material-symbols-outlined">picture_as_pdf</span>
+          </button>
+        ` : ''}
         <button class="action-btn" onclick="shareTool('${tool.id}', '${tool.name}')" title="Share Tool">
             <span class="material-symbols-outlined">share</span>
         </button>
@@ -453,6 +503,56 @@ function renderRecentNav() {
     </a>`;
   }).join('');
 }
+/* ─── Calculation History ────────────────────────────────────── */
+function getHistory() {
+  try { return JSON.parse(localStorage.getItem(HISTORY_KEY)) || []; }
+  catch { return []; }
+}
+
+let historyDebounce = null;
+window.recordCalculation = function(toolId, label, value) {
+  clearTimeout(historyDebounce);
+  historyDebounce = setTimeout(() => {
+    const tool = window.PrecisionCalcRegistry?.[toolId];
+    if (!tool) return;
+    
+    let h = getHistory();
+    const entry = {
+      id: Date.now(),
+      toolId: toolId,
+      toolName: tool.name,
+      label: label,
+      value: value,
+      time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+    
+    h.unshift(entry);
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(h.slice(0, MAX_HISTORY)));
+    renderHistoryNav();
+  }, 1200); // Debounce for 1.2s to capture final entry
+};
+
+function renderHistoryNav() {
+  const container = document.getElementById('sidebar-history');
+  if (!container) return;
+  
+  const history = getHistory();
+  if (!history.length) {
+    container.innerHTML = '<span class="sidebar-empty">No results saved yet</span>';
+    return;
+  }
+  
+  container.innerHTML = history.map(entry => `
+    <div class="sidebar-history-item" onclick="window.location.hash='${entry.toolId}'">
+      <div class="history-item-top">
+        <span class="history-tool-name">${entry.toolName}</span>
+        <span class="history-time">${entry.time}</span>
+      </div>
+      <div class="history-item-value">${entry.value}</div>
+      <div class="history-item-label">${entry.label}</div>
+    </div>
+  `).join('');
+}
 
 /* ─── Sidebar (mobile toggle) ───────────────────────────────── */
 function wireSidebar() {
@@ -522,19 +622,39 @@ function wireSearch(input, dropdown) {
 }
 
 function renderDropdown(results, input, dropdown) {
-  if (!results.length) {
+  const q = input.value.trim();
+  let mathHtml = '';
+  
+  // Try quick math evaluation
+  const mathResult = tryMath(q);
+  if (mathResult !== null) {
+    mathHtml = `
+      <div class="search-result-item math-result" onclick="window.copyValue(this.querySelector('.math-copy-btn'), '${mathResult}')">
+        <span class="result-icon material-symbols-outlined" style="color:var(--primary);">calculate</span>
+        <div style="flex:1;">
+          <div style="font-size:0.7rem;text-transform:uppercase;font-weight:700;color:var(--primary);opacity:0.8;">Quick Result</div>
+          <div style="font-size:1.2rem;font-weight:800;color:var(--on-surface);">${mathResult}</div>
+        </div>
+        <button class="copy-btn math-copy-btn" onclick="event.stopPropagation(); window.copyValue(this, '${mathResult}')">📋</button>
+      </div>
+      <div style="height:1px; background:var(--outline-variant); margin:4px 8px;"></div>
+    `;
+  }
+
+  if (!results.length && !mathHtml) {
     dropdown.innerHTML = `<div class="search-result-item" style="color:var(--on-surface-variant);cursor:default;">No results for "${input.value}"</div>`;
     dropdown.hidden = false;
     return;
   }
-  // Highlight matches in name, category, and keywords
+  
+  // Highlight matches function...
   function highlight(text, q) {
     if (!q) return text;
     const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'ig');
     return text.replace(re, '<mark>$1</mark>');
   }
-  const q = input.value.trim();
-  dropdown.innerHTML = results.map(t => {
+
+  const resultsHtml = results.map(t => {
     const tags = (t.keywords || []).map(k => `<span class="search-tag">${highlight(k, q)}</span>`).join(' ');
     return `
       <div class="search-result-item" data-tool="${t.id}" role="option" tabindex="-1">
@@ -545,7 +665,11 @@ function renderDropdown(results, input, dropdown) {
       </div>
     `;
   }).join('');
+
+  dropdown.innerHTML = mathHtml + resultsHtml;
   dropdown.hidden = false;
+  
+  // Wire up clicks...
   dropdown.querySelectorAll('.search-result-item[data-tool]').forEach(item => {
     item.addEventListener('click', () => {
       window.location.hash = item.dataset.tool;
@@ -561,6 +685,26 @@ function renderDropdown(results, input, dropdown) {
 
 function updateFocus(items, idx) {
   items.forEach((el, i) => el.classList.toggle('focused', i === idx));
+}
+
+function tryMath(q) {
+  // Check if query contains math operators and numbers
+  if (!/[0-9]/.test(q) || !/[+\-*/%^]/.test(q)) return null;
+  
+  // Basic sanitization: only allow numbers, dots, spaces, and operators
+  const sanitized = q.replace(/[^0-9.\s+\-*/%()^]/g, '');
+  if (!sanitized || sanitized.length < 3) return null;
+  
+  try {
+    // Replace ^ with ** for JS evaluation
+    const expr = sanitized.replace(/\^/g, '**');
+    // We use Function constructor as a safer alternative to eval in this context
+    const result = new Function(`return (${expr})`)();
+    if (typeof result === 'number' && isFinite(result)) {
+      return Number(result.toFixed(8)); // Limit precision
+    }
+  } catch (e) { /* ignore parse errors */ }
+  return null;
 }
 
 /* ─── navigate() (used by bottom nav onclick & logo) ───────── */
