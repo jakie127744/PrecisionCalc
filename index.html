@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrecisionCalc — Free Online Calculators | Molave Labs</title>
+  <meta name="description" content="PrecisionCalc is your free professional calculator hub. Mortgage, BMI, TDEE, Compound Interest, Unit Converter, Percentage & more — real-time results, zero fluff." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://precisioncalc.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PrecisionCalc — Free Online Calculators" />
+  <meta property="og:description" content="Mortgage, BMI, TDEE, Unit Converter & more. All free, fast, and real-time." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://precisioncalc.com/" />
+
+  <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
+
+  <!-- Structured Data: Calculator (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PrecisionCalc",
+    "url": "https://precisioncalc.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://precisioncalc.com/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Calculators",
+      "description": "A suite of free, professional calculators for finance, health, math, and unit conversions."
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Example Calculator (Mortgage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "FinancialApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Monthly payment calculation",
+      "Amortization schedule",
+      "Total interest computation"
+    ],
+    "url": "https://precisioncalc.com/#mortgage",
+    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOP NAV BAR
+       ═══════════════════════════════════════════════════════ -->
+  <header class="topbar" role="banner" id="topbar">
+    <!-- Mobile: hamburger + logo -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <a href="#" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <span class="brand-icon material-symbols-outlined">grid_on</span>
+      <span class="brand-text">PrecisionCalc</span>
+    </a>
+
+    <!-- Desktop search (in topbar) -->
+    <div class="topbar-search" role="search">
+      <span class="material-symbols-outlined search-icon-el">search</span>
+      <input
+        type="search"
+        id="main-search"
+        class="search-input"
+        placeholder="Search calculators…"
+        autocomplete="off"
+        aria-label="Search calculators"
+      />
+      <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+
+    <!-- Desktop nav links -->
+    <nav class="topbar-nav" aria-label="Quick categories">
+      <a href="#all-calculators-list-finance" class="topbar-link">Finance</a>
+      <a href="#all-calculators-list-health" class="topbar-link">Health</a>
+      <a href="#all-calculators-list-math" class="topbar-link">Math</a>
+      <a href="#all-calculators-list-units" class="topbar-link">Units</a>
+    </nav>
+
+    <!-- Mobile search trigger -->
+    <button class="mobile-search-btn" id="mobile-search-btn" aria-label="Open search">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Mobile search overlay -->
+  <div class="mobile-search-overlay" id="mobile-search-overlay" hidden>
+    <div class="mobile-search-inner">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" id="mobile-search-input" class="search-input" placeholder="Search calculators…" autocomplete="off" aria-label="Mobile search" />
+      <button class="mobile-search-close" id="mobile-search-close" aria-label="Close search">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="mobile-search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE A: HEADER AD BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <div class="ad-zone ad-zone-a" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9907028021598445"
+           data-ad-slot="SLOT_ID_ZONE_A"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN APP SHELL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ── LEFT SIDEBAR (Desktop) ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Calculator categories">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-section-label">DIRECTORY</div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">⏱ Recent</span>
+          <div id="recent-tools" class="sidebar-items">
+            <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Finance</span>
+          <nav class="sidebar-items" role="list">
+            <a href="#mortgage" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="#compound" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="#salary" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="#emi" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="#credit-card-payoff" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="#roi" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="#retirement" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="#amortization" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="#autoloan" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="#freelancetax" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="#inflation" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="#simple-interest" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Health &amp; Wellness</span>
+          <nav class="sidebar-items" role="list">
+            <a href="#bmi" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="#tdee" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="#water" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="#macro" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="#bodyfat" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="#bac" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="#pregnancy" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="#onerepmax" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Mathematics</span>
+          <nav class="sidebar-items" role="list">
+            <a href="#percentage" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="#fraction" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="#scientific" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="#prime" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="#quadratic" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="#pythagorean" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="#stddev" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="#aspect" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="#binaryhex" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+          </nav>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Daily Life</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="#age" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="#duration" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="#tip" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="#password" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                  </nav>
+                </div>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Education & Kitchen</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="#gpa" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="#kitchen" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                  </nav>
+                </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Conversion</span>
+          <nav class="sidebar-items" role="list">
+            <a href="#unit" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+          </nav>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- Tool Stage (populated by JS) -->
+      <div id="tool-stage" aria-live="polite" aria-label="Calculator area">
+
+        <!-- Home Screen — shown by default -->
+        <section id="home-screen" class="home-screen">
+
+          <!-- Hero -->
+          <div class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-text">
+              <h1 class="hero-title">Built for <span class="hero-accent">Precision.</span></h1>
+              <p class="hero-sub">The definitive free calculator hub for finance, health, math & conversions.</p>
+            </div>
+            <!-- Hero search (mobile only — desktop search is in topbar) -->
+            <div class="hero-search" role="search">
+              <span class="material-symbols-outlined hero-search-icon">terminal</span>
+              <input
+                type="search"
+                id="hero-search"
+                class="search-input hero-search-input"
+                placeholder="Search calculators…"
+                autocomplete="off"
+                aria-label="Search calculators"
+              />
+              <div id="hero-search-dropdown" class="search-dropdown" role="listbox" hidden></div>
+            </div>
+          </div>
+
+          <!-- Popular Instruments — asymmetric feature grid -->
+          <div class="section-header">
+            <div>
+              <span class="section-eyebrow">Top Rated</span>
+              <h2 class="section-title">Popular Calculators</h2>
+            </div>
+            <a href="#" class="section-link" onclick="return false;">View all <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-3px;">arrow_forward</span></a>
+          </div>
+
+          <div class="featured-grid">
+            <!-- Large Feature Card -->
+            <a href="#mortgage" class="feature-card-large" aria-label="Open Mortgage Calculator">
+              <div class="feature-card-accent-bar"></div>
+              <span class="feature-card-bg-icon material-symbols-outlined" aria-hidden="true">home</span>
+              <div class="feature-card-content">
+                <span class="feature-badge">FINANCE</span>
+                <h3 class="feature-card-title">Mortgage &amp; Amortization</h3>
+                <p class="feature-card-desc">Calculate monthly payments, total interest &amp; see your full year-by-year repayment schedule.</p>
+                <span class="feature-cta">Launch Tool <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-3px;">arrow_forward</span></span>
+              </div>
+            </a>
+
+            <!-- Side Cards -->
+            <div class="feature-side-grid">
+              <a href="#compound" class="feature-side-card" aria-label="Open Compound Interest Calculator">
+                <div class="feature-side-left-bar"></div>
+                <span class="material-symbols-outlined feature-side-icon">monitoring</span>
+                <div>
+                  <h4 class="feature-side-title">Compound Interest</h4>
+                  <p class="feature-side-desc">Visualize long-term wealth growth.</p>
+                </div>
+              </a>
+              <a href="#bmi" class="feature-side-card" aria-label="Open BMI Calculator">
+                <div class="feature-side-left-bar"></div>
+                <span class="material-symbols-outlined feature-side-icon">monitor_weight</span>
+                <div>
+                  <h4 class="feature-side-title">Precision BMI &amp; TDEE</h4>
+                  <p class="feature-side-desc">Accurate metabolic health metrics.</p>
+                </div>
+              </a>
+              <a href="#kitchen" class="feature-side-card" aria-label="Open Kitchen Converter">
+                <div class="feature-side-left-bar"></div>
+                <span class="material-symbols-outlined feature-side-icon">cooking</span>
+                <div>
+                  <h4 class="feature-side-title">Kitchen Master Converter</h4>
+                  <p class="feature-side-desc">Volume, weight & temp for baking.</p>
+                </div>
+              </a>
+              <a href="#all-calculators-list" class="section-link">View all <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-3px;">arrow_forward</span></a>
+            </div>
+          </div>
+
+          <!-- Zone A2 (In-content banner) -->
+          <div class="ad-zone ad-zone-inline" role="complementary" aria-label="Advertisement">
+            <span class="ad-label">Advertisement</span>
+            <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a2"></div>
+          </div>
+      <!-- All Calculators Dashboard (Dynamic) -->
+      <section id="complete-grid" class="fade-in"></section>
+    </section>
+  </div>
+</main>
+
+    <!-- ── RIGHT AD SIDEBAR (Desktop xl+) ── -->
+    <aside class="ad-rail" role="complementary" aria-label="Advertisements">
+      <div class="ad-zone ad-zone-b">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot ad-slot-skyscraper" id="ad-zone-b">
+          <ins class="adsbygoogle"
+               style="display:block;width:300px;height:600px"
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="SLOT_ID_ZONE_B"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+
+      <div class="partner-apps-sidebar partner-apps">
+        <h4 class="sidebar-section-label" style="text-align: center; margin-top: 32px;">Partner Tools</h4>
+        <div class="partner-grid">
+          <a href="https://chessbotbuddies.org" target="_blank" class="partner-card">
+            <div class="partner-ribbon">Sponsored</div>
+            <h4 class="partner-title">ChessBotBuddies</h4>
+            <div class="partner-asset">
+              <img src="assets/partners/chess-mascot.png" alt="Chess Mascot" style="max-width: 80%; max-height: 80%;">
+            </div>
+            <p class="partner-desc">Master chess with our interactive bot trainers!</p>
+          </a>
+          <a href="https://obbarcode.com" target="_blank" class="partner-card">
+            <div class="partner-ribbon">Sponsored</div>
+            <h4 class="partner-title">OB Barcode</h4>
+            <div class="partner-asset">
+              <img src="assets/partners/ob-logo.svg" alt="OB Logo" style="max-width: 80%; max-height: 80%;">
+            </div>
+            <p class="partner-desc">Professional label & barcode generator.</p>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.app-shell -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE D: FOOTER AD + FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="ad-zone ad-zone-d" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-slot ad-slot-footer" id="ad-zone-d">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9907028021598445"
+             data-ad-slot="SLOT_ID_ZONE_D"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <span class="brand-text" style="font-size:1.1rem;">PrecisionCalc</span>
+        <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE BOTTOM NAV
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+      <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="bottom-nav-label">Featured</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-finance" onclick="navigate('mortgage')" aria-label="Finance calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">payments</span>
+      <span class="bottom-nav-label">Finance</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-health" onclick="navigate('bmi')" aria-label="Health calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">monitor_heart</span>
+      <span class="bottom-nav-label">Health</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-math" onclick="navigate('percentage')" aria-label="Math calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
+      <span class="bottom-nav-label">Math</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+      <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
+      <span class="bottom-nav-label">Units</span>
+    </button>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="js/registry.js" defer></script>
+  <script src="js/tools/mortgage.js" defer></script>
+  <script src="js/tools/compound.js" defer></script>
+  <script src="js/tools/salary.js" defer></script>
+  <script src="js/tools/emi.js" defer></script>
+  <script src="js/tools/credit-card-payoff.js" defer></script>
+  <script src="js/tools/roi.js" defer></script>
+  <script src="js/tools/retirement.js" defer></script>
+  <script src="js/tools/amortization.js" defer></script>
+  <script src="js/tools/autoloan.js" defer></script>
+  <script src="js/tools/freelancetax.js" defer></script>
+  <script src="js/tools/inflation.js" defer></script>
+  <script src="js/tools/simple-interest.js" defer></script>
+  <script src="js/tools/bmi.js" defer></script>
+  <script src="js/tools/tdee.js" defer></script>
+  <script src="js/tools/water.js" defer></script>
+  <script src="js/tools/macro.js" defer></script>
+  <script src="js/tools/bodyfat.js" defer></script>
+  <script src="js/tools/bac.js" defer></script>
+  <script src="js/tools/pregnancy.js" defer></script>
+  <script src="js/tools/onerepmax.js" defer></script>
+  <script src="js/tools/percentage.js" defer></script>
+  <script src="js/tools/fraction.js" defer></script>
+  <script src="js/tools/scientific.js" defer></script>
+  <script src="js/tools/prime.js" defer></script>
+  <script src="js/tools/quadratic.js" defer></script>
+  <script src="js/tools/pythagorean.js" defer></script>
+  <script src="js/tools/stddev.js" defer></script>
+  <script src="js/tools/aspect.js" defer></script>
+  <script src="js/tools/binaryhex.js" defer></script>
+  <script src="js/tools/age.js" defer></script>
+  <script src="js/tools/duration.js" defer></script>
+  <script src="js/tools/tip.js" defer></script>
+  <script src="js/tools/password.js" defer></script>
+  <script src="js/tools/gpa.js" defer></script>
+  <script src="js/tools/grade.js" defer></script>
+  <script src="js/tools/final-grade.js" defer></script>
+  <script src="js/tools/word-counter.js" defer></script>
+  <script src="js/tools/study-planner.js" defer></script>
+  <script src="js/tools/scientific-notation.js" defer></script>
+  <script src="js/tools/kitchen.js" defer></script>
+
+  <script src="js/tools/unit.js" defer></script>
+  <script src="js/tools/triangle.js" defer></script>
+  <script src="js/tools/circle.js" defer></script>
+  <script src="js/tools/parallelogram.js" defer></script>
+  <script src="js/tools/cylinder.js" defer></script>
+  <script src="js/tools/rectangle.js" defer></script>
+  <script src="js/tools/sphere.js" defer></script>
+  <script src="js/tools/cone.js" defer></script>
+  <script src="js/tools/cube.js" defer></script>
+  <script src="js/tools/polygon.js" defer></script>
+  <script src="js/tools/trapezoid.js" defer></script>
+  <script src="js/tools/ellipse.js" defer></script>
+  <script src="js/tools/logarithm.js" defer></script>
+  <script src="js/tools/exponent.js" defer></script>
+  <script src="js/tools/gcdlcm.js" defer></script>
+  <script src="js/tools/matrix.js" defer></script>
+  <script src="js/tools/factorial.js" defer></script>
+  <script src="js/tools/matrix-ops.js" defer></script>
+  <script src="js/tools/savings-goal.js" defer></script>
+  <script src="js/tools/date-diff.js" defer></script>
+  <script src="js/tools/time-zone.js" defer></script>
+  <script src="js/tools/cooking-convert.js" defer></script>
+  <script src="js/tools/gas.js" defer></script>
+  <script src="js/tools/idealweight.js" defer></script>
+  <script src="js/tools/tip-split.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
