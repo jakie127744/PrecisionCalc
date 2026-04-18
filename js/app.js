@@ -103,8 +103,9 @@ async function route() {
 }
 
 async function fetchTool(id) {
-  // If already registered, return it
-  if (window.PrecisionCalcRegistry?.[id]) return window.PrecisionCalcRegistry[id];
+  // If already loaded (has template), return it
+  const existing = window.PrecisionCalcRegistry?.[id];
+  if (existing && existing.template) return existing;
   
   // Create loading indicator in UI if needed (UX tip)
   const overlay = document.createElement('div');
@@ -429,7 +430,7 @@ function renderCompleteGrid(container) {
   });
 
   // Sort categories
-  const order = ['Finance', 'Daily Life', 'Health', 'Math', 'Education'];
+  const order = ['Finance', 'Daily Life', 'Health', 'Math', 'Education', 'Legal'];
   const sortedCats = Object.keys(categories).sort((a,b) => {
       let ia = order.indexOf(a);
       let ib = order.indexOf(b);
