@@ -309,33 +309,40 @@
               </div>
             </a>
 
-            <!-- Side Cards -->
-            <div class="feature-side-grid">
-              <a href="#compound" class="feature-side-card" aria-label="Open Compound Interest Calculator">
-                <div class="feature-side-left-bar"></div>
-                <span class="material-symbols-outlined feature-side-icon">monitoring</span>
-                <div>
-                  <h4 class="feature-side-title">Compound Interest</h4>
-                  <p class="feature-side-desc">Visualize long-term wealth growth.</p>
+            <!-- Modern Interactive Calculator Bento -->
+            <div class="feature-side-grid" style="grid-template-rows: auto 1fr;">
+              <div class="home-calc-card">
+                <div class="home-calc-display">
+                  <div class="home-calc-prev" id="hc-prev"></div>
+                  <div class="home-calc-current" id="hc-curr">0</div>
                 </div>
-              </a>
-              <a href="#bmi" class="feature-side-card" aria-label="Open BMI Calculator">
-                <div class="feature-side-left-bar"></div>
-                <span class="material-symbols-outlined feature-side-icon">monitor_weight</span>
-                <div>
-                  <h4 class="feature-side-title">Precision BMI &amp; TDEE</h4>
-                  <p class="feature-side-desc">Accurate metabolic health metrics.</p>
+                <div class="home-calc-buttons">
+                  <button class="calc-btn opt" onclick="hc('AC')">AC</button>
+                  <button class="calc-btn opt" onclick="hc('DEL')">C</button>
+                  <button class="calc-btn opt" onclick="hc('%')">%</button>
+                  <button class="calc-btn opt" onclick="hc('/')">÷</button>
+
+                  <button class="calc-btn" onclick="hc('7')">7</button>
+                  <button class="calc-btn" onclick="hc('8')">8</button>
+                  <button class="calc-btn" onclick="hc('9')">9</button>
+                  <button class="calc-btn opt" onclick="hc('*')">×</button>
+
+                  <button class="calc-btn" onclick="hc('4')">4</button>
+                  <button class="calc-btn" onclick="hc('5')">5</button>
+                  <button class="calc-btn" onclick="hc('6')">6</button>
+                  <button class="calc-btn opt" onclick="hc('-')">−</button>
+
+                  <button class="calc-btn" onclick="hc('1')">1</button>
+                  <button class="calc-btn" onclick="hc('2')">2</button>
+                  <button class="calc-btn" onclick="hc('3')">3</button>
+                  <button class="calc-btn opt" onclick="hc('+')">+</button>
+
+                  <button class="calc-btn" onclick="hc('0')" style="grid-column: span 2;">0</button>
+                  <button class="calc-btn" onclick="hc('.')">.</button>
+                  <button class="calc-btn action" onclick="hc('=')">=</button>
                 </div>
-              </a>
-              <a href="#kitchen" class="feature-side-card" aria-label="Open Kitchen Converter">
-                <div class="feature-side-left-bar"></div>
-                <span class="material-symbols-outlined feature-side-icon">cooking</span>
-                <div>
-                  <h4 class="feature-side-title">Kitchen Master Converter</h4>
-                  <p class="feature-side-desc">Volume, weight & temp for baking.</p>
-                </div>
-              </a>
-              <a href="#all-calculators-list" class="section-link">View all <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-3px;">arrow_forward</span></a>
+              </div>
+              <a href="#all-calculators-list" class="section-link" style="margin-top: 12px;">Browse all tools <span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-3px;">arrow_forward</span></a>
             </div>
           </div>
 

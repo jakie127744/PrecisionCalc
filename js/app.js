@@ -748,3 +748,50 @@ window.fmt = {
     return Math.round(n * Math.pow(10, dp)) / Math.pow(10, dp);
   }
 };
+
+/* ─── Home Page Bento Calculator Logic ──────────────────────── */
+let hcState = { curr: '0', prev: '', opt: null, reset: false };
+window.hc = function(val) {
+  const display = document.getElementById('hc-curr');
+  const prevDisplay = document.getElementById('hc-prev');
+  if (!display) return;
+
+  if (val === 'AC') {
+    hcState = { curr: '0', prev: '', opt: null, reset: false };
+  } else if (val === 'DEL') {
+    hcState.curr = hcState.curr.length > 1 ? hcState.curr.slice(0, -1) : '0';
+  } else if (val === '=') {
+    if (!hcState.prev || !hcState.curr || !hcState.opt) return;
+    try {
+      // Basic sanitized evaluation logic
+      const a = parseFloat(hcState.prev);
+      const b = parseFloat(hcState.curr);
+      let res = 0;
+      switch(hcState.opt) {
+        case '+': res = a + b; break;
+        case '-': res = a - b; break;
+        case '*': res = a * b; break;
+        case '/': res = a / b; break;
+        case '%': res = a % b; break;
+      }
+      hcState.prev = `${hcState.prev} ${hcState.opt} ${hcState.curr} =`;
+      hcState.curr = String(parseFloat(res.toFixed(8)));
+      hcState.opt = null;
+      hcState.reset = true;
+    } catch (e) { hcState.curr = 'Error'; }
+  } else if (['+', '-', '*', '/', '%'].includes(val)) {
+    hcState.prev = hcState.curr;
+    hcState.opt = val;
+    hcState.reset = true;
+  } else {
+    if (hcState.curr === '0' || hcState.reset) {
+      hcState.curr = val;
+      hcState.reset = false;
+    } else {
+      hcState.curr += val;
+    }
+  }
+
+  display.innerText = hcState.curr;
+  prevDisplay.innerText = hcState.prev + (hcState.opt || '');
+};
