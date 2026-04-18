@@ -298,40 +298,38 @@ function buildToolShell(tool) {
       </div>
     </div>
 
-
-    <div class="input-card" id="input-card-${tool.id}">
-      ${typeof tool.template === 'function' ? tool.template() : tool.template}
-    </div>
-
-    <!-- Zone C: 24px buffer enforced by .ad-zone-c padding -->
-    <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-slot ad-slot-native" id="ad-zone-c-${tool.id}" aria-label="Advertisement">
-        <ins class="adsbygoogle" style="display:block"
-          data-ad-client="ca-pub-9907028021598445"
-          data-ad-slot="7781234567"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <div class="tool-content-wrap">
+      <div class="${tool.category === 'Legal' ? '' : 'input-card'}" id="input-card-${tool.id}">
+        ${typeof tool.template === 'function' ? tool.template() : tool.template}
       </div>
+
+      ${tool.category !== 'Legal' ? `
+        <!-- Zone C: 24px buffer -->
+        <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-slot ad-slot-native" id="ad-zone-c-${tool.id}">
+            <ins class="adsbygoogle" style="display:block"
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="7781234567"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <div class="result-card" id="result-card-${tool.id}">
+          <div class="result-placeholder">Enter values above to see results ✦</div>
+        </div>
+        <div id="extra-${tool.id}"></div>
+      ` : ''}
+
+      ${tool.seoContent ? `
+        <article class="seo-card" aria-label="How ${tool.name} works">
+          <h2>📖 How ${tool.name} Works</h2>
+          ${tool.seoContent}
+        </article>
+      ` : ''}
     </div>
-    <!-- result card -->
-    <div class="result-card" id="result-card-${tool.id}">
-      <div class="result-placeholder">Enter values above to see results ✦</div>
-    </div>
-
-
-
-    <div class="result-card" id="result-card-${tool.id}">
-      <div class="result-placeholder">Enter values above to see results ✦</div>
-    </div>
-
-    <div id="extra-${tool.id}"></div>
-
-    <article class="seo-card" aria-label="How ${tool.name} works">
-      <h2>📖 How ${tool.name} Works</h2>
-      ${tool.seoContent}
-    </article>
   `;
 }
 
