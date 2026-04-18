@@ -656,9 +656,8 @@ function renderDropdown(results, input, dropdown) {
     return `
       <div class="search-result-item" data-tool="${t.id}" role="option" tabindex="-1">
         <span class="result-icon material-symbols-outlined" style="font-size:1.1rem;">${TOOL_ICONS[t.id] || 'calculate'}</span>
-        <span>${highlight(t.name, q)}</span>
+        <span class="search-result-name">${highlight(t.name, q)}</span>
         <span class="search-result-cat">${highlight(t.category, q)}</span>
-        <div class="search-result-tags">${tags}</div>
       </div>
     `;
   }).join('');
