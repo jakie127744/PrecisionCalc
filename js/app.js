@@ -439,10 +439,8 @@ function renderCompleteGrid(container) {
       return ia - ib;
   });
 
-
-
   grid.innerHTML = sortedCats.map((cat, idx) => `
-    <div class="category-header">
+    <div class="category-header" onclick="toggleCategory(this)">
       <span class="material-symbols-outlined category-header-icon">${CATEGORY_ICONS[cat] || 'grid_view'}</span>
       <h3 class="category-header-title">${cat}</h3>
     </div>
@@ -794,4 +792,14 @@ window.hc = function(val) {
 
   display.innerText = hcState.curr;
   prevDisplay.innerText = hcState.prev + (hcState.opt || '');
+};
+
+window.toggleCategory = function(header) {
+    if (window.innerWidth > 768) return;
+    const isActive = header.classList.contains('active');
+    document.querySelectorAll('.category-header').forEach(h => h.classList.remove('active'));
+    if (!isActive) {
+        header.classList.add('active');
+        setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
+    }
 };

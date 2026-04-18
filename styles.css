@@ -1640,4 +1640,60 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
 .calc-btn:active { transform: translateY(0); scale: 0.95; }
 .calc-btn.opt { color: var(--secondary); background: rgba(0,255,136,0.05); }
 .calc-btn.action { background: var(--primary); color: var(--on-primary); }
-.calc-btn.action:hover { background: var(--primary-glow); box-shadow: 0 0 20px var(--primary-glow); }
+
+/* ─── Category Accordion (Mobile Only) ─── */
+@media (max-width: 768px) {
+  .all-calculators-grid {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--surface-container-low);
+    border-radius: 0 0 16px 16px;
+    margin-top: -8px;
+    margin-bottom: 16px;
+  }
+  
+  .category-header {
+    cursor: pointer;
+    margin-bottom: 8px;
+    border-radius: 12px;
+    transition: background 0.3s;
+    position: relative;
+    padding-right: 48px;
+  }
+  
+  .category-header:hover {
+    background: var(--surface-container-high);
+  }
+  
+  .category-header::after {
+    content: 'expand_more';
+    font-family: 'Material Symbols Outlined';
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--on-surface-variant);
+    transition: transform 0.3s;
+  }
+  
+  .category-header.active {
+    background: var(--surface-container-highest);
+    border-radius: 16px 16px 0 0;
+    margin-bottom: 8px;
+  }
+  
+  .category-header.active::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .category-header.active + .all-calculators-grid {
+    display: grid;
+  }
+
+  .calculator-grid-item {
+    background: var(--surface);
+    border: 1px solid var(--outline-variant);
+  }
+}
