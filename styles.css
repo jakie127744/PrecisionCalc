@@ -839,15 +839,24 @@ input, select { font-family: var(--font-body); }
   transition: var(--transition-slow);
 }
 .feature-card-large:hover .feature-card-accent-bar { opacity: 1; }
-.feature-card-bg-icon {
-  position:   absolute;
-  top:        24px; right: 24px;
-  font-size:  7rem;
-  color:      rgba(63,255,139,0.07);
+.feature-card-watermark {
+  position: absolute;
+  top: 10%;
+  right: -5%;
+  width: 280px;
+  height: 120px;
+  background: url('logo.png') center/contain no-repeat;
+  opacity: 0.05;
+  filter: grayscale(1) brightness(3);
+  pointer-events: none;
   transition: var(--transition-slow);
-  font-variation-settings: 'FILL' 1;
+  transform: rotate(-12deg);
 }
-.feature-card-large:hover .feature-card-bg-icon { color: rgba(63,255,139,0.12); }
+.feature-card-large:hover .feature-card-watermark {
+  opacity: 0.12;
+  transform: scale(1.1) rotate(-8deg);
+  filter: grayscale(0) brightness(1.5);
+}
 .feature-card-content { position: relative; z-index: 1; }
 .feature-badge {
   display:       inline-block;
