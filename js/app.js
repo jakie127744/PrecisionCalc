@@ -160,7 +160,6 @@ function showHome() {
 
   renderCompleteGrid(document.getElementById('complete-grid'));
   renderRecentNav();
-  renderHistoryNav();
   closeSidebar();
 }
 
@@ -530,25 +529,7 @@ window.recordCalculation = function(toolId, label, value) {
 };
 
 function renderHistoryNav() {
-  const container = document.getElementById('sidebar-history');
-  if (!container) return;
-  
-  const history = getHistory();
-  if (!history.length) {
-    container.innerHTML = '<span class="sidebar-empty">No results saved yet</span>';
-    return;
-  }
-  
-  container.innerHTML = history.map(entry => `
-    <div class="sidebar-history-item" onclick="window.location.hash='${entry.toolId}'">
-      <div class="history-item-top">
-        <span class="history-tool-name">${entry.toolName}</span>
-        <span class="history-time">${entry.time}</span>
-      </div>
-      <div class="history-item-value">${entry.value}</div>
-      <div class="history-item-label">${entry.label}</div>
-    </div>
-  `).join('');
+  // UI section removed from sidebar.
 }
 
 /* ─── Sidebar (mobile toggle) ───────────────────────────────── */
