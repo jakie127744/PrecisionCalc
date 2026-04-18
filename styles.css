@@ -723,7 +723,8 @@ input, select { font-family: var(--font-body); }
 .hero {
   position:  relative;
   padding:   40px 0 36px;
-  overflow:  hidden;
+  /* overflow:  hidden; <-- REMOVED this to prevent clipping search dropdown */
+  z-index:   10;
 }
 .hero-glow {
   position:  absolute;
