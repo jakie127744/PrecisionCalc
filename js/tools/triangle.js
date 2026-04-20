@@ -135,25 +135,51 @@ registerTool({
   },
 
   seoContent: `
-    <p>A triangle is a polygon with three edges and three vertices. It is one of the basic shapes in geometry. Understanding its properties like area and perimeter is fundamental for building, design, and physics.</p>
+    <p>A triangle is a polygon with three sides and three angles. It is the simplest closed polygon and appears everywhere in nature, architecture, and engineering — from structural trusses and bridge designs to mountain silhouettes and the pyramids of Egypt. Understanding a triangle's area and perimeter is a foundational geometry skill used in construction, land surveying, navigation, and physics.</p>
 
-    <h3>Ways to Calculate Area</h3>
+    <h3>Triangle Classification</h3>
+    <p>Triangles are classified in two ways — by their sides and by their angles:</p>
     <ul>
-      <li><strong>Base and Height:</strong> The most common method. Area = 0.5 × base × height.</li>
-      <li><strong>Three Sides (Heron's Formula):</strong> Used when you know all side lengths but not the height. First, find the semi-perimeter (s = (a+b+c)/2), then Area = √(s(s-a)(s-b)(s-c)).</li>
-      <li><strong>Equilateral Triangle:</strong> If all sides are equal, Area = (√3 / 4) × side².</li>
+      <li><strong>Equilateral:</strong> All three sides are equal; all three interior angles are exactly 60°.</li>
+      <li><strong>Isosceles:</strong> Two sides are equal; the base angles (opposite the equal sides) are also equal.</li>
+      <li><strong>Scalene:</strong> All three sides are different lengths; all three angles are different.</li>
+      <li><strong>Right Triangle:</strong> One angle is exactly 90°. The hypotenuse (longest side) satisfies the Pythagorean Theorem: a² + b² = c².</li>
+      <li><strong>Obtuse Triangle:</strong> One angle is greater than 90°.</li>
+      <li><strong>Acute Triangle:</strong> All three angles are less than 90°.</li>
     </ul>
 
-    <h3>Triangle Inequality Theorem</h3>
-    <p>For a triangle to exist, the sum of any two sides must be greater than the third side. If this condition isn't met (e.g., sides 1, 2, and 10), it is impossible to form a triangle.</p>
+    <h3>Area Formulas</h3>
+    <ul>
+      <li><strong>Base and Height:</strong> Area = ½ × base × height. This is the most common formula. The height must be perpendicular to the base.</li>
+      <li><strong>Heron's Formula (3 sides):</strong> First compute the semi-perimeter s = (a + b + c) / 2. Then Area = √[s(s−a)(s−b)(s−c)]. Useful when you know all side lengths but not the height.</li>
+      <li><strong>Equilateral Triangle:</strong> Area = (√3 / 4) × side². Since all sides are equal, this simplifies the calculation significantly.</li>
+      <li><strong>SAS (Side-Angle-Side):</strong> Area = ½ × a × b × sin(C), where C is the included angle. Useful in trigonometry applications.</li>
+    </ul>
+
+    <h3>The Triangle Inequality Theorem</h3>
+    <p>For a valid triangle to exist, the sum of the lengths of any two sides must be strictly greater than the length of the third side. In notation: a + b > c, a + c > b, and b + c > a. If you enter three sides that violate this rule — for example, 1, 2, and 10 — no valid triangle can be formed, and the calculator will indicate invalid input.</p>
+
+    <h3>The Pythagorean Theorem</h3>
+    <p>For right triangles specifically, the relationship between the three sides is a² + b² = c², where c is the hypotenuse. This theorem, proven by ancient Greek mathematicians and independently discovered by multiple civilizations, is arguably the most famous equation in geometry. It underpins everything from GPS satellite calculations to screen resolution design.</p>
+
+    <h3>Interior Angle Sum Rule</h3>
+    <p>Regardless of the type of triangle, the three interior angles always sum to exactly 180°. This rule is a direct consequence of Euclidean geometry and is used extensively to find unknown angles when two are known.</p>
 
     <details>
-      <summary>❓ What is the perimeter?</summary>
-      <p>The perimeter is the total length of the boundary of the triangle, calculated by adding the lengths of all three sides (a + b + c).</p>
+      <summary>❓ What is the perimeter of a triangle?</summary>
+      <p>The perimeter is simply the sum of all three side lengths: P = a + b + c. It represents the total length of the boundary of the shape. To calculate the perimeter using only base and height is not possible without additional information about the other sides.</p>
     </details>
     <details>
       <summary>❓ What if I only have two sides and an angle?</summary>
-      <p>You can use the formula: Area = 0.5 × a × b × sin(C), where C is the included angle. For more advanced cases, use a specialized trigonometry calculator.</p>
+      <p>Use the Law of Cosines: c² = a² + b² − 2ab·cos(C). This extends the Pythagorean theorem to non-right triangles and allows you to find the third side when you know two sides and the included angle. Alternatively, the Law of Sines (a/sin A = b/sin B = c/sin C) is helpful when you know two angles and one side.</p>
+    </details>
+    <details>
+      <summary>❓ Why do triangles appear so often in engineering?</summary>
+      <p>Triangles are the only polygon that is inherently rigid. A square can be deformed into a parallelogram under pressure, but a triangle with fixed side lengths cannot change shape. This makes triangular trusses the foundation of bridges, roofs, and steel towers — they distribute forces efficiently without deforming.</p>
+    </details>
+    <details>
+      <summary>❓ Can two triangles have the same area but different shapes?</summary>
+      <p>Yes. Two triangles with the same area are not necessarily congruent or similar. For example, a very flat, wide triangle and a tall, narrow triangle can both have an area of 12 sq ft, but their side lengths and angles will be completely different.</p>
     </details>
   `
 });

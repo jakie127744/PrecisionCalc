@@ -401,10 +401,12 @@ input, select { font-family: var(--font-body); }
   padding: 10px 24px 6px;
   background: rgba(0,0,0,0.3);
   border-bottom: 1px solid rgba(255,255,255,0.04);
+  min-height: var(--ad-banner-h); /* Zero CLS: reserves space before ad loads */
 }
 .ad-zone-inline {
   padding: 10px 0;
   margin: 24px 0;
+  min-height: var(--ad-banner-h); /* Zero CLS */
 }
 
 /* Sponsored Apps (Professional Look) */
@@ -1123,6 +1125,7 @@ input, select { font-family: var(--font-body); }
    ══════════════════════════════════════════════════════════════ */
 .ad-zone-c {
   padding: 24px 0; /* enforced 24px buffer from interactive elements */
+  min-height: 328px; /* Zero CLS: 280px native ad + 24px top/bottom padding */
 }
 
 /* ══════════════════════════════════════════════════════════════

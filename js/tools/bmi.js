@@ -128,25 +128,56 @@ registerTool({
   },
 
   seoContent: `
-    <p>Body Mass Index (BMI) is a simple screening tool used by healthcare professionals to estimate whether a person has a healthy body weight relative to their height. It was developed by Belgian statistician Adolphe Quetelet in the 1830s and remains the most widely used weight classification tool worldwide.</p>
+    <p>Body Mass Index (BMI) is the most widely used screening tool for categorizing body weight status across adult populations. Developed by Belgian statistician Adolphe Quetelet in the 1830s, it was originally designed as a population-level statistical measure — not a diagnostic tool for individual health. Nevertheless, it remains the international standard used by physicians, researchers, and health organizations around the world to identify potential weight-related health risks.</p>
 
     <h3>The BMI Formula</h3>
     <div class="formula-block">BMI = weight (kg) ÷ height² (m²)</div>
-    <p>In imperial units: BMI = 703 × weight (lbs) ÷ height² (in²).</p>
+    <p>In imperial units: <strong>BMI = 703 × weight (lbs) ÷ height² (inches²)</strong>. For example, a person who is 5'10" (70 inches) and weighs 165 lbs has a BMI of: 703 × 165 ÷ (70²) = 703 × 165 ÷ 4900 ≈ <strong>23.7</strong> — within the Normal range.</p>
 
-    <h3>WHO BMI Categories</h3>
-    <p><strong>Underweight:</strong> BMI below 18.5 — may indicate malnutrition or eating disorders. <strong>Normal weight:</strong> 18.5–24.9 — associated with lowest health risks. <strong>Overweight:</strong> 25–29.9 — increased risk for certain conditions. <strong>Obese (Class I):</strong> 30–34.9. <strong>Obese (Class II):</strong> 35–39.9. <strong>Obese (Class III):</strong> 40 and above.</p>
+    <h3>WHO BMI Categories for Adults</h3>
+    <ul>
+      <li><strong>Below 18.5 — Underweight:</strong> May indicate malnutrition, eating disorders, or underlying illness. Associated with bone density loss and immune suppression.</li>
+      <li><strong>18.5–24.9 — Normal (Healthy) Weight:</strong> Associated with the lowest risk for weight-related conditions, including type 2 diabetes and cardiovascular disease.</li>
+      <li><strong>25.0–29.9 — Overweight:</strong> Elevated risk for hypertension, dyslipidemia, sleep apnea, and insulin resistance.</li>
+      <li><strong>30.0–34.9 — Obese Class I:</strong> High risk. Moderate interventions (diet, exercise, behavioral therapy) are typically recommended.</li>
+      <li><strong>35.0–39.9 — Obese Class II:</strong> Very high risk. Medical supervision and potentially pharmaceutical intervention are often advised.</li>
+      <li><strong>40.0+ — Obese Class III (Severe/Morbid Obesity):</strong> Extremely high risk. Bariatric surgery may be considered.</li>
+    </ul>
 
-    <h3>BMI Limitations</h3>
-    <p>BMI does not distinguish between muscle and fat mass. A muscular athlete may have a high BMI while having very low body fat — and vice versa. For a more complete picture, consider waist-to-hip ratio, body fat percentage (measured via DEXA scan or bioelectrical impedance), and visceral fat assessment.</p>
+    <h3>Limitations of BMI</h3>
+    <p>BMI is a useful screening tool, but it has significant well-documented limitations:</p>
+    <ul>
+      <li><strong>Muscle Mass vs. Fat:</strong> BMI does not distinguish between fat and lean muscle tissue. A competitive bodybuilder may have a BMI of 30+ while having very low body fat. Conversely, a sedentary person with low muscle mass may have a "normal" BMI with high body fat.</li>
+      <li><strong>Fat Distribution:</strong> BMI says nothing about where fat is stored. Visceral fat (around organs in the abdomen) is far more dangerous than subcutaneous fat stored under the skin. A person with a normal BMI but high waist circumference may be at greater metabolic risk than their BMI suggests.</li>
+      <li><strong>Ethnic Variations:</strong> Research shows that people of Asian descent have higher health risks at lower BMI thresholds. Some health organizations recommend adjusted BMI cutoffs (e.g., overweight starting at 23.0, not 25.0) for Asian populations.</li>
+      <li><strong>Age:</strong> Older adults naturally lose muscle mass and gain fat, so the same BMI number represents different body compositions at age 25 vs. age 70.</li>
+      <li><strong>Sex:</strong> Women naturally carry more body fat than men at the same BMI due to hormonal differences and reproductive physiology.</li>
+    </ul>
+
+    <h3>Better Alternatives and Complementary Measures</h3>
+    <p>For a more complete picture of health, consider these additional metrics:</p>
+    <ul>
+      <li><strong>Waist Circumference:</strong> A waist above 35 inches (women) or 40 inches (men) indicates elevated cardiovascular risk regardless of BMI.</li>
+      <li><strong>Waist-to-Hip Ratio (WHR):</strong> A WHR above 0.9 (men) or 0.85 (women) signals increased metabolic risk.</li>
+      <li><strong>Body Fat Percentage:</strong> Measured via DEXA scan, hydrostatic weighing, or bioelectrical impedance (BIA). Most accurate but less accessible than BMI.</li>
+      <li><strong>Waist-to-Height Ratio:</strong> A simple rule of thumb: your waist should be less than half your height. This metric has shown strong predictive value for cardiometabolic risk.</li>
+    </ul>
 
     <details>
       <summary>❓ Is BMI the same for men and women?</summary>
-      <p>The same BMI thresholds apply to both sexes in standard WHO guidelines, though women naturally carry more body fat than men at the same BMI. Some researchers argue for sex-specific cutoffs, but international clinical practice still uses the universal WHO scale.</p>
+      <p>The WHO uses the same BMI cutoffs for both sexes. However, women naturally carry approximately 5–8% more body fat than men at the same BMI due to hormonal differences, pregnancy storage, and breast tissue. Some researchers advocate for sex-specific cutoffs, but international clinical guidelines continue to use the universal scale for simplicity and comparability.</p>
     </details>
     <details>
-      <summary>❓ How accurate is BMI for children?</summary>
-      <p>For children and teens (ages 2–19), BMI is interpreted using age- and sex-specific percentile charts from the CDC, not the adult WHO cutoffs. "Healthy weight" for children is defined as BMI in the 5th–85th percentile for their age group.</p>
+      <summary>❓ How accurate is BMI for children and teens?</summary>
+      <p>For children ages 2–19, BMI is interpreted with age- and sex-specific percentile charts (CDC growth charts), not the adult WHO thresholds. "Healthy weight" for a child is defined as BMI in the 5th–85th percentile. The same BMI number means different things at age 8 vs. age 16, because bodies change dramatically during growth and puberty.</p>
+    </details>
+    <details>
+      <summary>❓ What is a healthy BMI for my age?</summary>
+      <p>For adults 20 and older, the standard WHO ranges apply regardless of age. However, some clinicians adjust informally — a BMI of 25–27 may be acceptable for adults over 65, as slightly higher weight is associated with better outcomes in older populations (a phenomenon sometimes called the "obesity paradox" in geriatrics).</p>
+    </details>
+    <details>
+      <summary>❓ How can I lower my BMI?</summary>
+      <p>BMI decreases when you reduce body weight and/or increase lean muscle mass. Sustainable strategies include: a modest caloric deficit (250–500 calories/day for 0.5–1 lb weight loss per week), strength training to preserve/build muscle during weight loss, increased cardiovascular activity, improved sleep quality (poor sleep increases hunger hormones), and working with a registered dietitian for personalized guidance.</p>
     </details>
   `
 });

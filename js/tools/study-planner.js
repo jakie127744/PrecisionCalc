@@ -99,21 +99,40 @@ registerTool({
   },
 
   seoContent: `
-    <p>Time management is the single biggest factor in collegiate success. The Study Hour Planner helps you visualize your weekly commitment for each course, ensuring you don't overextend yourself during registration.</p>
+    <p>Effective time management is one of the most reliable predictors of academic success in university and college settings. Research consistently shows that students who plan and schedule their study time outperform those who study in unstructured, reactive bursts. The Study Hour Planner helps you calculate a realistic weekly study commitment for each of your courses before and during the semester, so you can manage your credit load without burning out.</p>
 
-    <h3>The 2:1 Rule</h3>
-    <p>The standard academic recommendation is to study <b>2 hours for every 1 credit hour</b> of class. For a typical 3-credit course, this means 6 hours of homework and review per week. However, this varies significantly based on subject complexity.</p>
+    <h3>The 2:1 Study Rule</h3>
+    <p>The widely-accepted academic standard is to study <b>2 hours outside of class for every 1 credit hour</b>. A typical 3-credit lecture course therefore demands about 6 hours of study, reading, and homework per week. A 15-credit semester would require roughly 30 hours of independent study — equivalent to a part-time job on top of your classroom hours. However, this is a starting baseline; difficulty, your background knowledge, and your target grade will all shift this number significantly.</p>
 
     <h3>Factors That Impact Study Time</h3>
     <ul>
-      <li><strong>Prerequisite Knowledge:</strong> If you are taking a class without a strong foundation, expect to spend 25-50% more time on review.</li>
-      <li><strong>Assessment Type:</strong> Lab-heavy or writing-intensive courses often require more hours than lecture-only courses.</li>
-      <li><strong>Target Grade:</strong> Aiming for an 'A' usually requires consistent weekly review, whereas a 'Pass' might only require keeping up with assignments.</li>
+      <li><strong>Prior Knowledge:</strong> Taking an intro course in a subject you already know well? You might need 50% less time. Starting an advanced STEM course with weak prerequisites? Plan for 50–100% more.</li>
+      <li><strong>Course Format:</strong> Lab-intensive, writing-intensive, or project-based courses frequently demand more hours per credit than pure lecture courses.</li>
+      <li><strong>Assessment Style:</strong> Courses with weekly homework sets require consistent daily effort. Courses with only a midterm and a final allow more flexibility but demand disciplined review sessions.</li>
+      <li><strong>Target Grade:</strong> Studying just enough to pass (C) requires less time than maintaining a 3.5 GPA. This tool scales its estimate based on whether you are aiming for an A, B, or a passing grade.</li>
+      <li><strong>Learning Style & Environment:</strong> Studying in a distracting environment can double the time required to absorb the same material compared to focused, distraction-free study sessions.</li>
     </ul>
 
+    <h3>Research-Backed Study Strategies</h3>
+    <p><strong>Spaced Repetition:</strong> Instead of cramming all in one session, distribute your study over multiple shorter sessions spread across days. Each review session strengthens the neural pathways and dramatically improves long-term retention. Apps like Anki use this algorithm automatically.</p>
+    <p><strong>Active Recall:</strong> Don't just re-read your notes. Flip them over and try to recall the key concepts from memory. Answering practice questions is significantly more effective for exam preparation than passive reading or highlighting.</p>
+    <p><strong>The Pomodoro Technique:</strong> Work for 25 minutes with full focus, then take a 5-minute break. After 4 cycles, take a longer 15–30 minute break. This keeps your brain fresh, prevents decision fatigue, and makes large study blocks feel manageable.</p>
+    <p><strong>Time Blocking:</strong> Schedule specific blocks in your calendar for each course — treat them like non-negotiable appointments. Students who schedule study time in advance are substantially more likely to follow through than those who study "when they have time."</p>
+
+    <h3>How the Calculator Works</h3>
+    <p>This tool uses the 2:1 baseline and applies two multipliers: a difficulty multiplier (ranging from 0.5× for easy courses to 1.5× for hard ones) and a grade-target multiplier (0.7× for a passing grade, 1.0× for a B, 1.5× for an A). The result is an estimated weekly study hour budget that you can use to allocate time in your schedule before the semester begins.</p>
+
     <details>
-      <summary>❓ Is "Easy" really only 3 hours per week?</summary>
-      <p>For some introductory courses or subjects you already excel in, 1 hour per credit might be enough. This tool provides an estimate; always adjust based on your actual experience in the first two weeks of class.</p>
+      <summary>❓ Is 3 hours really enough for an easy 3-credit course?</summary>
+      <p>For some introductory electives or subjects where you already have strong background knowledge, yes — 2–3 hours per week may be sufficient. Always recalibrate after the first two weeks of class once you've seen the actual workload. The first assignment or quiz is usually a good reality check.</p>
+    </details>
+    <details>
+      <summary>❓ How many credit hours should I take per semester?</summary>
+      <p>Full-time status is typically 12 credits (about 36 hours/week of class + study). A higher load of 18 credits demands roughly 54 hours per week in class and studying — the equivalent of a full-time job plus significant overtime. Most students perform better with 15 credits or fewer while maintaining other obligations like work or extracurriculars.</p>
+    </details>
+    <details>
+      <summary>❓ What time of day is best for studying?</summary>
+      <p>Research on chronobiology suggests that cognitive performance peaks 1–3 hours after you fully wake up. For most people, morning or early afternoon is optimal for demanding analytical work. Low-energy periods (like right after lunch) are better for reviewing flashcards or watching lecture recordings — tasks that require less active concentration.</p>
     </details>
   `
 });
