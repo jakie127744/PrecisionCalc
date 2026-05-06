@@ -4,7 +4,6 @@
  */
 registerTool({
     seoContent: `
-      <h2>Compound Interest Calculator</h2>
       <p>The Compound Interest Calculator is a must-have tool for anyone looking to grow their savings or investments over time. Compound interest is the process where your money earns interest, and then that interest also earns interest, creating a powerful snowball effect. This calculator helps you visualize how your initial investment, regular contributions, interest rate, and compounding frequency work together to build wealth.</p>
 
       <h3>Why Use a Compound Interest Calculator?</h3>

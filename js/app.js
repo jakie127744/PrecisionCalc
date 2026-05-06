@@ -68,6 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
   wireSidebar();
   wireMobileSearch();
   route();
+  initAdFallback();
 
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
@@ -783,3 +784,29 @@ window.toggleCategory = function(header) {
         setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
     }
 };
+
+/* ─── Ad Fallback ───────────────────────────────────────────── */
+function initAdFallback() {
+  // Check if AdSense is working after a delay
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const ads = document.querySelectorAll('.adsbygoogle');
+      let adsLoaded = false;
+      
+      ads.forEach(ad => {
+        if (ad.getAttribute('data-ad-status') === 'filled' || ad.innerHTML.trim().length > 0 || ad.childElementCount > 0) {
+          adsLoaded = true;
+        }
+      });
+
+      if (!adsLoaded) {
+        console.log('AdSense unapproved/blocked. Loading backup ads...');
+        if (typeof aclib !== 'undefined') {
+          aclib.runAutoTag({
+              zoneId: 'wovfzncgns',
+          });
+        }
+      }
+    }, 4000);
+  });
+}
