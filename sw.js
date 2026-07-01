@@ -1,9 +1,9 @@
-const CACHE_NAME = 'precision-calc-v2';
+const CACHE_NAME = 'precision-calc-v3';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
-  './og-image.png',
+  './og-image.jpg',
   './icon-512.png',
   './js/registry.js',
   './js/app.js',

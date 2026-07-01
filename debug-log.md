@@ -138,3 +138,18 @@
 
 **Prevention:**
 - **Rule or Pattern:** When auditing for templated content, check both levels: exact repeated *sentences* (the more serious signal) and repeated *section headers* (a milder, cosmetic signal, but easy to fix once noticed) — `grep -rl "<h3>SOME_HEADER</h3>" js/tools/` for any header you're about to reuse across multiple new tools.
+
+---
+
+## Bug 008 — Oversized site images (icon, logo, OG card)
+
+**Bug:**
+- **Description:** `icon-512.png` was actually 1024×1024 (manifest.json declares it as 512×512 — 2x oversized for its own stated purpose), `logo.png` was 1024×430 despite only ever being displayed at 32–38px tall in the header/footer, and `og-image.png` was a 545KB PNG even though it's gradient/glow-heavy content that PNG compresses poorly. Combined, these three files alone were ~1.4MB, all pure waste since none of them render anywhere near their stored resolution.
+- **Location:** `icon-512.png`, `logo.png`, `og-image.png` at the project root.
+
+**Fix:**
+- **Summary:** Resized `icon-512.png` to the 512×512 its own filename and manifest.json entry promise (422KB → 90KB). Resized `logo.png` to 450×189 — still generous headroom for 3x-retina display at its actual 32-38px rendered height (403KB → 39KB). Converted `og-image.png` to `og-image.jpg` (quality 88, mozjpeg) since it has no alpha channel and gradient content compresses far better as JPEG than PNG (545KB → 103KB, an 81% reduction vs. only 19% from PNG-only recompression). Updated the two references (`og:image`/`twitter:image` meta tags in `index.html`, and the cache list in `sw.js`) and bumped the service worker's `CACHE_NAME` to `v3` so the new asset list actually reaches returning visitors instead of serving a stale cached reference to the now-deleted `.png`.
+- **Why It Works:** Same visual result (verified side-by-side) at roughly 15% of the combined original file size — meaningfully faster page loads and PWA install size with zero visible quality loss. Used `sharp`, installed only in a scratch directory outside the repo (never added as a project dependency), to keep the site's zero-dependency vanilla-JS nature intact.
+
+**Prevention:**
+- **Rule or Pattern:** Before adding any image asset, check its actual rendered display size in the CSS/HTML and size the source file to roughly 2-3x that (for retina), not an arbitrary "high-res" default. For gradient/photo-like content (glows, shadows, photos), prefer JPEG or WebP over PNG; reserve PNG for flat-color graphics, line art, or anything needing transparency.
