@@ -91,3 +91,19 @@
 
 **Prevention:**
 - **Rule or Pattern:** Before adding any new ad placement, count how many ad units the page will render simultaneously and weigh that against the actual unique content on screen — density, not just word count, is what "ads without publisher content" flags.
+
+---
+
+## Bug 006 — 14 tools shared verbatim templated seoContent
+
+**Bug:**
+- **Description:** `cone`, `cube`, `cylinder`, `ellipse`, `exponent`, `factorial`, `gcdlcm`, `logarithm`, `matrix`, `parallelogram`, `polygon`, `rectangle`, `sphere`, and `trapezoid` all cleared the 300-word bar from Bug 002/003, but shared near-identical opening structure (three generic paragraphs: "The X Calculator is a [comprehensive/specialized/powerful] online tool...", an applications list, then "This free online X Calculator is designed for accuracy, speed, and ease of use... Bookmark this page...") and an identical closing CTA ("Try the X Calculator now... share it with classmates, colleagues..."). Google's content-quality systems weigh uniqueness, not just word count — a pattern repeated verbatim across 14 pages reads as templated/thin regardless of length.
+- **Location:** `js/tools/{cone,cube,cylinder,ellipse,exponent,factorial,gcdlcm,logarithm,matrix,parallelogram,polygon,rectangle,sphere,trapezoid}.js` — the `seoContent` property in each.
+
+**Fix:**
+- **Summary:** Rewrote all 14 from scratch with distinct openings (each starts from a different real-world hook — Kepler's ellipse orbits, the rice-on-a-chessboard exponent story, honeycomb hexagons, etc.), varied section structure (no two follow the same header pattern), worked examples using each tool's actual default input values, and unique FAQ questions. No generic "Try the X Calculator now" closer anywhere.
+- **Files Changed:** the 14 files listed above.
+- **Why It Works:** Removes the single largest remaining templated-content signal in the codebase — each page now reads as independently written, with genuine unique facts, formulas tied to real default values, and distinct framing, rather than a mail-merge of the same three paragraphs.
+
+**Prevention:**
+- **Rule or Pattern:** Never reuse the same opening/closing sentence structure across multiple tools' `seoContent`, even if the words are swapped per-topic — grep for a few of your own stock phrases (e.g. `grep -rl "designed for accuracy, speed, and ease of use" js/tools/`) before considering a batch of new tools done, and treat any hit count above 1 as a signal to rewrite.

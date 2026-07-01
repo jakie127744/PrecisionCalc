@@ -16,18 +16,30 @@ registerTool({
   },
 
   seoContent: `
-    <h2>Rectangle & Square Calculator</h2>
-    <p>The Rectangle & Square Calculator is a versatile online tool that helps you calculate the area, perimeter, and diagonal of rectangles and squares. Rectangles and squares are fundamental shapes in geometry, appearing in mathematics, architecture, engineering, and everyday life. Understanding how to calculate their properties is essential for students, teachers, professionals, and anyone working with geometric figures.</p>
-    <p>To use this calculator, simply enter the width and height of your rectangle or square. The area is calculated using the formula <b>Area = width × height</b>, which measures the space inside the shape. The perimeter is found using <b>Perimeter = 2 × (width + height)</b>, representing the total distance around the shape. The diagonal is calculated using <b>Diagonal = √(width² + height²)</b>, which measures the straight-line distance between opposite corners. These calculations are useful for solving geometry problems, planning construction projects, or checking your work on homework and exams.</p>
-    <p>Rectangles and squares have many practical applications. In architecture and engineering, they are used in the design of rooms, buildings, and furniture. In art and design, rectangular and square patterns create visually appealing layouts. In everyday life, rectangles and squares are found in books, screens, tiles, and more. Mastering the properties of these shapes helps build a strong foundation in geometry and spatial reasoning.</p>
-    <p>This free online Rectangle & Square Calculator is designed for accuracy, speed, and ease of use. It provides instant results and clear explanations, making it ideal for students, educators, and professionals alike. Whether you are working on a math assignment, designing a structure, or exploring geometric concepts, this tool will save you time and help you avoid mistakes. Bookmark this page for quick access whenever you need to calculate the area, perimeter, or diagonal of a rectangle or square.</p>
-    <ul>
-      <li><b>Area:</b> Calculates the space inside the rectangle or square</li>
-      <li><b>Perimeter:</b> Computes the total distance around the shape</li>
-      <li><b>Diagonal:</b> Measures the straight-line distance between opposite corners</li>
-      <li><b>Step-by-step explanations and instant results</b></li>
-    </ul>
-    <p>Try the Rectangle & Square Calculator now and make your geometry, engineering, and design work easier and more efficient. If you find this tool helpful, please share it with classmates, colleagues, or anyone who could benefit from fast and accurate rectangle and square calculations.</p>
+    <p>Standard printer paper (8.5" × 11" in the US, A4 elsewhere), most TV and monitor screens, and nearly every door and window frame are rectangles — arguably the most-measured shape in daily life, precisely because it's the simplest way to divide space into predictable, stackable, buildable units.</p>
+
+    <h3>Three Measurements, Three Formulas</h3>
+    <div class="formula-block">Area = w × h &nbsp;|&nbsp; Perimeter = 2(w + h) &nbsp;|&nbsp; Diagonal = √(w² + h²)</div>
+    <p>With the default width 8 and height 5: Area = 8 × 5 = 40 square units, Perimeter = 2(8+5) = 26 units, and Diagonal = √(64+25) = √89 ≈ 9.43 units. That diagonal formula is just the Pythagorean theorem in disguise — a rectangle's diagonal always forms the hypotenuse of a right triangle with the width and height as its two legs.</p>
+
+    <h3>Why the Diagonal Matters More Than People Expect</h3>
+    <p>TV and monitor sizes are always advertised by diagonal measurement, not width or height — a "55-inch TV" means the diagonal is 55 inches, which is why two TVs with the same diagonal but different aspect ratios (16:9 vs. 4:3) can have noticeably different actual screen areas. Carpenters and builders also rely on the diagonal for a classic trick: if a rectangular frame's two diagonals measure exactly equal, the frame is guaranteed to be a true rectangle with perfect 90° corners — a property that doesn't hold for a general parallelogram.</p>
+
+    <h3>Square: The Special Case</h3>
+    <p>A square is simply a rectangle where width equals height. All three formulas still apply — Area becomes side², Perimeter becomes 4 × side, and Diagonal becomes side × √2 — making the square the most symmetric member of the rectangle family, with four equal sides and four right angles.</p>
+
+    <details>
+      <summary>❓ Why is diagonal² = width² + height²?</summary>
+      <p>A rectangle's diagonal splits it into two identical right triangles, where the width and height are the two legs and the diagonal is the hypotenuse — direct application of the Pythagorean theorem, a²+b²=c².</p>
+    </details>
+    <details>
+      <summary>❓ Can two rectangles have the same area but different perimeters?</summary>
+      <p>Yes, easily — a 4×9 rectangle and a 6×6 square both have an area of 36, but perimeters of 26 and 24 respectively. Among all rectangles with a fixed area, the square always has the smallest possible perimeter.</p>
+    </details>
+    <details>
+      <summary>❓ How do carpenters use the "equal diagonals" trick to check for square corners?</summary>
+      <p>After building a rectangular frame, measuring both diagonals corner-to-corner is a fast, accurate way to verify all four corners are true right angles — if the diagonals match exactly, the frame is guaranteed rectangular; if they differ, at least one corner is off.</p>
+    </details>
   `,
 
   template: () => `

@@ -16,17 +16,34 @@ registerTool({
   },
 
   seoContent: `
-    <h2>Sphere Calculator</h2>
-    <p>The Sphere Calculator is a specialized online tool that enables you to calculate the surface area and volume of a sphere with ease. Spheres are perfectly round three-dimensional shapes, like balls or planets, and are fundamental in geometry, physics, engineering, and astronomy. Understanding how to calculate the properties of a sphere is essential for students, teachers, scientists, and anyone working with spherical objects.</p>
-    <p>To use this calculator, simply enter the radius of your sphere. The surface area is calculated using the formula <b>Surface Area = 4πr²</b>, which measures the total area covering the outside of the sphere. The volume is found using <b>Volume = (4/3)πr³</b>, representing the amount of space inside the sphere. These calculations are useful for determining material requirements, storage capacity, or solving geometry and physics problems.</p>
-    <p>Spheres have a wide range of applications. In science, they are used to model planets, atoms, and bubbles. In engineering, spheres are used in the design of tanks, bearings, and domes. In everyday life, spheres are found in sports balls, ornaments, and more. Mastering the properties of spheres helps build a strong foundation in geometry, physics, and engineering.</p>
-    <p>This free online Sphere Calculator is designed for accuracy, speed, and ease of use. It provides instant results and clear explanations, making it ideal for students, educators, and professionals. Whether you are working on a math assignment, designing a mechanical system, or exploring geometric concepts, this tool will save you time and help you avoid mistakes. Bookmark this page for quick access whenever you need to calculate the surface area or volume of a sphere.</p>
+    <p>A sphere is the most "efficient" 3D shape possible — for a given volume, it has less surface area than any other solid. That's exactly why soap bubbles, water droplets, and stars all pull themselves into spheres: surface tension and gravity both minimize surface area for the volume they contain.</p>
+
+    <h3>The Formulas</h3>
+    <div class="formula-block">Surface Area = 4 × π × r² &nbsp;|&nbsp; Volume = (4/3) × π × r³</div>
+    <p>With the default radius of 5: surface area = 4 × π × 25 ≈ 314.16 square units, and volume = (4/3) × π × 125 ≈ 523.6 cubic units. Notice the exponents — surface area scales with r², volume with r³. That difference in scaling is the whole story behind the next section.</p>
+
+    <h3>Why Doubling the Radius Doesn't Just Double Everything</h3>
+    <p>Because surface area depends on r² and volume on r³, doubling a sphere's radius quadruples its surface area but multiplies its volume by 8. This is why a beach ball (large volume relative to its surface) feels light and fragile, while a golf ball (small volume relative to its surface) feels dense — and it's the same reason small animals lose body heat faster than large ones (more skin surface per unit of body volume) and why cells can only grow so large before needing to divide (nutrient absorption depends on surface area, but metabolic demand scales with volume).</p>
+
+    <h3>Spheres in the Real World</h3>
     <ul>
-      <li><b>Surface Area:</b> Calculates the total area covering the sphere</li>
-      <li><b>Volume:</b> Computes the space inside the sphere</li>
-      <li><b>Step-by-step explanations and instant results</b></li>
+      <li><b>Astronomy:</b> Planets and stars form as spheres because gravity pulls mass symmetrically inward from every direction.</li>
+      <li><b>Engineering:</b> Pressure vessels and gas tanks are often spherical because a sphere distributes internal pressure evenly across its surface, minimizing stress concentrations.</li>
+      <li><b>Sports:</b> Balls are spheres specifically because that shape rolls and bounces predictably regardless of orientation.</li>
     </ul>
-    <p>Try the Sphere Calculator now and make your geometry, science, and engineering work easier and more efficient. If you find this tool helpful, please share it with classmates, colleagues, or anyone who could benefit from fast and accurate sphere calculations.</p>
+
+    <details>
+      <summary>❓ Is a sphere the same as a circle?</summary>
+      <p>No — a circle is a two-dimensional shape (a flat disc outline), while a sphere is the three-dimensional equivalent, like a ball. A sphere's cross-section through its center is a circle, which is often a source of confusion between the two.</p>
+    </details>
+    <details>
+      <summary>❓ Why is 4πr² the surface area and not something involving r³?</summary>
+      <p>Surface area measures a 2D quantity (the "skin" of the sphere), so it scales with the square of the radius, just like the area of a flat circle (πr²). Volume measures 3D space, so it scales with the cube of the radius. This r² vs. r³ distinction holds for area vs. volume in any 3D shape.</p>
+    </details>
+    <details>
+      <summary>❓ How is the sphere volume formula actually derived?</summary>
+      <p>One classic method (attributed to Archimedes) compares a hemisphere to a cylinder with a cone removed from it — both have the same cross-sectional area at every height, so by Cavalieri's principle they have equal volumes, which algebraically works out to the (4/3)πr³ formula. Archimedes considered this discovery so significant he requested a sphere inscribed in a cylinder be carved on his tombstone.</p>
+    </details>
   `,
 
   template: () => `

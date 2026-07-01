@@ -323,17 +323,34 @@
         <article class="seo-card" aria-label="How Cone Calculator works">
           <h2>📖 How Cone Calculator Works</h2>
           
-    <h2>Cone Calculator</h2>
-    <p>The Cone Calculator is a user-friendly online tool that allows you to calculate the surface area and volume of a cone. Cones are three-dimensional geometric shapes with a circular base and a single vertex, commonly found in objects like ice cream cones, traffic cones, and funnels. Understanding how to calculate the properties of a cone is essential for students, teachers, engineers, and anyone working with conical objects.</p>
-    <p>To use this calculator, simply enter the radius and height of your cone. The surface area is calculated using the formula <b>Surface Area = πr(r + l)</b>, where l is the slant height, which can be found using the Pythagorean theorem. The volume is found using <b>Volume = (1/3)πr²h</b>, representing the amount of space inside the cone. These calculations are useful for determining material requirements, storage capacity, or solving geometry problems.</p>
-    <p>Cones have a wide range of applications. In engineering, they are used in the design of funnels, hoppers, and nozzles. In construction, conical shapes are used in roofs and towers. In everyday life, cones are found in party hats, megaphones, and more. Mastering the properties of cones helps build a strong foundation in geometry, physics, and engineering.</p>
-    <p>This free online Cone Calculator is designed for accuracy, speed, and ease of use. It provides instant results and clear explanations, making it ideal for students, educators, and professionals. Whether you are working on a math assignment, designing a mechanical system, or exploring geometric concepts, this tool will save you time and help you avoid mistakes. Bookmark this page for quick access whenever you need to calculate the surface area or volume of a cone.</p>
+    <p>Ice cream scoops, traffic cones, funnels, and even volcano shapes are all approximations of the same solid: a circular base tapering to a single point. That taper is what makes a cone's surface area trickier than a cylinder's — you can't just wrap a flat rectangle around it the way you can a cylinder's side.</p>
+
+    <h3>Volume and Surface Area</h3>
+    <div class="formula-block">Volume = ⅓ × π × r² × h &nbsp;|&nbsp; Surface Area = π × r × (r + l), where l = √(r² + h²)</div>
+    <p>The slant height <b>l</b> isn't an input you provide directly — it's derived from the radius and vertical height using the Pythagorean theorem, since the slant, radius, and height form a right triangle. For the default values here (radius 5, height 10): l = √(5² + 10²) = √125 ≈ 11.18, giving a volume of ⅓ × π × 25 × 10 ≈ 261.8 cubic units and a surface area of π × 5 × (5 + 11.18) ≈ 254.2 square units.</p>
+
+    <h3>Why a Cone's Volume Is Exactly ⅓ of a Cylinder's</h3>
+    <p>A cone and a cylinder sharing the same base radius and height have a precise relationship: the cone's volume is always exactly one-third the cylinder's. This isn't a coincidence — it's provable with calculus (integrating cross-sectional disc areas from the apex to the base) or demonstrated physically: fill a cone-shaped container with water and pour it into a same-sized cylinder three times to fill it exactly.</p>
+
+    <h3>Where Cones Show Up</h3>
     <ul>
-      <li><b>Surface Area:</b> Calculates the total area covering the cone</li>
-      <li><b>Volume:</b> Computes the space inside the cone</li>
-      <li><b>Step-by-step explanations and instant results</b></li>
+      <li><b>Manufacturing:</b> Hoppers and funnels use conical geometry so gravity feeds material toward a narrow outlet.</li>
+      <li><b>Optics and acoustics:</b> Megaphones and speaker horns use a cone shape to direct and amplify sound waves.</li>
+      <li><b>Nature:</b> Volcanoes, sand piles, and stalagmites naturally form conical shapes because loose material settles at a consistent angle of repose.</li>
     </ul>
-    <p>Try the Cone Calculator now and make your geometry, engineering, and design work easier and more efficient. If you find this tool helpful, please share it with classmates, colleagues, or anyone who could benefit from fast and accurate cone calculations.</p>
+
+    <details>
+      <summary>❓ Why can't I just multiply the base circumference by the slant height for surface area?</summary>
+      <p>Because the "unrolled" lateral surface of a cone isn't a rectangle — it's a sector of a circle with radius equal to the slant height. The formula πrl already accounts for this geometry correctly; a naive rectangle-based estimate would overstate the area.</p>
+    </details>
+    <details>
+      <summary>❓ Does a taller, narrower cone always have less volume than a short, wide one?</summary>
+      <p>Not necessarily — volume depends on r² × h, so radius matters more than height. Doubling the height only doubles the volume, but doubling the radius quadruples it. A short, wide cone can easily hold more than a tall, narrow one with the same slant height.</p>
+    </details>
+    <details>
+      <summary>❓ What's the difference between a right cone and an oblique cone?</summary>
+      <p>A right cone has its apex directly above the center of the circular base — this calculator assumes that shape. An oblique cone has its apex off to one side, which changes the surface area formula but not the volume formula (volume only depends on base area and perpendicular height, regardless of tilt).</p>
+    </details>
   
         </article>
       
