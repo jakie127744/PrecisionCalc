@@ -84,9 +84,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-cookingconvert';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-cooking-convert');
     const factors = {
       cup:      { cup: 1, tbsp: 16, tsp: 48, ml: 236.588, oz: 8 },
       tbsp:     { cup: 1/16, tbsp: 1, tsp: 3, ml: 14.7868, oz: 0.5 },
@@ -99,7 +97,19 @@ registerTool({
       const fromUnit = container.querySelector('#cook-from-unit').value;
       const toUnit = container.querySelector('#cook-to-unit').value;
       const result = fromVal * factors[fromUnit][toUnit];
-      resultCard.innerHTML = `<div class=\"result-card\"><div><b>Converted:</b> ${result.toFixed(4)} ${toUnit}</div></div>`;
+      resultCard.innerHTML = `
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="result-label">Converted</span>
+            <span class="result-value large">
+              ${result.toFixed(4)} ${toUnit}
+              <button class="copy-btn" onclick="copyValue(this,'${result.toFixed(4)}')" title="Copy">📋</button>
+            </span>
+          </div>
+        </div>
+      `;
+      resultCard.classList.add('active');
+      pulseResult('cooking-convert');
     }
     container.addEventListener('input', cookCalc);
     cookCalc();

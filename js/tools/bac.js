@@ -33,13 +33,16 @@ registerTool({
       if (weight <= 0 || drinks <= 0) return '';
       const r = sex === 'male' ? 0.68 : 0.55;
       const bac = ((drinks * 14) / (weight * r) * 100) - (0.015 * hours);
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>BAC:</b> ${bac.toFixed(4)}</div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>BAC:</b> ${bac.toFixed(4)}</div>`;
     };
-    container.innerHTML += `<div id=\"result-card-bac\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-bac').innerHTML = calc();
-    });
-    container.querySelector('#result-card-bac').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-bac');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter weight and drinks ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('bac'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

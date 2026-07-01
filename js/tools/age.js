@@ -41,17 +41,16 @@ registerTool({
         years--;
         months += 12;
       }
-      return `
-        <div class=\"result-card\">
-          <div><b>Age:</b> ${years} years, ${months} months, ${days} days</div>
-        </div>
-      `;
+      return `<div><b>Age:</b> ${years} years, ${months} months, ${days} days</div>`;
     };
-    container.innerHTML += `<div id=\"result-card-age\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-age').innerHTML = calc();
-    });
-    container.querySelector('#result-card-age').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-age');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter date of birth ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('age'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

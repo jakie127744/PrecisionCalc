@@ -77,20 +77,30 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-timezone';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-time-zone');
     function tzCalc() {
       const time = container.querySelector('#tz-time').value;
       const from = parseInt(container.querySelector('#tz-from').value) || 0;
       const to = parseInt(container.querySelector('#tz-to').value) || 0;
-      if (!time) { resultCard.innerHTML = ''; return; }
+      if (!time) { resultCard.innerHTML = '<div class="result-placeholder">Enter a time to convert ✦</div>'; return; }
       const [h, m] = time.split(':').map(Number);
       let date = new Date(Date.UTC(2000, 0, 1, h - from, m));
       date.setUTCHours(date.getUTCHours() + to);
       const hh = String(date.getUTCHours()).padStart(2, '0');
       const mm = String(date.getUTCMinutes()).padStart(2, '0');
-      resultCard.innerHTML = `<div class=\"result-card\"><div><b>Converted Time:</b> ${hh}:${mm}</div></div>`;
+      resultCard.innerHTML = `
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="result-label">Converted Time</span>
+            <span class="result-value large">
+              ${hh}:${mm}
+              <button class="copy-btn" onclick="copyValue(this,'${hh}:${mm}')" title="Copy">📋</button>
+            </span>
+          </div>
+        </div>
+      `;
+      resultCard.classList.add('active');
+      pulseResult('time-zone');
     }
     container.addEventListener('input', tzCalc);
     tzCalc();

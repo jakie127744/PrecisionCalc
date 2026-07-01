@@ -35,7 +35,7 @@ registerTool({
   mount(container) {
     const ids = ['ts-bill', 'ts-tip', 'ts-people'];
     const els = ids.map(id => container.querySelector(`#${id}`));
-    const resultCard = container.querySelector('#result-card-tipsplit');
+    const resultCard = container.querySelector('#result-card-tip-split');
 
     const calc = () => {
       const bill = parseFloat(els[0].value) || 0;
@@ -73,7 +73,7 @@ registerTool({
         </div>
       `;
       resultCard.classList.add('active');
-      pulseResult('tipsplit');
+      pulseResult('tip-split');
     };
 
     els.forEach(el => el.addEventListener('input', calc));

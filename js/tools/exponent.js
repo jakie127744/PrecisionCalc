@@ -43,15 +43,15 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-exponent';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-exponent');
 
     function expCalc() {
       const x = parseFloat(container.querySelector('#exp-base').value) || 0;
       const y = parseFloat(container.querySelector('#exp-exp').value) || 0;
       const result = Math.pow(x, y);
-      resultCard.innerHTML = `<div class=\"result-card\"><div><b>${x}<sup>${y}</sup> =</b> ${result}</div></div>`;
+      resultCard.innerHTML = `<div><b>${x}<sup>${y}</sup> =</b> ${result}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('exponent');
     }
     container.addEventListener('input', expCalc);
     expCalc();

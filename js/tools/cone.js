@@ -44,9 +44,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-cone';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-cone');
 
     function coneCalc() {
       const r = parseFloat(container.querySelector('#cone-radius').value) || 0;
@@ -55,7 +53,10 @@ registerTool({
       const surface = Math.PI * r * (r + l);
       const volume = (1 / 3) * Math.PI * r * r * h;
       const valid = r > 0 && h > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter radius and height ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('cone');
     }
     container.addEventListener('input', coneCalc);
     coneCalc();

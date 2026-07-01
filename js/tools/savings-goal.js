@@ -71,9 +71,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-savings-goal';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-savings-goal');
     function sgCalc() {
       const FV = parseFloat(container.querySelector('#sg-goal').value) || 0;
       const n = parseInt(container.querySelector('#sg-months').value) || 0;
@@ -85,7 +83,10 @@ registerTool({
         pmt = FV / n;
       }
       const valid = FV > 0 && n > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Monthly Savings Needed:</b> $${pmt.toFixed(2)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter goal amount and months ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Monthly Savings Needed:</b> $${pmt.toFixed(2)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('savings-goal');
     }
     container.addEventListener('input', sgCalc);
     sgCalc();

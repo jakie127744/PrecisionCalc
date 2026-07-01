@@ -67,12 +67,15 @@ registerTool({
       if (a <= 0 || b <= 0) return '';
       const c = Math.sqrt(a * a + b * b);
       container.querySelector('#pyth-triangle').innerHTML = `<svg width=\"120\" height=\"80\" viewBox=\"0 0 120 80\"><polygon points=\"10,70 110,70 110,10\" fill=\"#e0e0e0\" stroke=\"#333\" stroke-width=\"2\"/><text x=\"60\" y=\"78\" text-anchor=\"middle\" font-size=\"14\">a=${a}</text><text x=\"112\" y=\"40\" font-size=\"14\">b=${b}</text><text x=\"60\" y=\"18\" text-anchor=\"middle\" font-size=\"14\">c=${c.toFixed(2)}</text></svg>`;
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>c = ${c.toFixed(4)}</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>c = ${c.toFixed(4)}</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-pyth\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-pyth').innerHTML = calc();
-    });
-    container.querySelector('#result-card-pyth').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-pythagorean');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter sides a and b ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('pythagorean'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
 });

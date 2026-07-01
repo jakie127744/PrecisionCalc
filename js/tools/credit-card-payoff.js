@@ -47,17 +47,20 @@ registerTool({
         if (balance < 0) balance = 0;
       }
       return `
-        <div class=\"result-card\" style=\"font-size:2rem;text-align:center;\">
+        <div style="font-size:2rem;text-align:center;">
           <div><b>Months to Payoff:</b> ${months}</div>
           <div><b>Total Interest:</b> $${totalInterest.toFixed(2)}</div>
         </div>
       `;
     };
-    container.innerHTML += `<div id=\"result-card-cc\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-cc').innerHTML = calc();
-    });
-    container.querySelector('#result-card-cc').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-credit-card-payoff');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter balance, APR, and monthly payment ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('credit-card-payoff'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

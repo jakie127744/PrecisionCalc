@@ -39,9 +39,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-factorial';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-factorial');
     function fact(n) {
       if (n < 0) return NaN;
       let res = 1;
@@ -51,7 +49,10 @@ registerTool({
     function factorialCalc() {
       const n = parseInt(container.querySelector('#factorial-n').value) || 0;
       const valid = n >= 0 && n <= 170;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>${n}!</b> = ${fact(n)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter a whole number from 0 to 170 ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>${n}!</b> = ${fact(n)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('factorial');
     }
     container.addEventListener('input', factorialCalc);
     factorialCalc();

@@ -55,9 +55,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-trapezoid';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-trapezoid');
 
     function trapezoidCalc() {
       const a = parseFloat(container.querySelector('#trapezoid-a').value) || 0;
@@ -68,7 +66,10 @@ registerTool({
       const area = (a + b) * h / 2;
       const perimeter = a + b + c + d;
       const valid = a > 0 && b > 0 && c > 0 && d > 0 && h > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter all sides and height ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('trapezoid');
     }
     container.addEventListener('input', trapezoidCalc);
     trapezoidCalc();

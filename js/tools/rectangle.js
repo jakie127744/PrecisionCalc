@@ -44,9 +44,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-rectangle';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-rectangle');
 
     function rectangleCalc() {
       const w = parseFloat(container.querySelector('#rectangle-width').value) || 0;
@@ -55,7 +53,10 @@ registerTool({
       const perimeter = 2 * (w + h);
       const diagonal = Math.sqrt(w * w + h * h);
       const valid = w > 0 && h > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div><div><b>Diagonal:</b> ${diagonal.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter width and height ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div><div><b>Diagonal:</b> ${diagonal.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('rectangle');
     }
     container.addEventListener('input', rectangleCalc);
     rectangleCalc();

@@ -46,18 +46,21 @@ registerTool({
       const carbs = (calories * carbPct) / 4;
       const fat = (calories * fatPct) / 9;
       return `
-        <div class=\"result-card\" style=\"font-size:2rem;text-align:center;\">
+        <div style=\"font-size:2rem;text-align:center;\">
           <div><b>Protein:</b> ${protein.toFixed(0)}g</div>
           <div><b>Carbs:</b> ${carbs.toFixed(0)}g</div>
           <div><b>Fat:</b> ${fat.toFixed(0)}g</div>
         </div>
       `;
     };
-    container.innerHTML += `<div id=\"result-card-macro\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-macro').innerHTML = calc();
-    });
-    container.querySelector('#result-card-macro').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-macro');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter daily calories ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('macro'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

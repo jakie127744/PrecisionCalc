@@ -38,7 +38,6 @@ registerTool({
         <select id="kitchen-to-unit"></select>
       </div>
     </div>
-    <div id="result-card-kitchen" class="result-card" style="margin-top:24px;"></div>
   `,
 
   seoContent: `

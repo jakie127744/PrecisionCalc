@@ -40,11 +40,14 @@ registerTool({
       }
       return `<div class=\"table-card\"><table><thead><tr><th>Month</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody>${rows}</tbody></table></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-amortization\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-amortization').innerHTML = calc();
-    });
-    container.querySelector('#result-card-amortization').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-amortization');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter loan amount, rate, and term ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('amortization'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

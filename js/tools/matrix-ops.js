@@ -97,9 +97,7 @@ registerTool({
       container.querySelector('#matrixops-size-3').classList.toggle('active', size === 3);
       matrixOpsCalc();
     };
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-matrixops';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-matrix-ops');
     function add2(a, b) {
       return [
         [a[0][0]+b[0][0], a[0][1]+b[0][1]],
@@ -156,14 +154,16 @@ registerTool({
         ];
         result = op === 'add' ? add3(a, b) : mul3(a, b);
       }
-      let html = '<div class="result-card"><b>Result:</b><br/><table style="margin:0.5em auto">';
+      let html = '<b>Result:</b><br/><table style="margin:0.5em auto">';
       for (let i = 0; i < result.length; ++i) {
         html += '<tr>';
         for (let j = 0; j < result[i].length; ++j) html += `<td style="padding:0.25em 0.75em">${result[i][j]}</td>`;
         html += '</tr>';
       }
-      html += '</table></div>';
+      html += '</table>';
       resultCard.innerHTML = html;
+      resultCard.classList.add('active');
+      pulseResult('matrix-ops');
     }
     container.addEventListener('input', matrixOpsCalc);
     matrixOpsCalc();

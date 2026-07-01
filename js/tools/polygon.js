@@ -44,9 +44,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-polygon';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-polygon');
 
     function polygonCalc() {
       const n = parseInt(container.querySelector('#polygon-sides').value) || 0;
@@ -54,7 +52,10 @@ registerTool({
       const area = n >= 3 ? (n * s * s) / (4 * Math.tan(Math.PI / n)) : 0;
       const perimeter = n * s;
       const valid = n >= 3 && s > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter sides (3+) and side length ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('polygon');
     }
     container.addEventListener('input', polygonCalc);
     polygonCalc();

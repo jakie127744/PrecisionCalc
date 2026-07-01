@@ -38,13 +38,16 @@ registerTool({
       for (let i = 1; i <= years; i++) {
         fv += contrib * Math.pow(1 + growth, years - i);
       }
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>$${fv.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>$${fv.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-retirement\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-retirement').innerHTML = calc();
-    });
-    container.querySelector('#result-card-retirement').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-retirement');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter your retirement details ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('retirement'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
   seoContent: `

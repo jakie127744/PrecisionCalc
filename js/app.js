@@ -95,14 +95,21 @@ function currentPathSlug() {
 async function route() {
   const hash     = window.location.hash.replace('#', '').trim();
   const pathSlug = currentPathSlug();
-  const toolId   = hash || (pathSlug && window.PrecisionCalcRegistry?.[pathSlug] ? pathSlug : null);
 
-  if (!toolId || toolId === 'home') {
-    showHome();
+  if (hash) {
+    if (hash === 'home') { showHome(); return; }
+    if (window.PrecisionCalcRegistry?.[hash]) { await goToTool(hash); }
+    // Unknown hash (e.g. a plain in-page anchor like #all-calculators-list-finance) —
+    // leave the current view alone instead of bouncing to home.
     return;
   }
 
-  await goToTool(toolId);
+  if (pathSlug && window.PrecisionCalcRegistry?.[pathSlug]) {
+    await goToTool(pathSlug);
+    return;
+  }
+
+  showHome();
 }
 
 async function goToTool(toolId) {
@@ -544,7 +551,7 @@ function renderRecentNav() {
     return;
   }
   recentNav.innerHTML = recent.map(id => {
-    const tool = window.CalcyRegistry?.[id];
+    const tool = window.PrecisionCalcRegistry?.[id];
     if (!tool) return '';
     return `<a href="/${tool.id}/" class="sidebar-item recent-item" data-tool="${tool.id}">
       <span class="material-symbols-outlined sidebar-item-icon">${TOOL_ICONS[tool.id] || 'calculate'}</span>

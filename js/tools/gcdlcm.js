@@ -43,9 +43,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-gcdlcm';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-gcdlcm');
 
     function gcd(a, b) {
       while (b !== 0) {
@@ -60,7 +58,10 @@ registerTool({
       const a = parseInt(container.querySelector('#gcdlcm-a').value) || 0;
       const b = parseInt(container.querySelector('#gcdlcm-b').value) || 0;
       const valid = a !== 0 && b !== 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>GCD:</b> ${gcd(a, b)}</div><div><b>LCM:</b> ${lcm(a, b)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter two non-zero numbers ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>GCD:</b> ${gcd(a, b)}</div><div><b>LCM:</b> ${lcm(a, b)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('gcdlcm');
     }
     container.addEventListener('input', gcdlcmCalc);
     gcdlcmCalc();

@@ -47,9 +47,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-parallelogram';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-parallelogram');
 
     function parallelogramCalc() {
       const base = parseFloat(container.querySelector('#parallelogram-base').value) || 0;
@@ -58,7 +56,10 @@ registerTool({
       const area = base * height;
       const perimeter = 2 * (base + side);
       const valid = base > 0 && height > 0 && side > 0;
-      resultCard.innerHTML = valid ? `<div class="result-card"><div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter base, height, and side ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Perimeter:</b> ${perimeter.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('parallelogram');
     }
     container.addEventListener('input', parallelogramCalc);
     parallelogramCalc();

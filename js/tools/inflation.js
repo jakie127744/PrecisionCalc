@@ -36,13 +36,16 @@ registerTool({
       const to = parseInt(container.querySelector('#inflation-to-year').value) || 2026;
       if (amt <= 0 || !getCPI(from) || !getCPI(to)) return '';
       const result = amt * getCPI(to) / getCPI(from);
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>$${result.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>$${result.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-inflation\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-inflation').innerHTML = calc();
-    });
-    container.querySelector('#result-card-inflation').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-inflation');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter amount and years ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('inflation'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

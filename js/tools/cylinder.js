@@ -43,9 +43,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-cylinder';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-cylinder');
 
     function cylinderCalc() {
       const r = parseFloat(container.querySelector('#cylinder-radius').value) || 0;
@@ -53,7 +51,10 @@ registerTool({
       const surface = 2 * Math.PI * r * (h + r);
       const volume = Math.PI * r * r * h;
       const valid = r > 0 && h > 0;
-      resultCard.innerHTML = valid ? `<div class="result-card"><div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter radius and height ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('cylinder');
     }
     container.addEventListener('input', cylinderCalc);
     cylinderCalc();

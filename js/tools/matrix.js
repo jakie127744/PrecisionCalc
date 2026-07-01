@@ -83,9 +83,7 @@ registerTool({
       container.querySelector('#matrix-size-3').classList.toggle('active', size === 3);
       matrixCalc();
     };
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-matrix';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-matrix');
     function det2(a) {
       return a[0][0]*a[1][1] - a[0][1]*a[1][0];
     }
@@ -109,7 +107,9 @@ registerTool({
         ];
         if (op === 'det') result = det3(a);
       }
-      resultCard.innerHTML = `<div class=\"result-card\"><div><b>Result:</b> ${result}</div></div>`;
+      resultCard.innerHTML = `<div><b>Result:</b> ${result}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('matrix');
     }
     container.addEventListener('input', matrixCalc);
     matrixCalc();

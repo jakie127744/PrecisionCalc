@@ -32,12 +32,16 @@ registerTool({
       const hours = Math.floor(ms / 3600000); ms %= 3600000;
       const mins = Math.floor(ms / 60000); ms %= 60000;
       const secs = Math.floor(ms / 1000);
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>${days}d ${hours}h ${mins}m ${secs}s</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>${days}d ${hours}h ${mins}m ${secs}s</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-duration\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-duration').innerHTML = calc();
-    });
+    const resultCard = container.querySelector('#result-card-duration');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter both date/times (to must be after from) ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('duration'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

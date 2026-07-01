@@ -60,13 +60,16 @@ registerTool({
       }
       if (totalCredits === 0) return '';
       const gpa = totalPoints / totalCredits;
-      return `<div class=\"result-card\"><b>GPA/CGPA:</b> ${gpa.toFixed(2)}</div>`;
+      return `<b>GPA/CGPA:</b> ${gpa.toFixed(2)}`;
     };
-    container.innerHTML += `<div id=\"result-card-gpa\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-gpa').innerHTML = calc();
-    });
-    container.querySelector('#result-card-gpa').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-gpa');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter grades and credits ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('gpa'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

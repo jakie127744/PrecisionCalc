@@ -72,20 +72,23 @@ registerTool({
       if (D > 0) {
         x1 = (-b + Math.sqrt(D)) / (2 * a);
         x2 = (-b - Math.sqrt(D)) / (2 * a);
-        return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Roots:</b> x₁ = ${x1.toFixed(4)}, x₂ = ${x2.toFixed(4)}</div>`;
+        return `<div style=\"font-size:2rem;text-align:center;\"><b>Roots:</b> x₁ = ${x1.toFixed(4)}, x₂ = ${x2.toFixed(4)}</div>`;
       } else if (D === 0) {
         x1 = -b / (2 * a);
-        return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Root:</b> x = ${x1.toFixed(4)}</div>`;
+        return `<div style=\"font-size:2rem;text-align:center;\"><b>Root:</b> x = ${x1.toFixed(4)}</div>`;
       } else {
         const real = -b / (2 * a);
         const imag = Math.sqrt(-D) / (2 * a);
-        return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Complex Roots:</b> x₁ = ${real.toFixed(4)} + ${imag.toFixed(4)}i, x₂ = ${real.toFixed(4)} - ${imag.toFixed(4)}i</div>`;
+        return `<div style=\"font-size:2rem;text-align:center;\"><b>Complex Roots:</b> x₁ = ${real.toFixed(4)} + ${imag.toFixed(4)}i, x₂ = ${real.toFixed(4)} - ${imag.toFixed(4)}i</div>`;
       }
     };
-    container.innerHTML += `<div id=\"result-card-quad\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-quad').innerHTML = calc();
-    });
-    container.querySelector('#result-card-quad').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-quadratic');
+    const update = () => {
+      resultCard.innerHTML = calc();
+      resultCard.classList.add('active');
+      pulseResult('quadratic');
+    };
+    container.addEventListener('input', update);
+    update();
   }
 });

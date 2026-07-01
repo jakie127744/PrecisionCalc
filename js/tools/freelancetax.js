@@ -27,13 +27,16 @@ registerTool({
       if (income <= 0) return '';
       // 15.3% self-employment tax (Social Security + Medicare)
       const tax = income * 0.153;
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Tax: $${tax.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>Tax: $${tax.toLocaleString(undefined, {maximumFractionDigits:2})}</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-freelancetax\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-freelancetax').innerHTML = calc();
-    });
-    container.querySelector('#result-card-freelancetax').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-freelancetax');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter net income ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('freelancetax'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

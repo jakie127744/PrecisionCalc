@@ -29,13 +29,16 @@ registerTool({
       if (weight <= 0 || reps <= 0) return '';
       const epley = weight * (1 + reps / 30);
       const brzycki = weight * (36 / (37 - reps));
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Epley 1RM:</b> ${epley.toFixed(2)}<br/><b>Brzycki 1RM:</b> ${brzycki.toFixed(2)}</div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>Epley 1RM:</b> ${epley.toFixed(2)}<br/><b>Brzycki 1RM:</b> ${brzycki.toFixed(2)}</div>`;
     };
-    container.innerHTML += `<div id=\"result-card-onerepmax\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-onerepmax').innerHTML = calc();
-    });
-    container.querySelector('#result-card-onerepmax').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-onerepmax');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter weight and reps ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('onerepmax'); }
+    };
+    container.addEventListener('input', update);
+    update();
   },
 
   seoContent: `

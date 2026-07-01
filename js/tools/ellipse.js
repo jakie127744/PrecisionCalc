@@ -43,9 +43,7 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-ellipse';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-ellipse');
 
     function ellipseCalc() {
       const a = parseFloat(container.querySelector('#ellipse-a').value) || 0;
@@ -54,7 +52,10 @@ registerTool({
       // Ramanujan's approximation for circumference
       const circumference = Math.PI * (3 * (a + b) - Math.sqrt((3 * a + b) * (a + 3 * b)));
       const valid = a > 0 && b > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Circumference:</b> ${circumference.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter major and minor axis ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Area:</b> ${area.toFixed(4)}</div><div><b>Circumference:</b> ${circumference.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('ellipse');
     }
     container.addEventListener('input', ellipseCalc);
     ellipseCalc();

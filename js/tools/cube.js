@@ -39,16 +39,17 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-cube';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-cube');
 
     function cubeCalc() {
       const a = parseFloat(container.querySelector('#cube-side').value) || 0;
       const surface = 6 * a * a;
       const volume = Math.pow(a, 3);
       const valid = a > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter side length ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('cube');
     }
     container.addEventListener('input', cubeCalc);
     cubeCalc();

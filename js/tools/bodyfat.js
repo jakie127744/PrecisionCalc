@@ -62,17 +62,16 @@ registerTool({
       } else {
         bf = 495 / (1.29579 - 0.35004 * Math.log10(waist + hip - neck) + 0.22100 * Math.log10(height)) - 450;
       }
-      return `
-        <div class=\"result-card\" style=\"font-size:2rem;text-align:center;\">
-          <div><b>Body Fat %:</b> ${bf.toFixed(2)}%</div>
-        </div>
-      `;
+      return `<div style=\"font-size:2rem;text-align:center;\"><div><b>Body Fat %:</b> ${bf.toFixed(2)}%</div></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-bodyfat\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-bodyfat').innerHTML = calc();
-    });
-    container.querySelector('#result-card-bodyfat').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-bodyfat');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter your measurements ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('bodyfat'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

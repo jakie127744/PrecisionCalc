@@ -50,13 +50,16 @@ registerTool({
       const leaseMonthly = parseFloat(container.querySelector('#lease-monthly').value) || 0;
       const leaseTotal = leaseDown + leaseMonthly * leaseMonths;
       // Output
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>Loan Monthly:</b> $${loanMonthly.toFixed(2)}<br/><b>Lease Total:</b> $${leaseTotal.toFixed(2)}</div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>Loan Monthly:</b> $${loanMonthly.toFixed(2)}<br/><b>Lease Total:</b> $${leaseTotal.toFixed(2)}</div>`;
     };
-    container.innerHTML += `<div id=\"result-card-autoloan\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-autoloan').innerHTML = calc();
-    });
-    container.querySelector('#result-card-autoloan').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-autoloan');
+    const update = () => {
+      resultCard.innerHTML = calc();
+      resultCard.classList.add('active');
+      pulseResult('autoloan');
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `
@@ -91,7 +94,7 @@ registerTool({
         <li><b>Can I pay off my auto loan early?</b><br>Most auto loans allow early payoff without penalty, which can save you money on interest. Check your loan agreement for details.</li>
       </ul>
 
-      <h3>Tips for Getting the Best Deal</h3>"
+      <h3>Tips for Getting the Best Deal</h3>
       <ul>
         <li>Shop around for the lowest interest rates and best lease terms.</li>
         <li>Negotiate the car price before discussing financing or leasing options.</li>

@@ -30,13 +30,16 @@ registerTool({
       function gcd(a, b) { return b === 0 ? a : gcd(b, a % b); }
       const g = gcd(w, h);
       const rw = w / g, rh = h / g;
-      return `<div class=\"result-card\" style=\"font-size:2rem;text-align:center;\"><b>${rw}:${rh}</b></div>`;
+      return `<div style=\"font-size:2rem;text-align:center;\"><b>${rw}:${rh}</b></div>`;
     };
-    container.innerHTML += `<div id=\"result-card-aspect\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-aspect').innerHTML = calc();
-    });
-    container.querySelector('#result-card-aspect').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-aspect');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter width and height ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('aspect'); }
+    };
+    container.addEventListener('input', update);
+    update();
   }
   ,
     seoContent: `

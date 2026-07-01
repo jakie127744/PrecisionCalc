@@ -45,18 +45,19 @@ registerTool({
       const totalPayment = emi * N;
       const totalInterest = totalPayment - P;
       return `
-        <div class=\"result-card\">
-          <div><b>Monthly EMI:</b> $${emi.toFixed(2)}</div>
-          <div><b>Total Interest:</b> $${totalInterest.toFixed(2)}</div>
-          <div><b>Total Payment:</b> $${totalPayment.toFixed(2)}</div>
-        </div>
+        <div><b>Monthly EMI:</b> $${emi.toFixed(2)}</div>
+        <div><b>Total Interest:</b> $${totalInterest.toFixed(2)}</div>
+        <div><b>Total Payment:</b> $${totalPayment.toFixed(2)}</div>
       `;
     };
-    container.innerHTML += `<div id=\"result-card-emi\"></div>`;
-    container.addEventListener('input', () => {
-      container.querySelector('#result-card-emi').innerHTML = calc();
-    });
-    container.querySelector('#result-card-emi').innerHTML = calc();
+    const resultCard = container.querySelector('#result-card-emi');
+    const update = () => {
+      const html = calc();
+      resultCard.innerHTML = html || '<div class="result-placeholder">Enter loan amount, rate, and tenure ✦</div>';
+      if (html) { resultCard.classList.add('active'); pulseResult('emi'); }
+    };
+    container.addEventListener('input', update);
+    update();
   },
 
   seoContent: `

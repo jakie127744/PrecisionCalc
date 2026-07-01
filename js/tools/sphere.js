@@ -39,16 +39,17 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-sphere';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-sphere');
 
     function sphereCalc() {
       const r = parseFloat(container.querySelector('#sphere-radius').value) || 0;
       const surface = 4 * Math.PI * r * r;
       const volume = (4 / 3) * Math.PI * Math.pow(r, 3);
       const valid = r > 0;
-      resultCard.innerHTML = valid ? `<div class=\"result-card\"><div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div></div>` : '';
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter radius ✦</div>'; return; }
+      resultCard.innerHTML = `<div><b>Surface Area:</b> ${surface.toFixed(4)}</div><div><b>Volume:</b> ${volume.toFixed(4)}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('sphere');
     }
     container.addEventListener('input', sphereCalc);
     sphereCalc();

@@ -44,18 +44,19 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-logarithm';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-logarithm');
 
     function logCalc() {
       const x = parseFloat(container.querySelector('#log-x').value) || 0;
       const b = parseFloat(container.querySelector('#log-base').value) || 0;
-      let logb = '', ln = '', log10 = '';
-      if (x > 0 && b > 0 && b !== 1) logb = Math.log(x) / Math.log(b);
-      if (x > 0) ln = Math.log(x);
-      if (x > 0) log10 = Math.log10(x);
-      resultCard.innerHTML = x > 0 && b > 0 && b !== 1 ? `<div class=\"result-card\"><div><b>log<sub>${b}</sub>(${x}) =</b> ${logb}</div><div><b>ln(${x}) =</b> ${ln}</div><div><b>log<sub>10</sub>(${x}) =</b> ${log10}</div></div>` : '';
+      const valid = x > 0 && b > 0 && b !== 1;
+      if (!valid) { resultCard.innerHTML = '<div class="result-placeholder">Enter a positive value and base (base ≠ 1) ✦</div>'; return; }
+      const logb = Math.log(x) / Math.log(b);
+      const ln = Math.log(x);
+      const log10 = Math.log10(x);
+      resultCard.innerHTML = `<div><b>log<sub>${b}</sub>(${x}) =</b> ${logb}</div><div><b>ln(${x}) =</b> ${ln}</div><div><b>log<sub>10</sub>(${x}) =</b> ${log10}</div>`;
+      resultCard.classList.add('active');
+      pulseResult('logarithm');
     }
     container.addEventListener('input', logCalc);
     logCalc();

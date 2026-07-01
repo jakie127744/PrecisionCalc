@@ -65,21 +65,39 @@ registerTool({
   `,
 
   mount(container) {
-    const resultCard = document.createElement('div');
-    resultCard.id = 'result-card-datediff';
-    container.appendChild(resultCard);
+    const resultCard = container.querySelector('#result-card-date-diff');
     function ddCalc() {
       const from = new Date(container.querySelector('#dd-from').value);
       const to = new Date(container.querySelector('#dd-to').value);
       if (isNaN(from) || isNaN(to) || to < from) {
-        resultCard.innerHTML = '';
+        resultCard.innerHTML = '<div class="result-placeholder">Enter both dates (to date must be after from date) ✦</div>';
         return;
       }
       const ms = to - from;
       const days = Math.floor(ms / 86400000);
       const months = Math.floor(days / 30.4375);
       const years = Math.floor(months / 12);
-      resultCard.innerHTML = `<div class=\"result-card\"><div><b>Days:</b> ${days}</div><div><b>Months:</b> ${months}</div><div><b>Years:</b> ${years}</div></div>`;
+      resultCard.innerHTML = `
+        <div class="result-grid">
+          <div class="result-item">
+            <span class="result-label">Days</span>
+            <span class="result-value large">
+              ${days}
+              <button class="copy-btn" onclick="copyValue(this,'${days}')" title="Copy">📋</button>
+            </span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Months</span>
+            <span class="result-value">${months}</span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Years</span>
+            <span class="result-value">${years}</span>
+          </div>
+        </div>
+      `;
+      resultCard.classList.add('active');
+      pulseResult('date-diff');
     }
     container.addEventListener('input', ddCalc);
     container.addEventListener('change', ddCalc);
