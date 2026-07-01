@@ -160,7 +160,7 @@ async function fetchTool(id) {
 
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `js/tools/${id}.js`;
+    script.src = `/js/tools/${id}.js`;
     script.defer = true;
     script.onload = () => {
       document.body.removeChild(overlay);
