@@ -118,9 +118,65 @@ async function goToTool(toolId) {
     if (!tool) { showHome(); return; }
     loadTool(tool);
   } catch (e) {
-    console.error('Tool load failed:', e);
-    showHome();
+    logClientError(`Tool load failed: ${toolId}`, e);
+    showToolError(toolId, e);
   }
+}
+
+/* ─── Lightweight client-side error visibility ───────────────────
+   Previously a failed tool load fell back to showHome() silently —
+   no visible sign anything broke, and console.error was the only
+   trace, so real bugs shipped invisibly until a user reported them. */
+const CLIENT_ERROR_LOG_KEY = 'PRECISION_CALC_ERRORS';
+const MAX_CLIENT_ERRORS = 20;
+
+function logClientError(context, error) {
+  console.error(context, error);
+  try {
+    const entry = {
+      time: new Date().toISOString(),
+      context,
+      message: error?.message || String(error),
+      stack: error?.stack || null,
+      url: window.location.href,
+    };
+    const existing = JSON.parse(localStorage.getItem(CLIENT_ERROR_LOG_KEY) || '[]');
+    existing.unshift(entry);
+    localStorage.setItem(CLIENT_ERROR_LOG_KEY, JSON.stringify(existing.slice(0, MAX_CLIENT_ERRORS)));
+  } catch (e) { /* localStorage unavailable or full — logging is best-effort */ }
+}
+
+function showToolError(toolId, error) {
+  currentTool = null;
+  setActiveNav(null);
+  closeSidebar();
+
+  const home = document.getElementById('home-screen');
+  if (home) home.style.display = 'none';
+  const prevTool = document.getElementById('active-tool-view');
+  if (prevTool) prevTool.remove();
+
+  const tool = window.PrecisionCalcRegistry?.[toolId];
+  const toolName = tool?.name || toolId;
+
+  const wrap = document.createElement('div');
+  wrap.id = 'active-tool-view';
+  wrap.className = 'tool-container fade-in';
+  wrap.innerHTML = `
+    <div class="result-card active" style="text-align:center; padding:48px 24px;">
+      <span class="material-symbols-outlined" style="font-size:48px; color:var(--danger);" aria-hidden="true">error</span>
+      <h2 style="margin:16px 0 8px;">This calculator didn't load correctly</h2>
+      <p style="color:var(--on-surface-variant); max-width:480px; margin:0 auto 24px;">
+        Something went wrong loading "${toolName}". This has been logged in your browser — reloading usually fixes it, or you can head back to the homepage.
+      </p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <button class="action-btn" style="padding:10px 20px;" onclick="window.location.reload()">Reload</button>
+        <button class="action-btn" style="padding:10px 20px;" onclick="navigate('home')">Go to Homepage</button>
+      </div>
+    </div>
+  `;
+  stage.appendChild(wrap);
+  wrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 /* ─── Real-path link interception ──────────────────────────────

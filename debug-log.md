@@ -175,3 +175,18 @@
 
 **Prevention:**
 - **Rule or Pattern:** Any color pulled from a CSS custom property and used for text needs its contrast ratio checked against the actual background it sits on — a variable named generically (`--outline`) can silently end up used for real body text where it doesn't have enough contrast, even though it might be fine for its original intended use (borders, icons). Re-run a real Lighthouse pass after any significant page-structure change rather than assuming an old audit still holds.
+
+---
+
+## Bug 010 — Failed tool loads were completely invisible to users
+
+**Bug:**
+- **Description:** When `goToTool()`'s try/catch caught a failure (a 404 on the dynamic script fetch, or an exception thrown inside a tool's `mount()`), the only trace was a `console.error` — the UI silently called `showHome()`, bouncing the user back to the homescreen with zero indication anything had gone wrong. This is exactly how the Tip Splitter crash (Bug 004) and the relative-script-path navigation bug shipped invisibly — nobody found out until a user happened to notice and report it.
+- **Location:** `js/app.js`, `goToTool()`'s catch block.
+
+**Fix:**
+- **Summary:** Added `logClientError()` (keeps the `console.error`, also appends a compact `{time, context, message, stack, url}` record to a capped rolling list in `localStorage` under `PRECISION_CALC_ERRORS`, so a failure is inspectable later even without an open console) and `showToolError()` (renders a visible in-page error card — "This calculator didn't load correctly", the tool's name, and Reload / Go to Homepage buttons — styled to match the existing `.result-card` visual language). `goToTool()`'s catch now calls both instead of silently calling `showHome()`.
+- **Why It Works:** A broken tool now visibly tells the user (and, via the localStorage log, whoever investigates later) exactly what failed, instead of quietly pretending nothing happened. Verified end-to-end with headless Chrome against a deliberately-broken temporary registry entry: the error card rendered with the correct tool name, then the test entry was fully reverted (confirmed zero `git diff` afterward).
+
+**Prevention:**
+- **Rule or Pattern:** Any catch block that currently falls back to a "safe" default view (like `showHome()`) after a real failure should be reconsidered — a silent fallback that looks like normal behavior is worse than a visible error, because it hides the bug from everyone including the developer. Prefer surfacing failures visibly, even in a simple app with no error-tracking service.
