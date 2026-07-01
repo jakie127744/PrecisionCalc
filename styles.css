@@ -379,16 +379,6 @@ input, select { font-family: var(--font-body); }
   align-items:    center;
   gap:            4px;
 }
-.ad-zone-multiplex {
-  padding: 16px;
-  background: var(--surface-container-low);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--outline-variant);
-  margin: 32px 0 48px !important;
-  width: 100%;
-  min-height: 250px;
-}
-
 .ad-label {
   font-size:      0.62rem;
   font-weight:    700;
@@ -403,12 +393,6 @@ input, select { font-family: var(--font-body); }
   border-bottom: 1px solid rgba(255,255,255,0.04);
   min-height: var(--ad-banner-h); /* Zero CLS: reserves space before ad loads */
 }
-.ad-zone-inline {
-  padding: 10px 0;
-  margin: 24px 0;
-  min-height: var(--ad-banner-h); /* Zero CLS */
-}
-
 /* ─── Sidebar History Items ────────────────────────────────── */
 .sidebar-history-list {
   display: flex;

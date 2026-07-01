@@ -74,3 +74,20 @@
 - **Future Safeguard:** When adding a new tool, copy the `mount()` skeleton from `bmi.js` or `circle.js` (query the existing result card, no manual creation) rather than an older tool that might carry this pattern forward. Before shipping a router change, manually click through at least one internal link chain starting from a non-home page, not just from `/`.
 
 **Follow-up — full QA sweep completed:** After this bug shipped, all 68 tools in `js/tools/` were individually read and cross-checked (not just the 38 touched above) for: syntax validity, duplicate/misplaced result cards, `result-card-*` id mismatches against the tool's own declared `id`, and a missing initial render call on mount. The remaining 30 tools not covered above (`compound`, `gas`, `idealweight`, `percentage`, `prime`, `salary`, `scientific`, `study-planner`, `tdee`, `tip`, `triangle`, `unit`, `water`, `contact`, `privacy`, `terms`, plus the 14 confirmed correct during the Bug 003 `seoContent` expansion pass — `word-counter`, `circle`, `scientific-notation`, `simple-interest`, `final-grade`, `binaryhex`, `grade`, `password`, `roi`, `pregnancy`, `stddev`, `fraction`, `bmi`, `mortgage`) were all confirmed clean — no fixes needed. The whole 68-tool set now passes an automated check for all four issue classes above; see the one-liner in the Future Safeguard above for what to re-run before every future tool addition.
+
+**Follow-up — automated regression guard added:** `scripts/verify-tools.js` now runs the same checks (syntax, duplicate result-card creation, id/filename mismatch, `result-card-*` id mismatch, and registry.js stub sync) against every tool file, and is wired as a git pre-commit hook via the tracked `.githooks/` directory (`git config core.hooksPath .githooks` — already set for this repo; re-run that one command after a fresh clone). Verified it actually catches all four injected bug types before enabling it.
+
+---
+
+## Bug 005 — Ad density too high on the homepage
+
+**Bug:**
+- **Description:** The homepage carried Zone A (header banner) *and* Zone A2 (a second leaderboard banner embedded in the hero/featured area), plus a multiplex ad injected between every pair of adjacent categories in "The Complete Grid" (up to 5 extra ad slots for 6 categories). Combined, a single homepage load could render 7+ ad units before counting Zone B (sidebar) and Zone D (footer) — a much higher ad-to-content ratio than the actual page content justified, and a plausible contributor to an "ads without publisher content" style rejection even after the content-depth and crawlability fixes.
+- **Location:** `js/app.js` (`homeScreenHTML()`, `renderCompleteGrid()`), `index.html` (static home-screen shell), `styles.css` (`.ad-zone-multiplex`, `.ad-zone-inline`).
+
+**Fix:**
+- **Summary:** Removed the multiplex ads between categories in `renderCompleteGrid()` entirely. Removed the redundant Zone A2 inline banner from both the static `index.html` shell and `homeScreenHTML()`'s rebuild path, keeping only the single Zone A header banner. Removed the now-dead `.ad-zone-multiplex` / `.ad-zone-inline` CSS rules.
+- **Why It Works:** The homepage now carries 3 ad zones (A, B, D) instead of up to 7+, all in standard, well-separated placements. Tool pages are unaffected — they never had A2 or multiplex ads and keep their existing 4-zone layout (A, B, C, D).
+
+**Prevention:**
+- **Rule or Pattern:** Before adding any new ad placement, count how many ad units the page will render simultaneously and weigh that against the actual unique content on screen — density, not just word count, is what "ads without publisher content" flags.

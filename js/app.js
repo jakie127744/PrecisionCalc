@@ -283,18 +283,6 @@ function homeScreenHTML() {
       </div>
     </div>
 
-    <div class="ad-zone ad-zone-inline" role="complementary" aria-label="Advertisement">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a2" aria-label="Advertisement">
-        <ins class="adsbygoogle" style="display:block"
-          data-ad-client="ca-pub-9907028021598445"
-          data-ad-slot="SLOT_ID_ZONE_A2"
-          data-ad-format="auto"
-          data-full-width-responsive="true"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-      </div>
-    </div>
-
     <div class="section-header">
       <div>
         <h2 class="section-title">The Complete Grid</h2>
@@ -513,7 +501,7 @@ function renderCompleteGrid(container) {
       return ia - ib;
   });
 
-  grid.innerHTML = sortedCats.map((cat, idx) => `
+  grid.innerHTML = sortedCats.map((cat) => `
     <div class="category-header" id="all-calculators-list-${cat.toLowerCase().replace(/\s+/g, '-')}" onclick="toggleCategory(this)">
       <span class="material-symbols-outlined category-header-icon">${CATEGORY_ICONS[cat] || 'grid_view'}</span>
       <h3 class="category-header-title">${cat}</h3>
@@ -527,23 +515,7 @@ function renderCompleteGrid(container) {
         </a>
       `).join('')}
     </div>
-    ${idx < sortedCats.length - 1 ? `
-      <div class="ad-zone ad-zone-multiplex" style="margin: 32px 0;">
-        <span class="ad-label">Recommended Content</span>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-format="autorelaxed"
-             data-ad-client="ca-pub-9907028021598445"
-             data-ad-slot="7781234567"></ins>
-      </div>
-    ` : ''}
   `).join('');
-
-  // Push ads into the newly created slots
-  try {
-    const slots = grid.querySelectorAll('.ad-zone-multiplex .adsbygoogle:not([data-adsbygoogle-status])');
-    slots.forEach(() => (window.adsbygoogle = window.adsbygoogle || []).push({}));
-  } catch (e) { console.error('Ads error', e); }
 }
 
 
