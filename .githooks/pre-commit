@@ -1,0 +1,4 @@
+#!/bin/sh
+# Regression guard for js/tools/*.js — see scripts/verify-tools.js and debug-log.md Bug 003/004.
+node scripts/verify-tools.js
+exit $?
