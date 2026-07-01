@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Salary to Hourly",
+  "url": "https://precisioncalc.com/salary/",
+  "description": "Convert annual salary to hourly rate, daily pay, weekly and monthly income. Free salary calculator with take-home breakdown.",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the standard number of work hours per year?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The US standard is 2,080 hours (52 weeks × 40 hours). With 10 paid vacation days (2 weeks), this drops to approximately 2,000 hours. Many salaried employees in demanding fields work 50–60 hours per week, which can reduce the effective hourly rate dramatically — sometimes to levels below what an hourly minimum-wage position would pay after overtime."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I compare a salaried vs. hourly job offer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Convert both to an hourly rate using actual expected hours. Then add the dollar value of benefits: health insurance (+$6,000–$18,000/yr), 401k match (+$1,000–$5,000/yr), PTO value, and any equity/bonus. A $65,000 salaried job with full benefits can outperform a $75,000 hourly contract role once you account for self-employment tax and benefit costs."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much of my salary is taken by taxes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For a $75,000 income in the US (2024 single filer, standard deduction), you fall into the 22% federal marginal bracket. After the standard deduction ($14,600), taxable income is ~$60,400. Federal tax is roughly $8,800. Add ~$5,738 in FICA (7.65%) and you're looking at a total federal burden of ~$14,500/year — about 19% effective rate. State taxes vary from 0% (TX, FL) to 13.3% (CA)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is \"bi-weekly\" vs. \"semi-monthly\" pay?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bi-weekly means paid every two weeks = 26 paychecks/year. Semi-monthly means paid twice a month (usually 1st and 15th) = 24 paychecks/year. Each bi-weekly paycheck is slightly smaller than a semi-monthly one, but in months with 3 pay Fridays, you get an extra paycheck — many people use these to accelerate debt payoff or savings."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

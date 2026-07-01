@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ROI Calculator",
+  "url": "https://precisioncalc.com/roi/",
+  "description": "Calculate your return on investment (ROI) as a percentage and value. Useful for stocks, crypto, and business.",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does ROI include inflation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Standard ROI calculations (nominal ROI) do not account for inflation. To find the \"real ROI\" — your actual gain in purchasing power — subtract the inflation rate over the same period from your nominal return percentage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Annualized ROI, and why does it matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If an investment lasted 5 years, the total ROI alone doesn't tell the whole story — a 50% return over 5 years is very different from a 50% return in 1 year. Annualized ROI calculates the equivalent yearly rate of return, allowing you to compare a 1-year stock gain to a 5-year real estate gain on equal footing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use ROI to compare investments with different risk levels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ROI alone doesn't capture risk, so a fair comparison should also weigh volatility and the probability of loss. A 20% ROI from a stable index fund and a 20% ROI from a speculative asset are not equivalent in practice, even though the percentage looks identical."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

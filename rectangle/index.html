@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Rectangle/Square Calculator",
+  "url": "https://precisioncalc.com/rectangle/",
+  "description": "Calculate the area, perimeter, and diagonal of a rectangle or square. Free online rectangle and square calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is diagonal² = width² + height²?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A rectangle's diagonal splits it into two identical right triangles, where the width and height are the two legs and the diagonal is the hypotenuse — direct application of the Pythagorean theorem, a²+b²=c²."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can two rectangles have the same area but different perimeters?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, easily — a 4×9 rectangle and a 6×6 square both have an area of 36, but perimeters of 26 and 24 respectively. Among all rectangles with a fixed area, the square always has the smallest possible perimeter."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do carpenters use the \"equal diagonals\" trick to check for square corners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After building a rectangular frame, measuring both diagonals corner-to-corner is a fast, accurate way to verify all four corners are true right angles — if the diagonals match exactly, the frame is guaranteed rectangular; if they differ, at least one corner is off."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,70 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Unit Converter",
+  "url": "https://precisioncalc.com/unit/",
+  "description": "Free online unit converter. Convert length, weight, temperature, data storage, speed, and area instantly. Supports metric and imperial units.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the metric system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The International System of Units (SI) uses base-10 prefixes for straightforward scaling: milli (×0.001), centi (×0.01), kilo (×1,000), mega (×1,000,000), giga (×1,000,000,000). It is the official measurement system for 194 countries and all scientific disciplines. The US uses metric exclusively in science, medicine, the military, and international trade."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a nautical mile?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A nautical mile (1,852 meters) is defined as one minute (1/60 of a degree) of arc of latitude along any meridian. Since the Earth's circumference is divided into 360 degrees of latitude × 60 minutes each = 21,600 nautical miles, this gives navigators a direct relationship between angle and distance on the globe. A \"knot\" is one nautical mile per hour."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does 1 km not equal exactly 0.6 miles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One kilometer = exactly 0.621371192 miles. The conversion is not a round number because the mile was defined historically (1 mile = 5,280 feet; 1 foot = 0.3048 meters exactly) without any intention to align with the metric system. The conversion factor is irrational relative to the metric base units."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many square feet are in an acre?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactly 43,560 square feet (or 4,840 sq yd, or 4,047 m²). An acre was historically defined as the amount of land a yoke of oxen could plow in one day. A \"square acre\" would be approximately 208.7 ft × 208.7 ft. A US football field (including end zones) is about 1.32 acres."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a US ton and a metric ton?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A US short ton = 2,000 lbs (907.2 kg). A metric ton (tonne) = 1,000 kg = 2,204.6 lbs. A British long ton = 2,240 lbs (1,016 kg). When purchasing materials in bulk or interpreting shipping weights, it's important to confirm which \"ton\" is meant — the difference can be 10% or more."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

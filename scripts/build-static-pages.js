@@ -106,6 +106,66 @@ function escapeAttr(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+// Pulls question/answer pairs out of a tool's <details><summary>...</summary>...</details>
+// FAQ blocks so they can be re-published as FAQPage structured data.
+function extractFaqItems(seoContent) {
+  if (!seoContent) return [];
+  const items = [];
+  const detailsRe = /<details>\s*<summary>([\s\S]*?)<\/summary>([\s\S]*?)<\/details>/g;
+  const stripTags = (s) => s.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  let m;
+  while ((m = detailsRe.exec(seoContent))) {
+    const question = stripTags(m[1]).replace(/^[❓\s]+/, '');
+    const answer = stripTags(m[2]);
+    if (question && answer) items.push({ question, answer });
+  }
+  return items;
+}
+
+const APPLICATION_CATEGORY = {
+  Finance: 'FinanceApplication',
+  Health: 'HealthApplication',
+  Education: 'EducationalApplication',
+};
+
+// Schema.org JSON-LD requires escaping "</" so an embedded value can never
+// prematurely close the surrounding <script> tag.
+function jsonLdScript(obj) {
+  return `<script type="application/ld+json">\n${JSON.stringify(obj, null, 2).replace(/<\//g, '<\\/')}\n</script>`;
+}
+
+function buildJsonLd(tool, canonicalUrl, title, description) {
+  if (tool.category === 'Legal') return '';
+
+  const blocks = [
+    jsonLdScript({
+      '@context': 'https://schema.org',
+      '@type': 'SoftwareApplication',
+      name: tool.name,
+      url: canonicalUrl,
+      description,
+      operatingSystem: 'Any',
+      applicationCategory: APPLICATION_CATEGORY[tool.category] || 'UtilityApplication',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    }),
+  ];
+
+  const faqItems = extractFaqItems(tool.seoContent);
+  if (faqItems.length) {
+    blocks.push(jsonLdScript({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    }));
+  }
+
+  return blocks.join('\n  ');
+}
+
 function replaceBetween(html, startMarker, endMarker, replacement) {
   const start = html.indexOf(startMarker);
   if (start === -1) throw new Error(`Marker not found: ${startMarker.slice(0, 40)}...`);
@@ -137,6 +197,15 @@ function renderPage(shellTemplate, tool) {
   html = replaceTag(html, /(<meta property="twitter:url" content=")[^"]*(")/, canonicalUrl, 'twitter:url');
   html = replaceTag(html, /(<meta property="twitter:title" content=")[^"]*(")/, titleEsc, 'twitter:title');
   html = replaceTag(html, /(<meta property="twitter:description" content=")[^"]*(")/, descEsc, 'twitter:description');
+
+  // Per-tool structured data (SoftwareApplication + FAQPage from the seoContent FAQ items).
+  const jsonLd = buildJsonLd(tool, canonicalUrl, title, description);
+  if (jsonLd) {
+    html = html.replace(
+      '<!-- Per-tool structured data (SoftwareApplication + FAQPage) is injected here\n       at build time by scripts/build-static-pages.js for each generated page. -->',
+      `${jsonLd}`
+    );
+  }
 
   // Swap the dynamic home-screen stage for the statically rendered tool shell.
   const shellHtml = buildToolShell(tool);

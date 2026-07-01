@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Gas Cost Calculator",
+  "url": "https://precisioncalc.com/gas/",
+  "description": "Estimate the cost of a road trip based on distance, fuel efficiency, and gas price.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the estimate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator provides a close estimate based on your inputs. Actual costs may vary due to traffic, driving style, terrain, and changes in gas prices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find my car’s fuel efficiency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check your vehicle’s manual, dashboard display, or use online resources. You can also calculate it by dividing miles driven by gallons used over several fill-ups."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this for metric units?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This version uses miles and gallons. For kilometers and liters, convert your values or look for a metric version of the calculator."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

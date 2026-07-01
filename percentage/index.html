@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Percentage Calculator",
+  "url": "https://precisioncalc.com/percentage/",
+  "description": "Calculate percentage change, percent of a number, percentage increase/decrease, and tip. Free online percentage calculator — real-time results.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between percentage points and percent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If an interest rate rises from 4% to 5%, it increased by 1 percentage point but by 25% (in relative terms). This distinction is critical in finance, economics, and polling — a politician who says rates rose \"25%\" vs. \"1 percentage point\" is technically correct but creates very different impressions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate a percentage increase back to the original?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If a price is $120 after a 20% increase, the original was $120 ÷ 1.20 = $100. Do NOT subtract 20% from the final price (that gives $96, which is wrong). Always divide by (1 + rate)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

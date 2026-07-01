@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Aspect Ratio",
+  "url": "https://precisioncalc.com/aspect/",
+  "description": "Convert and compare aspect ratios for screens, images, and video.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens if I use the wrong aspect ratio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Using the wrong aspect ratio can cause images or videos to appear stretched, squished, or to have black bars (letterboxing/pillarboxing) on the sides. Always match the aspect ratio to your display or platform requirements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I convert between aspect ratios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Use the calculator to find the current ratio, then crop or resize your content to match the desired ratio. Be aware that cropping may remove parts of the image or video."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common aspect ratios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "1:1 (square), 4:3 (old TV, classic photos), 3:2 (DSLR cameras), 16:9 (HD video, most monitors), 21:9 (cinema, ultrawide), and 2.39:1 (widescreen movies)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

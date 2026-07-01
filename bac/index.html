@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BAC Calculator",
+  "url": "https://precisioncalc.com/bac/",
+  "description": "Estimate your Blood Alcohol Content (BAC) using the Widmark formula.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the BAC Calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator provides an estimate. Actual BAC can vary based on metabolism, food intake, medications, and individual differences. For legal or medical purposes, only a blood or breath test is definitive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to sober up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The body metabolizes alcohol at about 0.015% BAC per hour. Drinking coffee, taking cold showers, or other tricks do not speed up this process. Only time lowers BAC."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the signs of dangerous BAC levels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Confusion, vomiting, seizures, slow breathing, or unconsciousness are signs of alcohol poisoning. Seek medical help immediately if these occur."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

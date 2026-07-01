@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Matrix Calculator",
+  "url": "https://precisioncalc.com/matrix/",
+  "description": "Add, multiply, and find the determinant of 2x2 and 3x3 matrices.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the sign alternate in the 3×3 formula?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The alternating +/−/+ pattern (called the \"checkerboard\" sign rule) comes from the mathematical definition of a determinant as a signed sum over all possible permutations of matrix entries — it's not arbitrary, and skipping it produces a wrong answer."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a negative determinant mean something went wrong?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — a negative determinant is completely valid. It indicates the transformation also flips orientation (like a mirror reflection) in addition to scaling. Only the absolute value of the determinant represents the actual scale factor."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the determinant used in solving systems of equations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cramer's Rule uses determinants directly to solve systems of linear equations by forming ratios of modified-matrix determinants to the original matrix's determinant — a technique taught in most introductory linear algebra courses as an alternative to row reduction."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

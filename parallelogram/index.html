@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Parallelogram Calculator",
+  "url": "https://precisioncalc.com/parallelogram/",
+  "description": "Calculate the area and perimeter of a parallelogram using base, height, and sides. Free online parallelogram calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do opposite angles in a parallelogram have any special relationship?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — opposite angles are always equal, and any two adjacent (consecutive) angles always sum to 180°. This follows directly from the parallel-sides property and the rules of angles formed by a transversal line."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why can't I calculate area using just the two side lengths?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two side lengths alone don't determine the shape — you could have a nearly-flat parallelogram or a nearly-rectangular one with the exact same two side lengths, and their areas would be very different. You need either the height or the angle between the sides to pin down the area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How would I find the area if I only know the sides and the angle between them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use Area = a × b × sin(θ), where a and b are adjacent side lengths and θ is the angle between them. This is mathematically equivalent to base × height, since b × sin(θ) is exactly the perpendicular height when b is the slanted side."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

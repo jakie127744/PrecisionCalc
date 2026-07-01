@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Scientific Calculator",
+  "url": "https://precisioncalc.com/scientific/",
+  "description": "Free online scientific calculator with trigonometry, logarithms, exponents, and more. Full-featured with real-time display.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Euler's number (e)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "e ≈ 2.71828 is the base of the natural logarithm. It appears naturally in continuous compounding, population growth, radioactive decay, and probability theory. It is defined as the limit of (1 + 1/n)^n as n approaches infinity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the factorial function?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "n! (n factorial) is the product of all positive integers from 1 to n. For example, 5! = 5×4×3×2×1 = 120. Factorials grow extremely fast: 20! = 2.4 quintillion. They are fundamental to combinatorics, probability, and the Taylor series expansions of functions like sin(x) and eˣ."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

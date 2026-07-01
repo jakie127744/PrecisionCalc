@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Prime Checker",
+  "url": "https://precisioncalc.com/prime/",
+  "description": "Check if a number is prime.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How many prime numbers are there?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There are infinitely many prime numbers. Euclid proved this around 300 BC with a beautifully simple argument: assume a finite list of all primes, multiply them together and add 1. The result is either prime itself or divisible by a prime not in the original list — a contradiction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Sieve of Eratosthenes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A classical algorithm for finding all primes up to a given limit. Start with a list of all integers from 2 to N. Mark 2 as prime, then strike out all multiples of 2. Move to the next unmarked number (3), mark it prime, strike its multiples, and repeat. Numbers that remain unmarked after the process are all prime. It is very efficient for finding primes in bulk."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are Mersenne Primes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Mersenne prime is of the form 2^p - 1 where p itself must also be prime. Examples: when p=2, 2²-1=3 (prime); when p=5, 2⁵-1=31 (prime). Not all such numbers are prime — when p=11, 2¹¹-1=2047=23×89. As of 2024, only 51 Mersenne primes have been discovered; the largest has over 41 million digits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do primes matter in cryptography?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modern encryption like RSA relies on the difficulty of factoring the product of two large primes. It is trivial to multiply two 1024-bit primes in milliseconds, but factoring the result back into its two prime components would take classical computers longer than the age of the universe."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

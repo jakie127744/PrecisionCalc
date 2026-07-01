@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pregnancy Due Date",
+  "url": "https://precisioncalc.com/pregnancy/",
+  "description": "Estimate your pregnancy due date based on last menstrual period (LMP) or conception date.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What if I have irregular menstrual cycles?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your cycles are noticeably shorter or longer than the average 28 days, LMP-based calculations may be less accurate, since ovulation timing shifts with cycle length. Your healthcare provider will typically use an early ultrasound (dating scan) to refine the due date more precisely in these cases."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is \"full term\" always exactly 40 weeks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — a pregnancy is considered \"early term\" at 37–38 weeks, \"full term\" at 39–40 weeks, \"late term\" at 41 weeks, and \"post-term\" after 42 weeks. Delivery between 39 and 41 weeks is generally considered optimal for the baby's health outcomes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this replace medical prenatal care?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — this calculator gives a statistical estimate only. Due dates confirmed by ultrasound, especially in the first trimester, are considered more accurate than LMP-based calculations alone, and regular prenatal care with a qualified provider remains essential throughout pregnancy."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

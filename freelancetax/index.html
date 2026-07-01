@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Freelance Tax Estimator",
+  "url": "https://precisioncalc.com/freelancetax/",
+  "description": "Estimate self-employment tax for freelancers (US).",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I have to pay self-employment tax on all my income?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Self-employment tax applies to net earnings from freelance work. W-2 wages from an employer are taxed separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I deduct business expenses?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! Deducting legitimate business expenses lowers your net income and your tax bill. Keep good records and receipts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I earn less than $400?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your net self-employment income is less than $400 for the year, you generally do not owe self-employment tax."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

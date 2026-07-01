@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Body Fat % (Navy)",
+  "url": "https://precisioncalc.com/bodyfat/",
+  "description": "Estimate your body fat percentage using the Navy Method (waist, neck, height, hip for women).",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is the Navy Method?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It’s generally accurate within 3–4% for most people. For clinical accuracy, use DEXA, BodPod, or hydrostatic weighing, but these are less accessible and more expensive."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often should I measure body fat?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Monthly measurements are ideal for tracking trends. Daily or weekly changes are often due to water retention or measurement error."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s the difference between body fat and BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI is a general indicator based on height and weight, but it can’t distinguish between muscle and fat. Body fat percentage gives a clearer picture of health and fitness."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

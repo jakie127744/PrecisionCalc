@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Regular Polygon Calculator",
+  "url": "https://precisioncalc.com/polygon/",
+  "description": "Calculate the area and perimeter of a regular polygon (n sides). Free online polygon calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do only some regular polygons tile a flat surface perfectly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A shape tiles a plane without gaps only if its interior angle divides evenly into 360°. Equilateral triangles (60°), squares (90°), and regular hexagons (120°) all satisfy this; regular pentagons (108°) and most other regular polygons do not."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the apothem, and why isn't it an input here?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The apothem is the perpendicular distance from the polygon's center to the midpoint of a side. This calculator derives it internally using the tangent function from side length and number of sides, so you never need to measure or input it directly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the formula work for a triangle (n=3) or a square (n=4)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — plugging n=3 recovers the standard equilateral triangle area formula, and n=4 recovers the square area formula (side²), since both are just special cases of the general regular polygon formula."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

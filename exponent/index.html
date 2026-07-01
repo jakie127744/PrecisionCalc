@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Exponent/Power Calculator",
+  "url": "https://precisioncalc.com/exponent/",
+  "description": "Calculate exponents and powers (x^y) for any real numbers.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does any number to the power of 0 equal 1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Following the product rule, xⁿ ÷ xⁿ = x^(n−n) = x⁰. Since anything divided by itself equals 1 (except zero), x⁰ must equal 1 for the exponent rules to stay internally consistent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a negative exponent actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means \"take the reciprocal of the positive-exponent version.\" x⁻² is not negative x squared — it's 1 divided by x². For example, 4⁻² = 1/16 = 0.0625, a small positive number, not −16."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is a fractional exponent related to roots?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "x^(1/n) is defined as the nth root of x. So x^(1/2) = √x, x^(1/3) = ∛x, and more generally x^(m/n) = (the nth root of x) raised to the m power. This unifies roots and powers into a single consistent system."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

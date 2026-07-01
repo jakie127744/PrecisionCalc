@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Standard Deviation",
+  "url": "https://precisioncalc.com/stddev/",
+  "description": "Calculate mean, variance, and standard deviation for a list of numbers.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is variance, and how does it differ from standard deviation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Variance is the average of the squared differences from the mean. While standard deviation is expressed in the same units as the original data (making it easier to interpret intuitively), variance is expressed in squared units, which is why standard deviation is more commonly reported."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why square the differences instead of just averaging them directly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Squaring ensures that negative differences (values below the mean) don't cancel out positive differences (values above the mean) when averaged — without squaring, the differences would always sum to exactly zero, making the measure useless."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I use population or sample standard deviation for my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use population standard deviation only if your dataset represents every single member of the group you care about. In almost all practical research, surveys, or experiments, you're working with a sample — so sample standard deviation (with Bessel's correction) is the more commonly appropriate choice."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

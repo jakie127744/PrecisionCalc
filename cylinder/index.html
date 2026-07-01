@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cylinder Calculator",
+  "url": "https://precisioncalc.com/cylinder/",
+  "description": "Calculate the surface area and volume of a cylinder using radius and height. Free online cylinder calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is the curved side treated as a rectangle when unrolled?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you cut a cylinder's side straight down and flattened it, it forms a perfect rectangle with no stretching or distortion — the width equals the circle's circumference and the height equals the cylinder's height. This is a key trick for deriving many curved-surface formulas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a cylinder's volume formula change if it's tilted (oblique)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — like a cone, a cylinder's volume only depends on its base area and its perpendicular (vertical) height, not the angle of tilt. Cavalieri's principle guarantees this: any two solids with matching cross-sectional areas at every height have the same volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does the top and bottom circles matter compared to the side?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the ratio of radius to height. For a very tall, thin cylinder, the curved side dominates surface area. For a short, wide cylinder (like a hockey puck), the two end circles can account for the majority of the surface area."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Compound Interest",
+  "url": "https://precisioncalc.com/compound/",
+  "description": "Calculate the future value of your investment with compound interest. See total growth and interest earned instantly.",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is APY vs. APR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "APR (Annual Percentage Rate) is the stated interest rate without accounting for compounding. APY (Annual Percentage Yield) reflects the actual rate of return after compounding. APY is always equal to or greater than APR — this is the number to compare when shopping for savings accounts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does inflation affect compound interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To find your \"real\" return after inflation, use the Fisher equation: Real Rate ≈ Nominal Rate − Inflation Rate. If your investment earns 7% and inflation is 3%, your real purchasing-power growth is approximately 4% per year."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

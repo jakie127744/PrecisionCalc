@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Trapezoid Calculator",
+  "url": "https://precisioncalc.com/trapezoid/",
+  "description": "Calculate the area and perimeter of a trapezoid using bases, sides, and height. Free online trapezoid calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What if I only know the two bases and the two legs, not the height?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You'd need to derive the height first, typically using the Pythagorean theorem on the right triangles formed by dropping perpendiculars from the shorter base to the longer one — this calculator requires height directly since that derivation depends on which leg configuration you have."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a parallelogram also technically a trapezoid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under the \"inclusive\" definition of a trapezoid (at least one pair of parallel sides), yes — a parallelogram qualifies since it has two pairs. Under the stricter \"exclusive\" definition (exactly one pair), it does not. Different textbooks and countries use different conventions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do highway overpass supports often use a trapezoidal cross-section?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A trapezoid shape — wider at the base, narrower at the top — provides greater stability against tipping and better distributes the structure's weight into the foundation, compared to a uniform rectangular column of the same material volume."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

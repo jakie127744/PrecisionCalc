@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cooking Measurement Converter",
+  "url": "https://precisioncalc.com/cooking-convert/",
+  "description": "Convert between cups, tablespoons, teaspoons, milliliters, and ounces.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is a US cup the same as a metric cup?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A US cup is 236.59 mL, while a metric cup (used in Australia, for example) is exactly 250 mL. The difference is small but can matter in precise baking — this calculator uses US customary units."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my converted ounce value look off for flour?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because \"ounce\" here refers to fluid ounces (volume), not weight ounces. One cup of all-purpose flour weighs about 4.5 weight-ounces (125g), even though it equals 8 fluid ounces by volume. For weight-sensitive baking, always use a kitchen scale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many tablespoons are in a stick of butter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard US stick of butter is ½ cup, which equals 8 tablespoons — a fact worth memorizing since butter is usually measured by the stick rather than poured."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

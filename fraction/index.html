@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Fraction Calculator",
+  "url": "https://precisioncalc.com/fraction/",
+  "description": "Convert any fraction to a decimal and percentage. Simplify fractions to lowest terms automatically. Free online fraction calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a mixed number?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1¾ (one and three-quarters). To convert an improper fraction to a mixed number: divide the numerator by the denominator — the quotient becomes the whole number, and the remainder becomes the new numerator over the original denominator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the most common fractions and their decimal equivalents?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "½ = 0.5, ⅓ ≈ 0.333, ¼ = 0.25, ⅕ = 0.2, ⅛ = 0.125, ¾ = 0.75, ⅔ ≈ 0.667, ⅜ = 0.375, ⅝ = 0.625, ⅞ = 0.875. These are especially common in cooking measurements and woodworking/construction dimensions, so memorizing them speeds up everyday mental math."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do some fractions produce repeating decimals?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A fraction produces a terminating decimal only if, after simplifying, its denominator's prime factors are limited to 2s and 5s (since our number system is base 10). Any other prime factor in the denominator — like 3, 7, or 11 — produces a repeating decimal, such as ⅓ = 0.333... or ⅐ = 0.142857142857..."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

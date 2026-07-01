@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Logarithm Calculator",
+  "url": "https://precisioncalc.com/logarithm/",
+  "description": "Calculate logarithms with any base, including natural log (ln) and common log (log10).",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why can't you take the logarithm of a negative number or zero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because no real exponent applied to a positive base can ever produce a negative result or exactly zero — bˣ is always positive for a positive base b. Logarithms of negative numbers exist in complex number theory but fall outside standard real-number calculators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between \"log\" and \"ln\" on a calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "By convention, \"log\" (without a subscript) usually means base 10 (the common logarithm), while \"ln\" specifically means the natural logarithm, base e. Some fields (like computer science) sometimes use unadorned \"log\" to mean base 2 instead, so it's worth checking context."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is e (≈2.71828) considered the \"natural\" base?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "e arises naturally from continuous growth processes — it's defined as the limit of (1 + 1/n)ⁿ as n approaches infinity, which is exactly the mathematical limit of compound interest compounded infinitely often. Because of this, e-based logarithms and exponentials simplify calculus operations (derivatives and integrals) far more elegantly than any other base."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

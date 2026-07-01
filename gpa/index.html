@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GPA/CGPA Calculator",
+  "url": "https://precisioncalc.com/gpa/",
+  "description": "Calculate your GPA or CGPA from grades and credits for up to 10 subjects or semesters.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What grading scale does this calculator use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This calculator is flexible and works with any 0–10 or 0–4 scale, as long as you enter grades and credits accurately. Check your institution’s grading policy for details."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I improve my GPA/CGPA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Focus on courses with higher credit values, seek help in challenging subjects, and retake courses if allowed to replace low grades."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s the difference between GPA and CGPA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GPA usually refers to a single term or semester, while CGPA covers all terms/semesters completed so far."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tip Calculator",
+  "url": "https://precisioncalc.com/tip/",
+  "description": "Calculate tip, total bill, and split for groups. Perfect for restaurants and group dining.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should I tip on the pre-tax or post-tax total?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Etiquette experts traditionally suggest tipping on the pre-tax subtotal, since tips are meant to reward service — not subsidize the government. However, many people simply tip on the full post-tax total because it's easier. If the service was exceptional, tipping on the full total is a generous and appreciated gesture."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is \"Gratuity Included\" or \"Auto-Gratuity\"?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Many restaurants automatically add an 18–20% gratuity for parties of 6 or more. Always check your receipt before adding an additional tip. Auto-gratuity is legal in the US and is typically disclosed on the menu. Leaving a second tip on top of an automatic gratuity is unnecessary, though some diners do so for exceptional service."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I tip on alcohol separately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Industry norms say yes — tip on the entire bill, including drinks. However, at a restaurant where you're ordering expensive wine, some diners apply the standard tip percentage to food and a lower percentage to expensive bottles. There's no strict rule; tip based on what feels appropriate for the service received."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it okay to lower the tip for bad service?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A tip is meant to reflect your satisfaction with service. If service was genuinely poor — not because the kitchen was slow, but because your server was rude or inattentive — reducing the tip to 10–12% communicates your experience. However, consider that servers sometimes have factors outside their control (kitchen errors, understaffing)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

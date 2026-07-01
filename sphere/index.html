@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sphere Calculator",
+  "url": "https://precisioncalc.com/sphere/",
+  "description": "Calculate the surface area and volume of a sphere using radius. Free online sphere calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is a sphere the same as a circle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — a circle is a two-dimensional shape (a flat disc outline), while a sphere is the three-dimensional equivalent, like a ball. A sphere's cross-section through its center is a circle, which is often a source of confusion between the two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is 4πr² the surface area and not something involving r³?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Surface area measures a 2D quantity (the \"skin\" of the sphere), so it scales with the square of the radius, just like the area of a flat circle (πr²). Volume measures 3D space, so it scales with the cube of the radius. This r² vs. r³ distinction holds for area vs. volume in any 3D shape."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the sphere volume formula actually derived?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One classic method (attributed to Archimedes) compares a hemisphere to a cylinder with a cone removed from it — both have the same cross-sectional area at every height, so by Cavalieri's principle they have equal volumes, which algebraically works out to the (4/3)πr³ formula. Archimedes considered this discovery so significant he requested a sphere inscribed in a cylinder be carved on his tombstone."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Essay Analyzer",
+  "url": "https://precisioncalc.com/word-counter/",
+  "description": "Quickly count words and characters for your essay or assignment. Includes estimated reading and speaking time.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this count punctuation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Character counts include all punctuation and spaces. Word counts treat any string of characters separated by whitespace as a single word, so punctuation attached to a word (like \"don't\" or \"well-known\") doesn't split it into multiple words."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is my speaking time estimate longer than my reading time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because speaking naturally happens slower than silent reading — pauses for breath, emphasis, and clarity all add time. The 130 wpm speaking-rate estimate reflects a typical, clearly-paced presentation rather than a rushed reading of the same text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the sentence count always accurate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It's an estimate based on counting periods, question marks, and exclamation points. Abbreviations (like \"Dr.\" or \"e.g.\"), decimal numbers, and ellipses can occasionally throw off an automated sentence count, so treat it as a close approximation rather than an exact grammatical count."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

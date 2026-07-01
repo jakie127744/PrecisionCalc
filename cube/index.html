@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cube Calculator",
+  "url": "https://precisioncalc.com/cube/",
+  "description": "Calculate the surface area and volume of a cube using side length. Free online cube calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do dice use a cube shape instead of another solid?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A cube has six congruent faces meeting at perfectly symmetric right angles, which guarantees each face has an exactly equal probability of landing face-up when rolled fairly — a property not guaranteed by irregular polyhedra."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many edges, faces, and vertices does a cube have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A cube has 6 faces, 12 edges, and 8 vertices. This satisfies Euler's polyhedron formula: Vertices − Edges + Faces = 2 (8 − 12 + 6 = 2), which holds true for every convex polyhedron."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "If I double the side length, how much more paint would I need to cover it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exactly 4 times as much, since surface area scales with the square of the side length (2² = 4) — even though the cube itself would hold 8 times as much volume (2³ = 8)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Binary & Hex Converter",
+  "url": "https://precisioncalc.com/binaryhex/",
+  "description": "Professional base converter for binary, hexadecimal, octal and decimal numbers. Perfect for CS students and engineers.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I convert manually?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To convert from decimal to another base, repeatedly divide the number by the target base and record the remainders in reverse order. To convert to decimal, multiply each digit by the base raised to its positional power (starting at 0 from the right) and sum the results."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does binary use so many more digits than decimal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because binary only has two symbols (0 and 1) per digit compared to decimal's ten (0–9), it needs roughly 3.3 times more digits to represent the same value — which is exactly why hexadecimal exists, as a much more compact stand-in for binary."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

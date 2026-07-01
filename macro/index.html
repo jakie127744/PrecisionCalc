@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Macro Calculator",
+  "url": "https://precisioncalc.com/macro/",
+  "description": "Calculate your daily protein, carb, and fat needs based on your calorie target and fitness goal.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I know my calorie needs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use a TDEE calculator to estimate your daily calorie burn, then adjust based on your goal (deficit for weight loss, surplus for muscle gain)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the macro ratios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes! These are standard starting points. You can adjust based on your preferences, dietary needs, or advice from a nutritionist."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What foods fit each macro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Protein: meat, fish, eggs, dairy, legumes. Carbs: grains, fruits, vegetables. Fat: oils, nuts, seeds, avocado."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

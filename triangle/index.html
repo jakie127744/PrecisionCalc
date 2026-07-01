@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Triangle Calculator",
+  "url": "https://precisioncalc.com/triangle/",
+  "description": "Calculate the area and perimeter of a triangle using base/height, three sides (Heron's formula), or equilateral. Free online triangle calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the perimeter of a triangle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The perimeter is simply the sum of all three side lengths: P = a + b + c. It represents the total length of the boundary of the shape. To calculate the perimeter using only base and height is not possible without additional information about the other sides."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I only have two sides and an angle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Use the Law of Cosines: c² = a² + b² − 2ab·cos(C). This extends the Pythagorean theorem to non-right triangles and allows you to find the third side when you know two sides and the included angle. Alternatively, the Law of Sines (a/sin A = b/sin B = c/sin C) is helpful when you know two angles and one side."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do triangles appear so often in engineering?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Triangles are the only polygon that is inherently rigid. A square can be deformed into a parallelogram under pressure, but a triangle with fixed side lengths cannot change shape. This makes triangular trusses the foundation of bridges, roofs, and steel towers — they distribute forces efficiently without deforming."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can two triangles have the same area but different shapes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Two triangles with the same area are not necessarily congruent or similar. For example, a very flat, wide triangle and a tall, narrow triangle can both have an area of 12 sq ft, but their side lengths and angles will be completely different."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

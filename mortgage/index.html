@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mortgage Calculator",
+  "url": "https://precisioncalc.com/mortgage/",
+  "description": "Calculate your monthly mortgage payment and full amortization schedule instantly. Free online mortgage calculator with total interest and cost breakdown.",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a good debt-to-income ratio for a mortgage?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most lenders prefer a DTI (total monthly debts ÷ gross monthly income) of 43% or lower. Your housing costs specifically (PITI: Principal, Interest, Taxes, Insurance) should ideally be below 28% of your gross monthly income."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a 1% difference in rate matter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On a $300,000 30-year mortgage, a 1% higher rate adds approximately $57,000 in total interest over the life of the loan and increases monthly payments by about $160."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is PMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Private Mortgage Insurance is required by most lenders if your down payment is less than 20%. It typically costs 0.5–1.5% of the loan amount annually ($125–$375/month on a $300k loan) and can be removed once you reach 20% equity."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

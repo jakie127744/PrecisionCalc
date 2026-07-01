@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Weighted Grade Calc",
+  "url": "https://precisioncalc.com/grade/",
+  "description": "Calculate your final grade or semester average based on weighted assignments and exams.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What if my weights don't add up to 100%?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The \"Weighted Grade\" result shows your current weighted total, treating any unentered weight as not-yet-completed. To see your equivalent percentage based only on the work entered so far, look at the \"Average Performance\" value instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I include ungraded or upcoming assignments?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can enter an estimated or hypothetical score for an upcoming assignment to see how it would affect your final grade — this is a common way to plan how much you need to study for a remaining exam."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is weighted grading used instead of a simple average?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It reflects how courses are actually graded — instructors intentionally assign more weight to comprehensive assessments (finals, major projects) than to smaller ones (weekly quizzes), and a weighted average is the only way to accurately capture that in a single percentage."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Final Grade Goal",
+  "url": "https://precisioncalc.com/final-grade/",
+  "description": "Find out exactly what score you need on your final exam to achieve your target course grade.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Can I get over 100%?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If the calculator says you need over 100%, it means it's mathematically impossible to reach your target using only the final exam — you'd need extra credit, a curve, or an adjustment to grade weighting to close the gap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't know my exact current grade?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Check your school's online gradebook portal, or manually average your scored assignments weighted by their syllabus percentages. Even a rough estimate is usually accurate enough to plan your study priorities."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this account for a grading curve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — the calculator works from raw percentages as entered. If your instructor applies a curve to the final exam or the course overall, treat the result as a pre-curve estimate and adjust your expectations accordingly."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

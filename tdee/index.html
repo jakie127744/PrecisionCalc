@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TDEE Calculator",
+  "url": "https://precisioncalc.com/tdee/",
+  "description": "Calculate your Total Daily Energy Expenditure (TDEE) and BMR using the Mifflin-St Jeor equation. Get calorie targets for weight loss, maintenance, and muscle gain.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How accurate is TDEE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TDEE calculators provide estimates with a margin of error of around 10–15%. Your actual TDEE can vary based on non-exercise activity thermogenesis (NEAT), hormonal status, gut biome, and metabolic adaptation. The best approach is to track calories and weight for 2–4 weeks and adjust accordingly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I eat back exercise calories?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you've used an accurate activity multiplier (e.g., \"Very Active\"), your workout calories are already built into your TDEE. Only add extra calories back if you significantly underestimated your activity level."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

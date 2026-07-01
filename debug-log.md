@@ -107,3 +107,19 @@
 
 **Prevention:**
 - **Rule or Pattern:** Never reuse the same opening/closing sentence structure across multiple tools' `seoContent`, even if the words are swapped per-topic — grep for a few of your own stock phrases (e.g. `grep -rl "designed for accuracy, speed, and ease of use" js/tools/`) before considering a batch of new tools done, and treat any hit count above 1 as a signal to rewrite.
+
+---
+
+## Bug 007 — Only one hardcoded JSON-LD block, wrong on 67/68 pages
+
+**Bug:**
+- **Description:** `index.html` carried exactly one `SoftwareApplication` JSON-LD block, hardcoded for Mortgage (`"name": "Mortgage Calculator"`, `"url": ".../mortgage/"`), sitting in the shared `<head>`. Since every one of the 68 static pages is generated from this same shell, every non-mortgage page was publishing structured data claiming to be the Mortgage Calculator. It also used `"applicationCategory": "FinancialApplication"`, which isn't a valid schema.org enum value (the real one is `FinanceApplication`) — so the one page it was meant for was invalid too. Meanwhile, the rich FAQ `<details>` content already written into most tools' `seoContent` had no structured-data representation at all, missing an easy shot at FAQPage rich snippets in search results.
+- **Location:** `index.html` (the hardcoded block, in the shared `<head>`).
+
+**Fix:**
+- **Summary:** Removed the hardcoded block. Added `buildJsonLd()` to `scripts/build-static-pages.js`, which generates a correct, tool-specific `SoftwareApplication` schema for every non-Legal tool (using the real `applicationCategory` enum, mapped per category: Finance→FinanceApplication, Health→HealthApplication, Education→EducationalApplication, everything else→UtilityApplication), plus a `FAQPage` schema extracted directly from each tool's `<details><summary>` FAQ items via `extractFaqItems()`. `contact`/`privacy`/`terms` (category `Legal`) correctly get no SoftwareApplication schema, since they aren't applications. The homepage's generic `WebSite`/`SearchAction` schema is untouched.
+- **Files Changed:** `index.html`, `scripts/build-static-pages.js`.
+- **Why It Works:** Each of the 65 non-Legal tools now publishes accurate, unique structured data matching its own name/URL/description, and the FAQ content already written gets a real shot at FAQPage rich snippets instead of being invisible to search engines' structured-data parsers. Validated all 190 generated JSON-LD blocks across all 68 pages parse as valid JSON before shipping.
+
+**Prevention:**
+- **Rule or Pattern:** Structured data must be generated per-page from the same data source as the page's own content (the `tool` object), never hardcoded once in a shared template — a shared template with page-specific JSON-LD is a contradiction that will always be wrong on every page except the one it was written for.

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Date Difference Calculator",
+  "url": "https://precisioncalc.com/date-diff/",
+  "description": "Calculate the number of days, months, and years between two dates.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this calculator count the start and end dates as full days?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The result reflects the number of complete 24-hour periods between midnight of the start date and midnight of the end date. If you need an \"inclusive\" count (counting both the first and last day as full days), add 1 to the result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do days and months not always divide evenly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because months vary in length (28–31 days), a whole number of days rarely maps to a whole number of months. The calculator uses the average month length across a year to give the closest practical approximation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this to calculate age in days instead of years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — enter your birth date as the start date and today's date as the end date. The \"Days\" result gives your exact age in days, which is often more precise than age in years for tracking things like infant development milestones."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Cone Calculator",
+  "url": "https://precisioncalc.com/cone/",
+  "description": "Calculate the surface area and volume of a cone using radius and height. Free online cone calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why can't I just multiply the base circumference by the slant height for surface area?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the \"unrolled\" lateral surface of a cone isn't a rectangle — it's a sector of a circle with radius equal to the slant height. The formula πrl already accounts for this geometry correctly; a naive rectangle-based estimate would overstate the area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does a taller, narrower cone always have less volume than a short, wide one?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not necessarily — volume depends on r² × h, so radius matters more than height. Doubling the height only doubles the volume, but doubling the radius quadruples it. A short, wide cone can easily hold more than a tall, narrow one with the same slant height."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between a right cone and an oblique cone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A right cone has its apex directly above the center of the circular base — this calculator assumes that shape. An oblique cone has its apex off to one side, which changes the surface area formula but not the volume formula (volume only depends on base area and perpendicular height, regardless of tilt)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

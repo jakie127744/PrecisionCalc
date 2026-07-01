@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Inflation Calculator",
+  "url": "https://precisioncalc.com/inflation/",
+  "description": "See what $100 in 1990 is worth today using US CPI data.",
+  "operatingSystem": "Any",
+  "applicationCategory": "FinanceApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Consumer Price Index (CPI)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The CPI measures the average change in prices paid by consumers for goods and services over time. It’s the most widely used measure of inflation in the US."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this calculator for other countries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This version uses US CPI data. For other countries, use their official inflation indices or calculators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate are the results?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator provides a close estimate based on official CPI data. Actual price changes for specific goods or services may vary."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

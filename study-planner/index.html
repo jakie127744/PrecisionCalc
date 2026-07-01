@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Study Hour Planner",
+  "url": "https://precisioncalc.com/study-planner/",
+  "description": "Calculate how many hours you should study per week based on course credits and difficulty levels.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is 3 hours really enough for an easy 3-credit course?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For some introductory electives or subjects where you already have strong background knowledge, yes — 2–3 hours per week may be sufficient. Always recalibrate after the first two weeks of class once you've seen the actual workload. The first assignment or quiz is usually a good reality check."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many credit hours should I take per semester?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Full-time status is typically 12 credits (about 36 hours/week of class + study). A higher load of 18 credits demands roughly 54 hours per week in class and studying — the equivalent of a full-time job plus significant overtime. Most students perform better with 15 credits or fewer while maintaining other obligations like work or extracurriculars."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What time of day is best for studying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Research on chronobiology suggests that cognitive performance peaks 1–3 hours after you fully wake up. For most people, morning or early afternoon is optimal for demanding analytical work. Low-energy periods (like right after lunch) are better for reviewing flashcards or watching lecture recordings — tasks that require less active concentration."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

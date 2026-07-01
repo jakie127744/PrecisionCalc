@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Factorial Calculator",
+  "url": "https://precisioncalc.com/factorial/",
+  "description": "Calculate the factorial of any non-negative integer (n!).",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why is 0! equal to 1 and not 0?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's exactly one way to arrange zero objects: do nothing. Mathematically, this convention also keeps formulas like C(n,0) = n!/(0!×n!) = 1 correct — there's exactly one way to choose nothing from a set, which matches reality."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the calculator stop at 170?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "170! is approximately 7.26 × 10³⁰⁶, right at the edge of the largest number a standard double-precision floating point value (used by JavaScript and most calculators) can represent without losing precision or overflowing to Infinity. 171! exceeds that limit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a way to estimate large factorials without computing every multiplication?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Stirling's approximation: n! ≈ √(2πn) × (n/e)ⁿ. It becomes remarkably accurate for large n and is widely used in statistics and physics when an exact factorial isn't necessary, just its order of magnitude or a ratio involving it."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

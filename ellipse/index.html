@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Ellipse Calculator",
+  "url": "https://precisioncalc.com/ellipse/",
+  "description": "Calculate the area and circumference of an ellipse using major and minor axes. Free online ellipse calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the \"foci\" of an ellipse?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every ellipse has two special interior points called foci (singular: focus). The defining property of an ellipse is that the sum of the distances from any point on the curve to the two foci is always constant — this is literally how you can draw a perfect ellipse with two pins and a loop of string."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why isn't there an exact formula for circumference?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The circumference of an ellipse requires integrating the arc length along a curve whose curvature constantly changes in a non-repeating way — this integral (called an elliptic integral) cannot be solved in terms of standard algebraic or trigonometric functions, so mathematicians rely on series expansions or approximations like Ramanujan's instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the major and minor axes are equal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The ellipse becomes a circle — a circle is simply a special case of an ellipse where a = b, and both the area and circumference formulas simplify to the familiar πr² and 2πr."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

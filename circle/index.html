@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Circle Calculator",
+  "url": "https://precisioncalc.com/circle/",
+  "description": "Calculate the area and circumference of a circle using radius or diameter. Free online circle calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between radius and diameter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The radius is the distance from the center to the edge. The diameter is the distance across the circle through the center — exactly twice the radius. Most formulas use radius, so if you only know the diameter, halve it first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does area use r² but circumference only uses r?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Area measures two-dimensional space, so it scales with the square of the radius — doubling the radius quadruples the area. Circumference measures a one-dimensional distance around the edge, so it scales linearly — doubling the radius simply doubles the circumference."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is pi ever exactly 3.14?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — pi is irrational, meaning its decimal digits continue forever without repeating. 3.14 and 22/7 are both common rounded approximations used for everyday calculations, but true precision work uses many more decimal places (this calculator uses JavaScript's built-in high-precision value of π)."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Matrix Addition/Multiplication",
+  "url": "https://precisioncalc.com/matrix-ops/",
+  "description": "Add and multiply 2x2 and 3x3 matrices.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why isn't matrix multiplication commutative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because each entry of the product depends on a specific row-by-column combination. Swapping the order changes which rows pair with which columns, producing a different (or sometimes undefined) result. This is one of the biggest conceptual differences from ordinary arithmetic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I multiply matrices of different sizes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only if the number of columns in the first matrix equals the number of rows in the second. A 2×3 matrix can be multiplied by a 3×2 matrix (producing a 2×2 result), but not by another 2×3 matrix."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's a real-world example of matrix addition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Combining two sales spreadsheets for the same regions and product categories — adding this month's numbers to last month's, cell by cell, is literally matrix addition."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

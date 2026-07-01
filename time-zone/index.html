@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Time Zone Converter",
+  "url": "https://precisioncalc.com/time-zone/",
+  "description": "Convert time between any two time zones.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does this account for daylight saving time automatically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — you enter the UTC offset directly, so you need to use the region's *current* offset (e.g., UTC−4 for New York during Eastern Daylight Time, or UTC−5 during Eastern Standard Time). This avoids ambiguity since not every country observes daylight saving on the same schedule."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between UTC and GMT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For practical purposes they're the same. GMT (Greenwich Mean Time) is a time zone; UTC (Coordinated Universal Time) is the precise timekeeping standard the world's clocks are set against. UTC is the modern technical standard, but UTC+0 and GMT are used interchangeably in everyday conversion."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do some time zones have a 30 or 45 minute offset?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not every country aligns to whole-hour offsets. India (UTC+5:30), Newfoundland (UTC−3:30), and Nepal (UTC+5:45) all use fractional offsets, usually chosen to better match solar noon to the middle of the working day for that specific region."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

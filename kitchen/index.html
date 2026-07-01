@@ -64,28 +64,46 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kitchen Converter",
+  "url": "https://precisioncalc.com/kitchen/",
+  "description": "Convert between cups, tablespoons, ml, grams, ounces, and kitchen temperatures. Results are large and easy to read for cooks.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does the same volume of flour and sugar weigh differently?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Volume measures the space an ingredient takes up, while weight measures its mass — and different ingredients pack together at different densities. A cup of flour weighs roughly 125g while a cup of granulated sugar weighs roughly 200g, even though both fill the same cup. This is why professional bakers prefer weighing ingredients over measuring by volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why isn't temperature conversion just a simple multiplication?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Celsius, Fahrenheit, and Kelvin all define their \"zero\" point differently — 0°C is water's freezing point, 0°F was originally based on a brine mixture, and 0K is absolute zero. Because the scales don't share a starting point, converting between them requires both multiplying and adding/subtracting an offset, unlike simple unit conversions like cups to milliliters."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

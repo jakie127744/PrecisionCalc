@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Tip Splitter",
+  "url": "https://precisioncalc.com/tip-split/",
+  "description": "Calculate tip and split the bill among people instantly. Free online restaurant bill calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Should we tip on the pre-tax or post-tax amount?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Traditional etiquette suggests tipping on the pre-tax subtotal. In practice, most people in the US tip on the full total (including tax) because it's simpler. The difference is typically small — on a $100 pre-tax bill with 8% tax, tipping 20% on pre-tax ($20) vs. post-tax ($21.60) is only $1.60 different."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if one person doesn't drink alcohol?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If some guests ordered alcohol (which significantly inflates a bill) and others didn't, an equal split can feel unfair. A common courtesy is for drinkers to offer to cover a larger share. Alternatively, separate the alcohol costs first, then split the food equally and add tip proportionally."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it rude to split the bill in a restaurant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the US, splitting is entirely normal and most servers are used to it. Simply ask your server before ordering or at the start of the meal. Most modern POS systems can split a bill by seat or by any amount. In some European countries, separate checks are less common and may require advance notice."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I handle it when someone \"forgets\" their share?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Apps like Splitwise or Venmo make it easy to log who owes what and send automatic reminders without an awkward in-person conversation. For recurring group situations (work lunches, friend groups), these tools dramatically reduce friction around money."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Age Calculator",
+  "url": "https://precisioncalc.com/age/",
+  "description": "Calculate your exact age in years, months, and days from your date of birth. Free online age calculator.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the calculator handle leap years?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator automatically accounts for leap years, so if you were born on February 29, it will correctly calculate your age even in non-leap years."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this calculator for someone else?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, simply enter any date of birth to find the age as of today. This is useful for parents, teachers, or anyone needing to check another person’s age."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my age calculated in real time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, as soon as you enter or change the date of birth, the calculator updates the result instantly without needing to reload the page."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

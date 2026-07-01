@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "GCD/LCM Calculator",
+  "url": "https://precisioncalc.com/gcdlcm/",
+  "description": "Calculate the greatest common divisor (GCD) and least common multiple (LCM) of two integers.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What if the two numbers share no common factors except 1?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Then their GCD is 1, and they're called \"coprime\" or \"relatively prime.\" In that case, their LCM is simply the product of the two numbers, since nothing smaller could be a multiple of both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the Euclidean algorithm faster than checking every divisor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Checking every number up to the smaller value to test divisibility takes time proportional to the size of the numbers themselves. The Euclidean algorithm instead shrinks the problem by at least half with every couple of steps (a property tied to the golden ratio, in the worst case), making it dramatically faster for large numbers used in real cryptographic systems."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this work for negative numbers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GCD and LCM are conventionally defined for positive integers; this calculator takes the absolute value of any input, since \"greatest common divisor\" and \"least common multiple\" are typically reported as positive values regardless of the sign of the original numbers."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Scientific Notation",
+  "url": "https://precisioncalc.com/scientific-notation/",
+  "description": "Quickly convert large or small numbers into scientific notation (e x 10^n) and back again.",
+  "operatingSystem": "Any",
+  "applicationCategory": "EducationalApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why do we use scientific notation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Imagine writing the mass of the Earth (5,970,000,000,000,000,000,000,000 kg) or the diameter of a human cell (0.00001 meters). Scientific notation makes these numbers readable and allows for much easier multiplication, division, and comparison of magnitude."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between scientific notation and engineering notation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Scientific notation always keeps the coefficient between 1 and 10. Engineering notation restricts the exponent to multiples of 3 (matching metric prefixes like kilo, mega, micro), so the coefficient can range from 1 to 999 — useful when working with SI units."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know how many significant figures to keep?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Significant figures reflect the precision of your original measurement or data. If a value was measured to three significant figures, the scientific-notation coefficient should also be rounded to three significant figures rather than showing false precision."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

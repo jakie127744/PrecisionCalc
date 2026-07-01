@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Time Duration",
+  "url": "https://precisioncalc.com/duration/",
+  "description": "Calculate the duration between two dates/times.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the calculator account for leap years and daylight saving time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, it uses your device’s date and time settings, so leap years and daylight saving changes are automatically included in the calculation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I calculate negative durations?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No, the calculator only works if the end date/time is after the start date/time. Swap the fields if you get an empty result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What’s the maximum duration I can calculate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You can calculate durations spanning years, decades, or even centuries, limited only by the range of valid dates your device supports."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

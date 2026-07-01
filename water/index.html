@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Water Intake",
+  "url": "https://precisioncalc.com/water/",
+  "description": "Calculate how much water you should drink per day based on your weight, activity level, and climate. Get results in ounces and liters.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does coffee or tea count toward water intake?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — caffeinated beverages like coffee and tea do count toward your daily fluid totals. While caffeine has a mild diuretic effect, studies show the net hydration from drinking coffee or tea is still positive. Plain water remains the best choice for primary hydration, but you don't need to offset or \"not count\" your morning coffee."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you drink too much water?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Hyponatremia (water intoxication) occurs when consuming large volumes of plain water dilutes sodium concentration in the blood below safe levels. This is rare for most people under normal conditions but is a real risk for endurance athletes drinking large amounts without electrolyte replacement. Symptoms include nausea, headache, confusion, and in severe cases, seizures or death."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I drink more water when sick?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Fever, vomiting, and diarrhea all accelerate fluid and electrolyte loss. The general guidance is to increase water intake and — for vomiting or diarrhea lasting more than a few hours — consider electrolyte solutions (oral rehydration salts, Pedialyte, or similar) to replace lost sodium and potassium, not just water."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does climate affect how much I should drink?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In hot or humid climates, the body sweats significantly more to maintain core temperature — a 165-lb person can lose over 1 liter of sweat per hour during moderate exercise in the heat. Cold climates reduce sweat but increase respiratory fluid loss (you can see your breath) and may also suppress thirst perception, making it easy to under-drink in winter. This calculator applies a climate multiplier to account for these differences."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

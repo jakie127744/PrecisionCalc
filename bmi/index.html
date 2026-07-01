@@ -64,28 +64,62 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "BMI Calculator",
+  "url": "https://precisioncalc.com/bmi/",
+  "description": "Calculate your Body Mass Index (BMI) instantly. Supports imperial and metric. See WHO category and healthy weight range for your height.",
+  "operatingSystem": "Any",
+  "applicationCategory": "HealthApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is BMI the same for men and women?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The WHO uses the same BMI cutoffs for both sexes. However, women naturally carry approximately 5–8% more body fat than men at the same BMI due to hormonal differences, pregnancy storage, and breast tissue. Some researchers advocate for sex-specific cutoffs, but international clinical guidelines continue to use the universal scale for simplicity and comparability."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is BMI for children and teens?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For children ages 2–19, BMI is interpreted with age- and sex-specific percentile charts (CDC growth charts), not the adult WHO thresholds. \"Healthy weight\" for a child is defined as BMI in the 5th–85th percentile. The same BMI number means different things at age 8 vs. age 16, because bodies change dramatically during growth and puberty."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a healthy BMI for my age?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For adults 20 and older, the standard WHO ranges apply regardless of age. However, some clinicians adjust informally — a BMI of 25–27 may be acceptable for adults over 65, as slightly higher weight is associated with better outcomes in older populations (a phenomenon sometimes called the \"obesity paradox\" in geriatrics)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I lower my BMI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BMI decreases when you reduce body weight and/or increase lean muscle mass. Sustainable strategies include: a modest caloric deficit (250–500 calories/day for 0.5–1 lb weight loss per week), strength training to preserve/build muscle during weight loss, increased cardiovascular activity, improved sleep quality (poor sleep increases hunger hormones), and working with a registered dietitian for personalized guidance."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

@@ -64,28 +64,54 @@
   }
   </script>
 
-  <!-- Structured Data: Example Calculator (Mortgage) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Mortgage Calculator",
-    "operatingSystem": "All",
-    "applicationCategory": "FinancialApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Monthly payment calculation",
-      "Amortization schedule",
-      "Total interest computation"
-    ],
-    "url": "https://precisioncalc.com/mortgage/",
-    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Password Strength",
+  "url": "https://precisioncalc.com/password/",
+  "description": "Estimate password strength and time to crack for any password.",
+  "operatingSystem": "Any",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
   }
-  </script>
+}
+</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long should my password be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Current security guidance recommends a minimum of 12 characters, though 16 or more is preferred for critical accounts like email, banking, or password managers themselves."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool send my password anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. This calculation is performed entirely locally in your browser using JavaScript. Your password is never transmitted, logged, or stored — it never leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does the \"time to crack\" estimate assume 1 trillion guesses per second?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This reflects a realistic modern offline attack using specialized hardware (GPUs or ASICs) against a leaked password hash database. Online, rate-limited login attempts are far slower, so real-world cracking time against a live login form is typically much longer than the estimate shown here."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
