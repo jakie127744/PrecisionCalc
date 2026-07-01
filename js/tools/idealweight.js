@@ -79,7 +79,7 @@ registerTool({
       <h3>What Is Ideal Body Weight?</h3>
       <p>Ideal body weight (IBW) is an estimate of the healthiest weight for a person, based primarily on height and sex. It is not a strict target, but rather a guideline for optimal health, longevity, and reduced risk of chronic diseases. IBW is often used in clinical settings to calculate medication dosages, assess nutritional status, and guide weight management plans.</p>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How Ideal Body Weight Is Calculated</h3>
       <ul>
         <li><strong>Devine Formula (1974):</strong> Originally developed to calculate drug dosages, it is still widely used for clinical purposes.</li>
         <li><strong>Robinson Formula (1983):</strong> Offers a slightly lower weight estimate, adjusting for modern populations.</li>
@@ -94,7 +94,7 @@ registerTool({
         <li><strong>Medical Guidance:</strong> Doctors use IBW to tailor treatments, nutrition plans, and medication dosages.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Ideal Weight — Frequently Asked Questions</h3>
       <details>
         <summary>Is ideal weight the same for everyone?</summary>
         <p>No. IBW is a guideline. Genetics, body composition, age, and activity level all influence your healthiest weight. Always consult a healthcare provider for personalized advice.</p>

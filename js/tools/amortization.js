@@ -73,7 +73,7 @@ registerTool({
         <li><b>Comparison:</b> Compare different loan offers by total interest paid and payoff timelines.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Amortization Table — Frequently Asked Questions</h3>
       <ul>
         <li><b>What types of loans use amortization tables?</b><br>Most mortgages, auto loans, personal loans, and student loans use amortization schedules. Credit cards and lines of credit typically do not.</li>
         <li><b>How can I pay off my loan faster?</b><br>Making extra payments toward the principal reduces the total interest paid and shortens the loan term. Even small additional payments can make a big difference over time.</li>

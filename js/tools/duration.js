@@ -55,14 +55,14 @@ registerTool({
         <li><strong>Legal & Compliance:</strong> Some contracts and regulations require precise time tracking between events.</li>
       </ul>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the Time Duration Calculator Works</h3>
       <ol>
         <li>Enter the start date and time in the “From” field.</li>
         <li>Enter the end date and time in the “To” field.</li>
         <li>The calculator instantly displays the total duration in days, hours, minutes, and seconds.</li>
       </ol>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Time Duration — Frequently Asked Questions</h3>
       <details>
         <summary>Does the calculator account for leap years and daylight saving time?</summary>
         <p>Yes, it uses your device’s date and time settings, so leap years and daylight saving changes are automatically included in the calculation.</p>

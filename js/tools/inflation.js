@@ -58,14 +58,14 @@ registerTool({
         <li><strong>Historical Comparison:</strong> Comparing prices or salaries across decades requires adjusting for inflation to get a true sense of value.</li>
       </ul>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the Inflation Calculator Works</h3>
       <ol>
         <li>Enter the amount of money and the year you want to convert from.</li>
         <li>Enter the target year (usually the present or a future year).</li>
         <li>The calculator uses US CPI data to adjust the amount for inflation, showing its equivalent value in the target year.</li>
       </ol>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Inflation — Frequently Asked Questions</h3>
       <details>
         <summary>What is the Consumer Price Index (CPI)?</summary>
         <p>The CPI measures the average change in prices paid by consumers for goods and services over time. It’s the most widely used measure of inflation in the US.</p>

@@ -80,7 +80,7 @@ registerTool({
         <li><b>Interest Awareness:</b> See how much interest you’ll pay over the life of the loan.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Loan/EMI — Frequently Asked Questions</h3>
       <ul>
         <li><b>Can I reduce my EMI?</b><br>You can lower your EMI by choosing a longer tenure, negotiating a lower interest rate, or making a larger down payment. However, longer tenures mean more total interest paid.</li>
         <li><b>What happens if I prepay my loan?</b><br>Prepaying reduces your outstanding principal, which lowers future interest and may shorten your loan term. Check for prepayment penalties in your loan agreement.</li>

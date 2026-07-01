@@ -67,7 +67,7 @@ registerTool({
         <li><strong>Milestones and Celebrations:</strong> Birthdays, anniversaries, and other life events are all based on age calculations.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Age Calculator — Frequently Asked Questions</h3>
       <details>
         <summary>How does the calculator handle leap years?</summary>
         <p>The calculator automatically accounts for leap years, so if you were born on February 29, it will correctly calculate your age even in non-leap years.</p>

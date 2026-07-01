@@ -90,7 +90,7 @@ registerTool({
         <li><strong>Goal Setting:</strong> Athletes and those on weight loss journeys use body fat percentage to set and track realistic goals.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Body Fat % — Frequently Asked Questions</h3>
       <details>
         <summary>How accurate is the Navy Method?</summary>
         <p>It’s generally accurate within 3–4% for most people. For clinical accuracy, use DEXA, BodPod, or hydrostatic weighing, but these are less accessible and more expensive.</p>

@@ -63,7 +63,7 @@ registerTool({
         <li>Use the result to resize, crop, or design content that fits your target display perfectly.</li>
       </ol>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Aspect Ratio — Frequently Asked Questions</h3>
       <details>
         <summary>What happens if I use the wrong aspect ratio?</summary>
         <p>Using the wrong aspect ratio can cause images or videos to appear stretched, squished, or to have black bars (letterboxing/pillarboxing) on the sides. Always match the aspect ratio to your display or platform requirements.</p>

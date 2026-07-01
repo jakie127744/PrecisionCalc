@@ -123,3 +123,18 @@
 
 **Prevention:**
 - **Rule or Pattern:** Structured data must be generated per-page from the same data source as the page's own content (the `tool` object), never hardcoded once in a shared template — a shared template with page-specific JSON-LD is a contradiction that will always be wrong on every page except the one it was written for.
+
+---
+
+## Bug 006 (follow-up) — Second, milder templated pattern: repeated section headers
+
+**Bug:**
+- **Description:** After de-templatizing the 14 tools with verbatim boilerplate sentences, a second pass found 21 more tools reusing the exact bare headers `<h3>How the Calculator Works</h3>` and `<h3>Frequently Asked Questions</h3>` with zero variation (`autoloan`, `compound`, `credit-card-payoff`, `duration`, `freelancetax`, `gas`, `gpa`, `idealweight`, `inflation`, `macro`, `pythagorean`, `quadratic`, `retirement`, `savings-goal`, `study-planner`, plus `age`, `amortization`, `aspect`, `bac`, `bodyfat`, `emi` for the FAQ header alone). Unlike Bug 006's verbatim-sentence case, the actual body content (bullet points, FAQ answers) under these headers was genuinely unique per tool — repeating a generic section label like "Frequently Asked Questions" isn't itself a duplicate-content signal (virtually every FAQ page on the web uses that exact phrase). Still worth closing out for consistency once flagged.
+- **Location:** the 21 files listed above.
+
+**Fix:**
+- **Summary:** Renamed every bare header to be tool-specific (e.g., `<h3>How the Calculator Works</h3>` → `<h3>How the Gas Cost Calculator Works</h3>`; `<h3>Frequently Asked Questions</h3>` → `<h3>Gas Cost — Frequently Asked Questions</h3>`). Pure relabeling — no body content touched.
+- **Why It Works:** Every `<h3>` on every tool page is now uniquely worded; combined with Bug 006's sentence-level fix, there is no remaining repeated phrase (verbatim or structural) anywhere across the 68 tools' `seoContent`.
+
+**Prevention:**
+- **Rule or Pattern:** When auditing for templated content, check both levels: exact repeated *sentences* (the more serious signal) and repeated *section headers* (a milder, cosmetic signal, but easy to fix once noticed) — `grep -rl "<h3>SOME_HEADER</h3>" js/tools/` for any header you're about to reuse across multiple new tools.

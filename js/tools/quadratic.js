@@ -15,7 +15,7 @@ registerTool({
         <li><b>Time Saver:</b> Great for homework, test prep, or checking your work.</li>
       </ul>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the Quadratic Solver Works</h3>
       <ol>
         <li>Enter the coefficients <b>a</b>, <b>b</b>, and <b>c</b> for your equation <b>ax² + bx + c = 0</b>.</li>
         <li>The calculator computes the discriminant <b>D = b² - 4ac</b> to determine the type of roots.</li>
@@ -23,7 +23,7 @@ registerTool({
         <li>Results are displayed instantly, including complex roots if needed.</li>
       </ol>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Quadratic Equations — Frequently Asked Questions</h3>
       <ul>
         <li><b>What is a quadratic equation?</b><br>An equation of the form <b>ax² + bx + c = 0</b>, where <b>a ≠ 0</b>.</li>
         <li><b>What are real and complex roots?</b><br>Real roots are solutions on the number line; complex roots involve the imaginary unit <b>i</b> when the discriminant is negative.</li>

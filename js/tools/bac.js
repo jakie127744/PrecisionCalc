@@ -58,7 +58,7 @@ registerTool({
         <li><strong>Health Risks:</strong> High BAC can lead to alcohol poisoning, unconsciousness, or death. Chronic high BAC levels are linked to long-term health problems.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>BAC Calculator — Frequently Asked Questions</h3>
       <details>
         <summary>How accurate is the BAC Calculator?</summary>
         <p>The calculator provides an estimate. Actual BAC can vary based on metabolism, food intake, medications, and individual differences. For legal or medical purposes, only a blood or breath test is definitive.</p>

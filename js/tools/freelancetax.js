@@ -45,7 +45,7 @@ registerTool({
       <h3>What Is Self-Employment Tax?</h3>
       <p>Self-employment tax is a combination of Social Security (12.4%) and Medicare (2.9%) taxes, totaling 15.3% of your net earnings. Employees split these taxes with their employers, but freelancers must pay the full amount themselves. This tax is in addition to regular income tax.</p>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the Freelance Tax Estimator Works</h3>
       <ol>
         <li>Enter your net self-employment income (after business expenses).</li>
         <li>The calculator multiplies your income by 15.3% to estimate your self-employment tax.</li>
@@ -59,7 +59,7 @@ registerTool({
         <li><strong>Compliance:</strong> Accurate tax payments keep you in good standing with the IRS and avoid audits.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Freelance Tax — Frequently Asked Questions</h3>
       <details>
         <summary>Do I have to pay self-employment tax on all my income?</summary>
         <p>Self-employment tax applies to net earnings from freelance work. W-2 wages from an employer are taxed separately.</p>

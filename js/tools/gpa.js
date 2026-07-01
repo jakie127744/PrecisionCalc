@@ -81,7 +81,7 @@ registerTool({
         <li><strong>CGPA:</strong> The cumulative average of grade points across multiple terms or semesters, reflecting overall academic performance.</li>
       </ul>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the GPA/CGPA Calculator Works</h3>
       <ol>
         <li>Enter your grades and the corresponding credits for each subject or semester.</li>
         <li>The calculator multiplies each grade by its credit value, sums the results, and divides by the total credits to find your GPA or CGPA.</li>
@@ -95,7 +95,7 @@ registerTool({
         <li><strong>Career Opportunities:</strong> Employers may ask for GPA/CGPA as part of job applications, especially for recent graduates.</li>
       </ul>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>GPA/CGPA — Frequently Asked Questions</h3>
       <details>
         <summary>What grading scale does this calculator use?</summary>
         <p>This calculator is flexible and works with any 0–10 or 0–4 scale, as long as you enter grades and credits accurately. Check your institution’s grading policy for details.</p>

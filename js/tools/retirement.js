@@ -62,14 +62,14 @@ registerTool({
       <li><b>Plan for the Unexpected:</b> Experiment with different scenarios, such as early retirement or increased contributions, to see how they affect your outcome.</li>
     </ul>
 
-    <h3>How the Calculator Works</h3>
+    <h3>How the Retirement Projection Is Calculated</h3>
     <ol>
       <li>Enter your current age, planned retirement age, current savings balance, annual contribution, and expected annual growth rate.</li>
       <li>The calculator projects your savings forward, adding your annual contributions and applying the growth rate each year until retirement.</li>
       <li>It displays the estimated value of your retirement account at your chosen retirement age, helping you assess whether you are on track.</li>
     </ol>
 
-    <h3>Frequently Asked Questions</h3>
+    <h3>Retirement Planning — Frequently Asked Questions</h3>
     <ul>
       <li><b>What is a 401k?</b><br>A 401k is a tax-advantaged retirement savings plan offered by many employers in the United States. Contributions are often made pre-tax, and investments grow tax-deferred until withdrawal at retirement.</li>
       <li><b>How much should I contribute to my retirement?</b><br>Financial experts often recommend saving at least 10-15% of your income for retirement, but the right amount depends on your goals, age, and other sources of retirement income.</li>

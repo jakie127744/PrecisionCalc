@@ -27,14 +27,14 @@ registerTool({
       <li><b>Financial Confidence:</b> Avoid guesswork and make informed decisions about your savings journey.</li>
     </ul>
 
-    <h3>How the Calculator Works</h3>
+    <h3>How the Savings Goal Calculator Works</h3>
     <ol>
       <li>Enter your total savings goal, the number of months you want to save, and the expected annual interest rate (if any).</li>
       <li>The calculator computes the required monthly deposit, taking into account the compounding effect of interest if provided.</li>
       <li>It displays the monthly savings needed, helping you plan your budget and track your progress.</li>
     </ol>
 
-    <h3>Frequently Asked Questions</h3>
+    <h3>Savings Goals — Frequently Asked Questions</h3>
     <ul>
       <li><b>What if I want to reach my goal faster?</b><br>Try shortening the number of months in the calculator. It will show you the higher monthly savings required to meet your new timeline.</li>
       <li><b>How does interest affect my savings plan?</b><br>If you save in an account that earns interest, your money grows faster, so you may need to save less each month. The calculator factors in compound interest for more accurate results.</li>

@@ -119,7 +119,7 @@ registerTool({
     <p><strong>The Pomodoro Technique:</strong> Work for 25 minutes with full focus, then take a 5-minute break. After 4 cycles, take a longer 15–30 minute break. This keeps your brain fresh, prevents decision fatigue, and makes large study blocks feel manageable.</p>
     <p><strong>Time Blocking:</strong> Schedule specific blocks in your calendar for each course — treat them like non-negotiable appointments. Students who schedule study time in advance are substantially more likely to follow through than those who study "when they have time."</p>
 
-    <h3>How the Calculator Works</h3>
+    <h3>How This Calculator Estimates Your Study Load</h3>
     <p>This tool uses the 2:1 baseline and applies two multipliers: a difficulty multiplier (ranging from 0.5× for easy courses to 1.5× for hard ones) and a grade-target multiplier (0.7× for a passing grade, 1.0× for a B, 1.5× for an A). The result is an estimated weekly study hour budget that you can use to allocate time in your schedule before the semester begins.</p>
 
     <details>

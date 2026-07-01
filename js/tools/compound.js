@@ -14,14 +14,14 @@ registerTool({
         <li><b>Make Informed Decisions:</b> Use real numbers to guide your financial planning, whether for retirement, education, or major purchases.</li>
       </ul>
 
-      <h3>How the Calculator Works</h3>
+      <h3>How the Compound Interest Calculator Works</h3>
       <ol>
         <li>Enter your initial investment, annual interest rate, time period, compounding frequency, and optional monthly contribution.</li>
         <li>The calculator computes the future value of your investment, total contributed, interest earned, and growth multiple.</li>
         <li>Results update instantly, helping you visualize the impact of each variable.</li>
       </ol>
 
-      <h3>Frequently Asked Questions</h3>
+      <h3>Compound Interest — Frequently Asked Questions</h3>
       <ul>
         <li><b>What is compound interest?</b><br>Compound interest is interest calculated on both the initial principal and the accumulated interest from previous periods. This leads to exponential growth over time.</li>
         <li><b>How often should I compound?</b><br>The more frequently interest is compounded (monthly, daily, etc.), the faster your money grows. This calculator lets you compare different frequencies.</li>
