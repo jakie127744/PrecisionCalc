@@ -139,6 +139,21 @@ document.addEventListener('click', (e) => {
 
   const slug = url.pathname.replace(/^\/+|\/+$/g, '');
 
+  // Category/grid anchor links (topbar quick-links, "Browse all tools") only exist on the
+  // homepage. If we're elsewhere, navigate home first, then scroll to the anchor once rendered.
+  if (url.hash && (url.hash.startsWith('#all-calculators-list') || url.hash === '#complete-grid')) {
+    if (window.location.pathname !== '/') {
+      e.preventDefault();
+      const targetId = url.hash.slice(1);
+      history.pushState({}, '', '/');
+      showHome();
+      setTimeout(() => {
+        document.getElementById(targetId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+    return; // Already on home — let the native same-page anchor jump handle it.
+  }
+
   // Same-page hash link (e.g. on the homepage) — let the native hashchange flow handle it.
   if (url.hash && url.pathname === window.location.pathname) return;
 
@@ -499,7 +514,7 @@ function renderCompleteGrid(container) {
   });
 
   grid.innerHTML = sortedCats.map((cat, idx) => `
-    <div class="category-header" onclick="toggleCategory(this)">
+    <div class="category-header" id="all-calculators-list-${cat.toLowerCase().replace(/\s+/g, '-')}" onclick="toggleCategory(this)">
       <span class="material-symbols-outlined category-header-icon">${CATEGORY_ICONS[cat] || 'grid_view'}</span>
       <h3 class="category-header-title">${cat}</h3>
     </div>
