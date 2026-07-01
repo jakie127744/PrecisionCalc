@@ -153,3 +153,25 @@
 
 **Prevention:**
 - **Rule or Pattern:** Before adding any image asset, check its actual rendered display size in the CSS/HTML and size the source file to roughly 2-3x that (for retina), not an arbitrary "high-res" default. For gradient/photo-like content (glows, shadows, photos), prefer JPEG or WebP over PNG; reserve PNG for flat-color graphics, line art, or anything needing transparency.
+
+---
+
+## Bug 009 — Real Lighthouse audit against the new routing structure
+
+**Context:** The last performance/CLS audit (Bug 001) predated the entire static pre-render rewrite (Bug 003/004). Ran a real Lighthouse audit (not assumptions) against a locally-served static page (`/mortgage/`) using actual Chrome + the `lighthouse` npm package, installed only outside the repo so the project stays dependency-free.
+
+**Finding 1 — CLS still holds:** Cumulative Layout Shift scored a perfect 0 / 1.0 both before and after this round of fixes — Bug 001's fix (reserving ad-slot height in CSS) survived the routing rewrite intact.
+
+**Finding 2 — Real accessibility bugs, now fixed (Accessibility: 97 → 100):**
+- `.ad-label`, `.seo-card p`, `.seo-card details summary`, `.bottom-nav-item`, `.footer-copy`, `.footer-links` all used `color: var(--outline)` (`#767575`) against near-black backgrounds — contrast ratios of 2.6–4.2, all below the WCAG AA 4.5:1 minimum. Switched all of them to `var(--on-surface-variant)` (`#adaaaa`), and removed an `opacity: 0.7` on the footer disclaimer that was further dimming an already-adequate color.
+- Bottom-nav buttons had `aria-label` text that didn't match their visible label (`aria-label="Home"` on a button visibly labeled "FEATURED"; `aria-label="Unit converter"` on one labeled "UNITS") — a WCAG 2.5.3 violation. Aligned both.
+- `logo.png`'s two `<img>` tags had no explicit `width`/`height` attributes (only inline CSS), flagged as a layout-shift risk. Added explicit dimensions matching the image's real aspect ratio.
+- The Material Symbols icon font link had no `font-display` value at all (the other Google Fonts link already had `&display=swap`) — added `&display=swap`, saving ~475ms of Lighthouse-flagged wasted time.
+- **Location:** `styles.css` (`.ad-label`, `.seo-card p`, `.seo-card details summary`, `.bottom-nav-item`, `.footer-copy`, `.footer-links`), `index.html` (bottom-nav `aria-label`s, logo `<img>` dimensions, Material Symbols font link, footer disclaimer opacity).
+
+**Finding 3 — Performance/network numbers are not trustworthy from this sandbox:** First Contentful Paint and Largest Contentful Paint both measured 23–26 seconds, completely unchanged across three audit runs regardless of code changes — a sign the bottleneck is the sandbox's network path to external CDNs (`fonts.googleapis.com`, `pagead2.googlesyndication.com`), not the page itself. **Do not trust these specific numbers** — re-run Lighthouse against the live deployed production URL for a number that means anything; the sandbox's `render-blocking-insight` estimate of "21,140 ms savings" is itself evidence of this (no real page is render-blocked for 21 seconds).
+
+**Finding 4 — one real, unresolved item:** a console error from Google's own `adsbygoogle.js` (`TagError: adsbygoogle.push() error: No slot size for availableWidth=0`) appears on every load. This originates from Google's third-party script, not our code — plausibly related to the AdSense account not yet being approved, or an ad container not having a resolved width at push time. Worth watching after re-review; not something to chase blindly without a real approved account to test against.
+
+**Prevention:**
+- **Rule or Pattern:** Any color pulled from a CSS custom property and used for text needs its contrast ratio checked against the actual background it sits on — a variable named generically (`--outline`) can silently end up used for real body text where it doesn't have enough contrast, even though it might be fine for its original intended use (borders, icons). Re-run a real Lighthouse pass after any significant page-structure change rather than assuming an old audit still holds.

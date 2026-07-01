@@ -384,8 +384,7 @@ input, select { font-family: var(--font-body); }
   font-weight:    700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color:          var(--outline);
-  opacity:        0.7;
+  color:          var(--on-surface-variant);
 }
 .ad-zone-a {
   padding: 10px 24px 6px;
@@ -1163,7 +1162,7 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
 }
 .seo-card p {
   font-size:   0.875rem;
-  color:       var(--outline);
+  color:       var(--on-surface-variant);
   line-height: 1.75;
   margin-bottom: 10px;
 }
@@ -1181,7 +1180,7 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
 .seo-card details summary {
   cursor:    pointer;
   font-size: 0.85rem;
-  color:     var(--outline);
+  color:     var(--on-surface-variant);
   padding:   8px 0;
   list-style: none;
   display:   flex;
@@ -1300,7 +1299,7 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
   gap:            2px;
   padding:        8px 12px;
   border-radius:  var(--radius-md);
-  color:          var(--outline);
+  color:          var(--on-surface-variant);
   transition:     var(--transition);
   min-width:      54px;
   position:       relative;
@@ -1340,12 +1339,12 @@ tbody tr:hover td { background: var(--surface-container-high); color: var(--on-s
   text-align: center;
 }
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.footer-copy  { font-size: 0.78rem; color: var(--outline); }
+.footer-copy  { font-size: 0.78rem; color: var(--on-surface-variant); }
 .footer-links {
   display:    flex;
   gap:        20px;
   font-size:  0.78rem;
-  color:      var(--outline);
+  color:      var(--on-surface-variant);
 }
 .footer-links a:hover { color: var(--primary); }
 

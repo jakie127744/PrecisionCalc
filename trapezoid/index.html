@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet" />
 
   <!-- PWA -->
   <link rel="manifest" href="/manifest.json" />
@@ -125,7 +125,7 @@
     </button>
 
     <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
-      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" width="76" height="32" style="height: 32px; width: auto;">
     </a>
 
     <!-- Desktop search (in topbar) -->
@@ -430,7 +430,7 @@
       </div>
     </div>
     <div class="footer-content" style="flex-direction: column; gap: 32px; align-items: center; max-width: 1200px; margin: 0 auto; text-align: center;">
-      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6; opacity: 0.7;">
+      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6;">
         <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
       </div>
 
@@ -444,7 +444,7 @@
 
       <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
         <div class="footer-brand" style="text-align: left;">
-          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <img src="/logo.png" alt="PrecisionCalc" width="90" height="38" style="height: 38px; width: auto; margin-bottom: 8px;">
           <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
         </div>
         <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
@@ -460,7 +460,7 @@
        MOBILE BOTTOM NAV
        ═══════════════════════════════════════════════════════ -->
   <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
-    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Featured">
       <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
       <span class="bottom-nav-label">Featured</span>
     </button>
@@ -476,7 +476,7 @@
       <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
       <span class="bottom-nav-label">Math</span>
     </button>
-    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Units">
       <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
       <span class="bottom-nav-label">Units</span>
     </button>
