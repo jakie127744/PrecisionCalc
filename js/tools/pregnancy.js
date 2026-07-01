@@ -88,25 +88,33 @@ registerTool({
   },
 
   seoContent: `
-    <p>A Pregnancy Due Date Calculator estimates when your baby will arrive based on the first day of your last menstrual period (LMP) or your conception date. While only about 4% of babies are born on their exact due date, the estimation is vital for monitoring fetal development and scheduling prenatal care.</p>
+    <p>A pregnancy due date calculator estimates when a baby will arrive based on the first day of the last menstrual period (LMP) or a known conception date. While only about 4–5% of babies are actually born on their exact calculated due date, the estimate is still essential for monitoring fetal development, scheduling prenatal appointments and screenings, and planning for the arrival.</p>
 
-    <h3>How the Due Date is Calculated</h3>
-    <p>Standard gestation is approximately 280 days (40 weeks) from the first day of your last period, or 266 days (38 weeks) from conception. This tool uses Naegele's rule for its primary estimation.</p>
+    <h3>How the Due Date Is Calculated</h3>
+    <div class="formula-block">Due Date = LMP + 280 days (40 weeks), or Conception Date + 266 days (38 weeks)</div>
+    <p>Standard gestation is measured from the first day of the last menstrual period, not from conception, because ovulation typically occurs about two weeks after LMP — this is why "40 weeks pregnant" actually corresponds to roughly 38 weeks since conception. This tool applies Naegele's rule, the standard obstetric method for estimating due dates, adjusting automatically depending on whether you provide an LMP date or a conception date.</p>
 
     <h3>Trimester Breakdown</h3>
     <ul>
-      <li><strong>First Trimester:</strong> Week 1 to the end of Week 12. Critical for organ development.</li>
-      <li><strong>Second Trimester:</strong> Week 13 to the end of Week 26. Often the most comfortable period ("The Golden Period").</li>
-      <li><strong>Third Trimester:</strong> Week 27 to birth. Period of rapid fetal weight gain.</li>
+      <li><strong>First Trimester:</strong> Week 1 through the end of Week 12 — the period most critical for organ development, when the risk of miscarriage is also highest.</li>
+      <li><strong>Second Trimester:</strong> Week 13 through the end of Week 26 — often called "the golden period," typically bringing relief from early symptoms like nausea and fatigue.</li>
+      <li><strong>Third Trimester:</strong> Week 27 through birth — a period of rapid fetal weight gain and increasing physical demands on the parent's body.</li>
     </ul>
 
+    <h3>Why Due Dates Are Estimates, Not Guarantees</h3>
+    <p>Only a small percentage of babies arrive exactly on their calculated due date — most births happen within a two-week window on either side. Actual delivery timing depends on many individual factors including cycle length, whether it's a first pregnancy, and overall maternal health, which is why healthcare providers treat the due date as a planning target rather than a firm prediction.</p>
+
     <details>
-      <summary>❓ What if I have irregular cycles?</summary>
-      <p>If your cycles are shorter or longer than the average 28 days, these calculations might be slightly off. Your healthcare provider will likely use an early ultrasound (dating scan) to provide a more accurate due date.</p>
+      <summary>❓ What if I have irregular menstrual cycles?</summary>
+      <p>If your cycles are noticeably shorter or longer than the average 28 days, LMP-based calculations may be less accurate, since ovulation timing shifts with cycle length. Your healthcare provider will typically use an early ultrasound (dating scan) to refine the due date more precisely in these cases.</p>
     </details>
     <details>
-      <summary>❓ Is "full term" always 40 weeks?</summary>
-      <p>A pregnancy is considered "early term" at 37 weeks and "full term" at 39 weeks. Delivery between 39-41 weeks is considered optimal for the baby's health.</p>
+      <summary>❓ Is "full term" always exactly 40 weeks?</summary>
+      <p>No — a pregnancy is considered "early term" at 37–38 weeks, "full term" at 39–40 weeks, "late term" at 41 weeks, and "post-term" after 42 weeks. Delivery between 39 and 41 weeks is generally considered optimal for the baby's health outcomes.</p>
+    </details>
+    <details>
+      <summary>❓ Does this replace medical prenatal care?</summary>
+      <p>No — this calculator gives a statistical estimate only. Due dates confirmed by ultrasound, especially in the first trimester, are considered more accurate than LMP-based calculations alone, and regular prenatal care with a qualified provider remains essential throughout pregnancy.</p>
     </details>
   `
 });

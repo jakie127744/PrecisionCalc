@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="D3fhWMBqx_1gst3WfO1W1wEaM01Sgc4nspaFMgVYYP8" />
+  <title>Standard Deviation Calculator — PrecisionCalc</title>
+  <meta name="description" content="Calculate mean, variance, and standard deviation for a list of numbers." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://precisioncalc.com/stddev/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://precisioncalc.com/stddev/" />
+  <meta property="og:title" content="Standard Deviation Calculator — PrecisionCalc" />
+  <meta property="og:description" content="Calculate mean, variance, and standard deviation for a list of numbers." />
+  <meta property="og:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://precisioncalc.com/stddev/" />
+  <meta property="twitter:title" content="Standard Deviation Calculator — PrecisionCalc" />
+  <meta property="twitter:description" content="Calculate mean, variance, and standard deviation for a list of numbers." />
+  <meta property="twitter:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0c111a" />
+
+  <!-- Favicon / Navicon -->
+  <link rel="icon" type="image/png" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
+  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+  <!-- Structured Data: Calculator (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PrecisionCalc",
+    "url": "https://precisioncalc.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://precisioncalc.com/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Calculators",
+      "description": "A suite of free, professional calculators for finance, health, math, and unit conversions."
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Example Calculator (Mortgage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "FinancialApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Monthly payment calculation",
+      "Amortization schedule",
+      "Total interest computation"
+    ],
+    "url": "https://precisioncalc.com/mortgage/",
+    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOP NAV BAR
+       ═══════════════════════════════════════════════════════ -->
+  <header class="topbar" role="banner" id="topbar">
+    <!-- Mobile: hamburger + logo -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+    </a>
+
+    <!-- Desktop search (in topbar) -->
+    <div class="topbar-search" role="search">
+      <span class="material-symbols-outlined search-icon-el">search</span>
+      <input
+        type="search"
+        id="main-search"
+        class="search-input"
+        placeholder="Search calculators…"
+        autocomplete="off"
+        aria-label="Search calculators"
+      />
+      <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+
+    <!-- Desktop nav links -->
+    <nav class="topbar-nav" aria-label="Quick categories">
+      <a href="#all-calculators-list-finance" class="topbar-link">Finance</a>
+      <a href="#all-calculators-list-health" class="topbar-link">Health</a>
+      <a href="#all-calculators-list-math" class="topbar-link">Math</a>
+      <a href="#all-calculators-list-units" class="topbar-link">Units</a>
+    </nav>
+
+    <!-- Mobile search trigger -->
+    <button class="mobile-search-btn" id="mobile-search-btn" aria-label="Open search">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Mobile search overlay -->
+  <div class="mobile-search-overlay" id="mobile-search-overlay" hidden>
+    <div class="mobile-search-inner">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" id="mobile-search-input" class="search-input" placeholder="Search calculators…" autocomplete="off" aria-label="Mobile search" />
+      <button class="mobile-search-close" id="mobile-search-close" aria-label="Close search">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="mobile-search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE A: HEADER AD BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <div class="ad-zone ad-zone-a" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9907028021598445"
+           data-ad-slot="SLOT_ID_ZONE_A"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN APP SHELL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ── LEFT SIDEBAR (Desktop) ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Calculator categories">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-section-label">DIRECTORY</div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">⏱ Recent</span>
+          <div id="recent-tools" class="sidebar-items">
+            <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Finance</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/mortgage/" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="/compound/" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="/salary/" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="/emi/" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="/credit-card-payoff/" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="/roi/" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="/retirement/" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="/amortization/" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="/autoloan/" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="/freelancetax/" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="/inflation/" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="/simple-interest/" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Health &amp; Wellness</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/bmi/" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="/tdee/" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="/water/" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="/macro/" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="/bodyfat/" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="/bac/" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="/pregnancy/" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="/onerepmax/" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Mathematics</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/percentage/" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="/fraction/" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="/scientific/" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="/prime/" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="/quadratic/" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="/pythagorean/" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="/stddev/" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="/aspect/" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="/binaryhex/" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/matrix-ops/" class="sidebar-item" role="listitem" data-tool="matrix-ops"><span class="material-symbols-outlined sidebar-item-icon">grid_on</span>Matrix Add/Multiply</a>
+          </nav>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Daily Life</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/age/" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="/date-diff/" class="sidebar-item" role="listitem" data-tool="date-diff"><span class="material-symbols-outlined sidebar-item-icon">event</span>Date Difference</a>
+                    <a href="/duration/" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="/time-zone/" class="sidebar-item" role="listitem" data-tool="time-zone"><span class="material-symbols-outlined sidebar-item-icon">public</span>Time Zone Converter</a>
+                    <a href="/tip/" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="/tip-split/" class="sidebar-item" role="listitem" data-tool="tip-split"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Tip Splitter</a>
+                    <a href="/password/" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                  </nav>
+                </div>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Education & Kitchen</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/gpa/" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="/kitchen/" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/cooking-convert/" class="sidebar-item" role="listitem" data-tool="cooking-convert"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Cooking Measurement Converter</a>
+                  </nav>
+                </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Conversion</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/unit/" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+          </nav>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- Tool Stage (populated by JS) -->
+      <div id="tool-stage" aria-live="polite" aria-label="Calculator area">
+        <div id="active-tool-view" class="tool-container">
+    <div class="tool-header">
+      <div class="tool-header-main">
+        <div class="tool-header-icon"><span class="material-symbols-outlined" aria-hidden="true">functions</span></div>
+        <div class="tool-header-info">
+          <h1>Standard Deviation</h1>
+          <p>Calculate mean, variance, and standard deviation.</p>
+        </div>
+      </div>
+      <div class="tool-header-actions">
+        
+        <button class="action-btn" onclick="shareTool('stddev', 'Standard Deviation')" title="Share Tool">
+            <span class="material-symbols-outlined">share</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tool-content-wrap">
+      <div class="input-card" id="input-card-stddev">
+        
+    <div class="form-row">
+      <div class="field" style="flex:1;">
+        <label for="stddev-list">Numbers (comma or space separated)</label>
+        <input type="text" id="stddev-list" placeholder="10, 25, 40, 15, 30" value="10, 25, 40, 15, 30" />
+      </div>
+    </div>
+  
+      </div>
+
+      
+        <!-- Zone C: 24px buffer -->
+        <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-slot ad-slot-native" id="ad-zone-c-stddev">
+            <ins class="adsbygoogle" style="display:block"
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="7781234567"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <div class="result-card" id="result-card-stddev">
+          <div class="result-placeholder">Enter values above to see results ✦</div>
+        </div>
+        <div id="extra-stddev"></div>
+      
+
+      
+        <article class="seo-card" aria-label="How Standard Deviation works">
+          <h2>📖 How Standard Deviation Works</h2>
+          
+    <p>Standard deviation is a statistic that measures how spread out a dataset is relative to its mean (average). It's calculated as the square root of the variance, and it's one of the most widely used measures in statistics, finance, quality control, and scientific research for describing how consistent or variable a set of numbers is.</p>
+
+    <h3>The Standard Deviation Formula</h3>
+    <div class="formula-block">σ = √[ Σ(xᵢ − mean)² ÷ N ]</div>
+    <p>For each number in the dataset, subtract the mean, square the result (to eliminate negative signs), average those squared differences (this is the variance), then take the square root to return to the original units. For example, the dataset [10, 25, 40, 15, 30] has a mean of 24, and a population standard deviation of about 10.75 — meaning most values sit within roughly 11 units of the average.</p>
+
+    <h3>Population vs. Sample Standard Deviation</h3>
+    <ul>
+      <li><strong>Population Standard Deviation (σ):</strong> Used when you have data for every member of the group you're studying — for example, test scores for every student in a specific class.</li>
+      <li><strong>Sample Standard Deviation (s):</strong> Used when your data is only a subset drawn from a larger population. It uses "Bessel's correction" (dividing by n−1 instead of n) to provide an unbiased estimate of the true population variance, since samples tend to slightly understate true variability.</li>
+    </ul>
+
+    <h3>How to Interpret Standard Deviation</h3>
+    <p>In a normal distribution (the classic "bell curve"), standard deviation follows a predictable pattern known as the empirical rule:</p>
+    <ul>
+      <li>Approximately 68% of data falls within 1 standard deviation of the mean.</li>
+      <li>Approximately 95% of data falls within 2 standard deviations.</li>
+      <li>Approximately 99.7% of data falls within 3 standard deviations.</li>
+    </ul>
+    <p>A small standard deviation means data points cluster tightly around the mean (consistent, predictable); a large one means data is spread widely (variable, less predictable).</p>
+
+    <h3>Real-World Applications</h3>
+    <ul>
+      <li><b>Finance:</b> Standard deviation of returns is a standard measure of investment volatility and risk.</li>
+      <li><b>Quality control:</b> Manufacturers track standard deviation to ensure products stay within acceptable tolerances.</li>
+      <li><b>Education:</b> Standardized test scores are often reported relative to the mean and standard deviation of all test-takers.</li>
+      <li><b>Science:</b> Experimental results report standard deviation to communicate measurement consistency and reliability.</li>
+    </ul>
+
+    <details>
+      <summary>❓ What is variance, and how does it differ from standard deviation?</summary>
+      <p>Variance is the average of the squared differences from the mean. While standard deviation is expressed in the same units as the original data (making it easier to interpret intuitively), variance is expressed in squared units, which is why standard deviation is more commonly reported.</p>
+    </details>
+    <details>
+      <summary>❓ Why square the differences instead of just averaging them directly?</summary>
+      <p>Squaring ensures that negative differences (values below the mean) don't cancel out positive differences (values above the mean) when averaged — without squaring, the differences would always sum to exactly zero, making the measure useless.</p>
+    </details>
+    <details>
+      <summary>❓ Should I use population or sample standard deviation for my data?</summary>
+      <p>Use population standard deviation only if your dataset represents every single member of the group you care about. In almost all practical research, surveys, or experiments, you're working with a sample — so sample standard deviation (with Bessel's correction) is the more commonly appropriate choice.</p>
+    </details>
+  
+        </article>
+      
+    </div>
+  </div>
+      </div>
+    </main>
+
+    <!-- ── RIGHT AD SIDEBAR (Desktop xl+) ── -->
+    <aside class="ad-rail" role="complementary" aria-label="Advertisements">
+      <div class="ad-zone ad-zone-b">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot ad-slot-skyscraper" id="ad-zone-b">
+          <ins class="adsbygoogle"
+               style="display:block;width:300px;height:600px"
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="SLOT_ID_ZONE_B"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.app-shell -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE D: FOOTER AD + FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="ad-zone ad-zone-d" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-slot ad-slot-footer" id="ad-zone-d">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9907028021598445"
+             data-ad-slot="SLOT_ID_ZONE_D"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    <div class="footer-content" style="flex-direction: column; gap: 32px; align-items: center; max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6; opacity: 0.7;">
+        <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
+      </div>
+
+      <div class="footer-more-projects" style="width: 100%; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <h4 class="sidebar-section-label" style="text-align: center;">More from Molave Labs</h4>
+        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
+          <a href="https://chessbotbuddies.org" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">ChessBotBuddies — interactive chess bot trainers</a>
+          <a href="https://obbarcode.com" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">OB Barcode — label & barcode generator</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <div class="footer-brand" style="text-align: left;">
+          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="/contact/">Contact & About</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE BOTTOM NAV
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+      <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="bottom-nav-label">Featured</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-finance" onclick="navigate('mortgage')" aria-label="Finance calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">payments</span>
+      <span class="bottom-nav-label">Finance</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-health" onclick="navigate('bmi')" aria-label="Health calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">monitor_heart</span>
+      <span class="bottom-nav-label">Health</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-math" onclick="navigate('percentage')" aria-label="Math calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
+      <span class="bottom-nav-label">Math</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+      <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
+      <span class="bottom-nav-label">Units</span>
+    </button>
+  </nav>
+
+  <!-- Core Logic -->
+  <script src="/js/registry.js" defer></script>
+  
+  <!-- Pre-loaded Home Page Tools -->
+  <script src="/js/tools/stddev.js" defer></script>
+
+  <!-- Main Application -->
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

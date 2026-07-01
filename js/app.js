@@ -13,7 +13,7 @@ let currentTool  = null;
 
 /* ─── Share Tool ────────────────────────────────────────────── */
 window.shareTool = function(id, name) {
-    const url = window.location.origin + window.location.pathname + '#' + id;
+    const url = window.location.origin + '/' + id + '/';
     if (navigator.share) {
         navigator.share({
             title: name + ' — PrecisionCalc',
@@ -73,7 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Register Service Worker for PWA
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
+      navigator.serviceWorker.register('/sw.js')
         .then(reg => console.log('SW Registered'))
         .catch(err => console.log('SW Failed', err));
     });
@@ -81,18 +81,31 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('hashchange', route);
+window.addEventListener('popstate', route);
 
 /* ─── Router ────────────────────────────────────────────────── */
+// Supports two URL shapes for the same tool:
+//   - Real path:  /mortgage/   (used by the pre-rendered static pages — crawlable, indexable)
+//   - Hash:       /#mortgage   (used for in-app client-side navigation)
+// Hash always wins if present so existing links/bookmarks keep working unchanged.
+function currentPathSlug() {
+  return decodeURIComponent(window.location.pathname.replace(/^\/+|\/+$/g, ''));
+}
+
 async function route() {
-  const hash   = window.location.hash.replace('#', '').trim();
-  const toolId = hash || null;
+  const hash     = window.location.hash.replace('#', '').trim();
+  const pathSlug = currentPathSlug();
+  const toolId   = hash || (pathSlug && window.PrecisionCalcRegistry?.[pathSlug] ? pathSlug : null);
 
   if (!toolId || toolId === 'home') {
     showHome();
     return;
   }
 
-  // Attempt lazy load
+  await goToTool(toolId);
+}
+
+async function goToTool(toolId) {
   try {
     const tool = await fetchTool(toolId);
     if (!tool) { showHome(); return; }
@@ -102,6 +115,37 @@ async function route() {
     showHome();
   }
 }
+
+/* ─── Real-path link interception ──────────────────────────────
+   Lets every internal <a href="/toolid/"> work as a fast client-side
+   transition (pushState) instead of a full reload, while still being
+   a real, crawlable, bookmarkable URL if JS is off or it's opened fresh. */
+document.addEventListener('click', (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const a = e.target.closest('a[href]');
+  if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+
+  let url;
+  try { url = new URL(a.getAttribute('href'), window.location.origin); }
+  catch { return; }
+  if (url.origin !== window.location.origin) return;
+
+  const slug = url.pathname.replace(/^\/+|\/+$/g, '');
+
+  // Same-page hash link (e.g. on the homepage) — let the native hashchange flow handle it.
+  if (url.hash && url.pathname === window.location.pathname) return;
+
+  if (slug && window.PrecisionCalcRegistry?.[slug]) {
+    e.preventDefault();
+    history.pushState({ toolId: slug }, '', '/' + slug + '/');
+    goToTool(slug);
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  } else if (slug === '' && !url.hash) {
+    e.preventDefault();
+    history.pushState({}, '', '/');
+    showHome();
+  }
+});
 
 async function fetchTool(id) {
   // If already loaded (has template), return it
@@ -188,7 +232,7 @@ function homeScreenHTML() {
     </div>
 
     <div class="featured-grid">
-      <a href="#mortgage" class="feature-card-large" aria-label="Mortgage Calculator">
+      <a href="/mortgage/" class="feature-card-large" aria-label="Mortgage Calculator">
         <div class="feature-card-accent-bar"></div>
         <span class="feature-card-bg-icon material-symbols-outlined" aria-hidden="true">home</span>
         <div class="feature-card-content">
@@ -199,17 +243,17 @@ function homeScreenHTML() {
         </div>
       </a>
       <div class="feature-side-grid">
-        <a href="#compound" class="feature-side-card">
+        <a href="/compound/" class="feature-side-card">
           <div class="feature-side-left-bar"></div>
           <span class="material-symbols-outlined feature-side-icon">monitoring</span>
           <div><h4 class="feature-side-title">Compound Interest</h4><p class="feature-side-desc">Visualize long-term wealth growth.</p></div>
         </a>
-        <a href="#bmi" class="feature-side-card">
+        <a href="/bmi/" class="feature-side-card">
           <div class="feature-side-left-bar"></div>
           <span class="material-symbols-outlined feature-side-icon">monitor_weight</span>
           <div><h4 class="feature-side-title">Precision BMI &amp; TDEE</h4><p class="feature-side-desc">Accurate metabolic health metrics.</p></div>
         </a>
-        <a href="#kitchen" class="feature-side-card">
+        <a href="/kitchen/" class="feature-side-card">
           <div class="feature-side-left-bar"></div>
           <span class="material-symbols-outlined feature-side-icon">cooking</span>
           <div><h4 class="feature-side-title">Kitchen Master Converter</h4><p class="feature-side-desc">Volume, weight & temp for baking.</p></div>
@@ -339,6 +383,14 @@ function updateSEO({ title, description }) {
   document.title = title;
   const m = document.querySelector('meta[name="description"]');
   if (m) m.setAttribute('content', description);
+
+  const canonicalUrl = window.location.origin + (currentTool ? '/' + currentTool.id + '/' : '/');
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.setAttribute('href', canonicalUrl);
+  const ogUrl = document.querySelector('meta[property="og:url"]');
+  if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+  const twUrl = document.querySelector('meta[property="twitter:url"]');
+  if (twUrl) twUrl.setAttribute('content', canonicalUrl);
 }
 
 /* ─── Active Nav ────────────────────────────────────────────── */
@@ -446,7 +498,7 @@ function renderCompleteGrid(container) {
     </div>
     <div class="all-calculators-grid">
       ${categories[cat].map(t => `
-        <a href="#${t.id}" class="calculator-grid-item" aria-label="${t.name}" data-tool="${t.id}">
+        <a href="/${t.id}/" class="calculator-grid-item" aria-label="${t.name}" data-tool="${t.id}">
           <span class="material-symbols-outlined calculator-grid-item-icon">${t.materialIcon || TOOL_ICONS[t.id] || 'calculate'}</span>
           <span class="calculator-grid-item-name">${t.name}</span>
           <span class="calculator-grid-item-tagline">${t.tagline || ""}</span>
@@ -494,7 +546,7 @@ function renderRecentNav() {
   recentNav.innerHTML = recent.map(id => {
     const tool = window.CalcyRegistry?.[id];
     if (!tool) return '';
-    return `<a href="#${tool.id}" class="sidebar-item recent-item" data-tool="${tool.id}">
+    return `<a href="/${tool.id}/" class="sidebar-item recent-item" data-tool="${tool.id}">
       <span class="material-symbols-outlined sidebar-item-icon">${TOOL_ICONS[tool.id] || 'calculate'}</span>
       ${tool.name}
     </a>`;
@@ -650,7 +702,7 @@ function renderDropdown(results, input, dropdown) {
   // Wire up clicks...
   dropdown.querySelectorAll('.search-result-item[data-tool]').forEach(item => {
     item.addEventListener('click', () => {
-      window.location.hash = item.dataset.tool;
+      window.navigate(item.dataset.tool);
       input.value = '';
       dropdown.hidden = true;
       // Close mobile overlay if applicable
@@ -687,8 +739,18 @@ function tryMath(q) {
 
 /* ─── navigate() (used by bottom nav onclick & logo) ───────── */
 window.navigate = function(id) {
-  window.location.hash = (id === 'home' || !id) ? '' : id;
-  if (!id || id === 'home') {
+  const toolId = (id === 'home' || !id) ? null : id;
+
+  // On a real tool path (e.g. /mortgage/), navigate via pushState so the
+  // address bar reflects the destination instead of stacking a hash on top.
+  if (window.location.pathname !== '/') {
+    history.pushState(toolId ? { toolId } : {}, '', toolId ? '/' + toolId + '/' : '/');
+    if (toolId) goToTool(toolId); else showHome();
+    return;
+  }
+
+  window.location.hash = toolId || '';
+  if (!toolId) {
     // Force route to home in case hash was already empty
     showHome();
   }

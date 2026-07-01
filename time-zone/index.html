@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="D3fhWMBqx_1gst3WfO1W1wEaM01Sgc4nspaFMgVYYP8" />
+  <title>Time Zone Converter — PrecisionCalc</title>
+  <meta name="description" content="Convert time between any two time zones." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://precisioncalc.com/time-zone/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://precisioncalc.com/time-zone/" />
+  <meta property="og:title" content="Time Zone Converter — PrecisionCalc" />
+  <meta property="og:description" content="Convert time between any two time zones." />
+  <meta property="og:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://precisioncalc.com/time-zone/" />
+  <meta property="twitter:title" content="Time Zone Converter — PrecisionCalc" />
+  <meta property="twitter:description" content="Convert time between any two time zones." />
+  <meta property="twitter:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0c111a" />
+
+  <!-- Favicon / Navicon -->
+  <link rel="icon" type="image/png" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
+  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+  <!-- Structured Data: Calculator (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PrecisionCalc",
+    "url": "https://precisioncalc.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://precisioncalc.com/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Calculators",
+      "description": "A suite of free, professional calculators for finance, health, math, and unit conversions."
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Example Calculator (Mortgage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "FinancialApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Monthly payment calculation",
+      "Amortization schedule",
+      "Total interest computation"
+    ],
+    "url": "https://precisioncalc.com/mortgage/",
+    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOP NAV BAR
+       ═══════════════════════════════════════════════════════ -->
+  <header class="topbar" role="banner" id="topbar">
+    <!-- Mobile: hamburger + logo -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+    </a>
+
+    <!-- Desktop search (in topbar) -->
+    <div class="topbar-search" role="search">
+      <span class="material-symbols-outlined search-icon-el">search</span>
+      <input
+        type="search"
+        id="main-search"
+        class="search-input"
+        placeholder="Search calculators…"
+        autocomplete="off"
+        aria-label="Search calculators"
+      />
+      <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+
+    <!-- Desktop nav links -->
+    <nav class="topbar-nav" aria-label="Quick categories">
+      <a href="#all-calculators-list-finance" class="topbar-link">Finance</a>
+      <a href="#all-calculators-list-health" class="topbar-link">Health</a>
+      <a href="#all-calculators-list-math" class="topbar-link">Math</a>
+      <a href="#all-calculators-list-units" class="topbar-link">Units</a>
+    </nav>
+
+    <!-- Mobile search trigger -->
+    <button class="mobile-search-btn" id="mobile-search-btn" aria-label="Open search">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Mobile search overlay -->
+  <div class="mobile-search-overlay" id="mobile-search-overlay" hidden>
+    <div class="mobile-search-inner">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" id="mobile-search-input" class="search-input" placeholder="Search calculators…" autocomplete="off" aria-label="Mobile search" />
+      <button class="mobile-search-close" id="mobile-search-close" aria-label="Close search">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="mobile-search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE A: HEADER AD BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <div class="ad-zone ad-zone-a" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9907028021598445"
+           data-ad-slot="SLOT_ID_ZONE_A"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN APP SHELL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ── LEFT SIDEBAR (Desktop) ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Calculator categories">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-section-label">DIRECTORY</div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">⏱ Recent</span>
+          <div id="recent-tools" class="sidebar-items">
+            <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Finance</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/mortgage/" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="/compound/" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="/salary/" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="/emi/" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="/credit-card-payoff/" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="/roi/" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="/retirement/" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="/amortization/" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="/autoloan/" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="/freelancetax/" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="/inflation/" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="/simple-interest/" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Health &amp; Wellness</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/bmi/" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="/tdee/" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="/water/" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="/macro/" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="/bodyfat/" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="/bac/" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="/pregnancy/" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="/onerepmax/" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Mathematics</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/percentage/" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="/fraction/" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="/scientific/" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="/prime/" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="/quadratic/" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="/pythagorean/" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="/stddev/" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="/aspect/" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="/binaryhex/" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/matrix-ops/" class="sidebar-item" role="listitem" data-tool="matrix-ops"><span class="material-symbols-outlined sidebar-item-icon">grid_on</span>Matrix Add/Multiply</a>
+          </nav>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Daily Life</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/age/" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="/date-diff/" class="sidebar-item" role="listitem" data-tool="date-diff"><span class="material-symbols-outlined sidebar-item-icon">event</span>Date Difference</a>
+                    <a href="/duration/" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="/time-zone/" class="sidebar-item" role="listitem" data-tool="time-zone"><span class="material-symbols-outlined sidebar-item-icon">public</span>Time Zone Converter</a>
+                    <a href="/tip/" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="/tip-split/" class="sidebar-item" role="listitem" data-tool="tip-split"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Tip Splitter</a>
+                    <a href="/password/" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                  </nav>
+                </div>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Education & Kitchen</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/gpa/" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="/kitchen/" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/cooking-convert/" class="sidebar-item" role="listitem" data-tool="cooking-convert"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Cooking Measurement Converter</a>
+                  </nav>
+                </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Conversion</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/unit/" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+          </nav>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- Tool Stage (populated by JS) -->
+      <div id="tool-stage" aria-live="polite" aria-label="Calculator area">
+        <div id="active-tool-view" class="tool-container">
+    <div class="tool-header">
+      <div class="tool-header-main">
+        <div class="tool-header-icon"><span class="material-symbols-outlined" aria-hidden="true">public</span></div>
+        <div class="tool-header-info">
+          <h1>Time Zone Converter</h1>
+          <p>Convert time between time zones.</p>
+        </div>
+      </div>
+      <div class="tool-header-actions">
+        
+        <button class="action-btn" onclick="shareTool('time-zone', 'Time Zone Converter')" title="Share Tool">
+            <span class="material-symbols-outlined">share</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tool-content-wrap">
+      <div class="input-card" id="input-card-time-zone">
+        
+    <div class="form-row">
+      <div class="field">
+        <label for="tz-time">Time</label>
+        <input type="time" id="tz-time" value="12:00" />
+      </div>
+      <div class="field">
+        <label for="tz-from">From Time Zone (UTC offset)</label>
+        <input type="number" id="tz-from" placeholder="-5" min="-12" max="14" value="0" step="1" />
+      </div>
+      <div class="field">
+        <label for="tz-to">To Time Zone (UTC offset)</label>
+        <input type="number" id="tz-to" placeholder="+8" min="-12" max="14" value="0" step="1" />
+      </div>
+    </div>
+  
+      </div>
+
+      
+        <!-- Zone C: 24px buffer -->
+        <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-slot ad-slot-native" id="ad-zone-c-time-zone">
+            <ins class="adsbygoogle" style="display:block"
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="7781234567"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <div class="result-card" id="result-card-time-zone">
+          <div class="result-placeholder">Enter values above to see results ✦</div>
+        </div>
+        <div id="extra-time-zone"></div>
+      
+
+      
+        <article class="seo-card" aria-label="How Time Zone Converter works">
+          <h2>📖 How Time Zone Converter Works</h2>
+          
+    <p>Coordinating across time zones is one of the most common friction points in remote work, international travel, and global communication. This converter lets you shift a time from one UTC offset to another instantly, so you always know what time it actually is for the other person — no mental math, no counting on your fingers.</p>
+
+    <h3>How Time Zone Conversion Works</h3>
+    <div class="formula-block">Target Time = Source Time − Source UTC Offset + Target UTC Offset</div>
+    <p>Every time zone on Earth is defined as an offset from Coordinated Universal Time (UTC), ranging from UTC−12 to UTC+14. To convert, you first normalize the source time back to UTC by subtracting its offset, then apply the target zone's offset. For example, 12:00 PM in New York (UTC−5) converts to UTC 17:00, which becomes 01:00 AM the next day in Tokyo (UTC+9).</p>
+
+    <h3>UTC Offsets for Common Cities</h3>
+    <ul>
+      <li><b>UTC−8 (Los Angeles, Vancouver):</b> Pacific Time</li>
+      <li><b>UTC−5 (New York, Toronto, Bogotá):</b> Eastern Time</li>
+      <li><b>UTC+0 (London, Lisbon, Accra):</b> Greenwich Mean Time</li>
+      <li><b>UTC+1 (Paris, Berlin, Lagos):</b> Central European Time</li>
+      <li><b>UTC+5:30 (Mumbai, New Delhi):</b> India Standard Time</li>
+      <li><b>UTC+8 (Beijing, Singapore, Perth):</b> China Standard Time</li>
+      <li><b>UTC+9 (Tokyo, Seoul):</b> Japan/Korea Standard Time</li>
+      <li><b>UTC+10 (Sydney, Brisbane):</b> Australian Eastern Time</li>
+    </ul>
+
+    <h3>Why Time Zone Math Gets Confusing</h3>
+    <p>Two things trip people up more than anything else: daylight saving time and the international date line. Daylight saving shifts a region's effective offset by an hour for part of the year (and not every country observes it), while crossing the date line can change the calendar day entirely even when the clock time seems to move forward only slightly. This calculator works on plain UTC offsets, so during DST transitions you should double-check whether the region you're converting to or from is currently observing daylight saving.</p>
+
+    <h3>Common Use Cases</h3>
+    <ul>
+      <li><b>Scheduling international meetings:</b> Find a time slot that isn't 3 AM for anyone involved.</li>
+      <li><b>Flight arrival planning:</b> Convert departure time plus flight duration into local arrival time.</li>
+      <li><b>Live streams and launches:</b> Announce a single UTC time and let viewers convert it themselves.</li>
+      <li><b>Remote team coordination:</b> Quickly check overlap windows between distributed team members.</li>
+    </ul>
+
+    <details>
+      <summary>❓ Does this account for daylight saving time automatically?</summary>
+      <p>No — you enter the UTC offset directly, so you need to use the region's *current* offset (e.g., UTC−4 for New York during Eastern Daylight Time, or UTC−5 during Eastern Standard Time). This avoids ambiguity since not every country observes daylight saving on the same schedule.</p>
+    </details>
+    <details>
+      <summary>❓ What's the difference between UTC and GMT?</summary>
+      <p>For practical purposes they're the same. GMT (Greenwich Mean Time) is a time zone; UTC (Coordinated Universal Time) is the precise timekeeping standard the world's clocks are set against. UTC is the modern technical standard, but UTC+0 and GMT are used interchangeably in everyday conversion.</p>
+    </details>
+    <details>
+      <summary>❓ Why do some time zones have a 30 or 45 minute offset?</summary>
+      <p>Not every country aligns to whole-hour offsets. India (UTC+5:30), Newfoundland (UTC−3:30), and Nepal (UTC+5:45) all use fractional offsets, usually chosen to better match solar noon to the middle of the working day for that specific region.</p>
+    </details>
+  
+        </article>
+      
+    </div>
+  </div>
+      </div>
+    </main>
+
+    <!-- ── RIGHT AD SIDEBAR (Desktop xl+) ── -->
+    <aside class="ad-rail" role="complementary" aria-label="Advertisements">
+      <div class="ad-zone ad-zone-b">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot ad-slot-skyscraper" id="ad-zone-b">
+          <ins class="adsbygoogle"
+               style="display:block;width:300px;height:600px"
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="SLOT_ID_ZONE_B"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.app-shell -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE D: FOOTER AD + FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="ad-zone ad-zone-d" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-slot ad-slot-footer" id="ad-zone-d">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9907028021598445"
+             data-ad-slot="SLOT_ID_ZONE_D"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    <div class="footer-content" style="flex-direction: column; gap: 32px; align-items: center; max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6; opacity: 0.7;">
+        <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
+      </div>
+
+      <div class="footer-more-projects" style="width: 100%; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <h4 class="sidebar-section-label" style="text-align: center;">More from Molave Labs</h4>
+        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
+          <a href="https://chessbotbuddies.org" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">ChessBotBuddies — interactive chess bot trainers</a>
+          <a href="https://obbarcode.com" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">OB Barcode — label & barcode generator</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <div class="footer-brand" style="text-align: left;">
+          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="/contact/">Contact & About</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE BOTTOM NAV
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+      <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="bottom-nav-label">Featured</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-finance" onclick="navigate('mortgage')" aria-label="Finance calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">payments</span>
+      <span class="bottom-nav-label">Finance</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-health" onclick="navigate('bmi')" aria-label="Health calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">monitor_heart</span>
+      <span class="bottom-nav-label">Health</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-math" onclick="navigate('percentage')" aria-label="Math calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
+      <span class="bottom-nav-label">Math</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+      <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
+      <span class="bottom-nav-label">Units</span>
+    </button>
+  </nav>
+
+  <!-- Core Logic -->
+  <script src="/js/registry.js" defer></script>
+  
+  <!-- Pre-loaded Home Page Tools -->
+  <script src="/js/tools/time-zone.js" defer></script>
+
+  <!-- Main Application -->
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

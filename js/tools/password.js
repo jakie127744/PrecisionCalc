@@ -94,25 +94,34 @@ registerTool({
   },
 
   seoContent: `
-    <p>Password strength is a measure of the effectiveness of a password against guessing or brute-force attacks. In its simplest form, it estimates how many guesses an attacker would have to make to find the correct password.</p>
+    <p>Password strength is a measure of how resistant a password is to guessing or brute-force attacks. In its simplest form, it estimates how many attempts an attacker would need to make, on average, to find the correct password by trying combinations systematically.</p>
 
-    <h3>What is Information Entropy?</h3>
-    <p>Entropy, in the context of passwords, is measured in bits. It represents the number of binary attempts (0s and 1s) needed to guess the password. A password with 60 bits of entropy is significantly harder to crack than one with 30 bits. Every additional bit of entropy doubles the difficulty for an attacker.</p>
+    <h3>What Is Information Entropy?</h3>
+    <div class="formula-block">Entropy (bits) = Length × log₂(Character Set Size)</div>
+    <p>Entropy, in the context of passwords, is measured in bits and represents how many yes/no decisions an attacker's search would need to correctly guess the password. A password with 60 bits of entropy is significantly harder to crack than one with 30 bits — every additional bit doubles the number of possible combinations, so entropy grows exponentially, not linearly, with length and character variety.</p>
 
-    <h3>Tips for Unstoppable Passwords</h3>
+    <h3>Why Character Variety Matters Less Than Length</h3>
+    <p>Adding a symbol to your character set increases the base of the exponent (charset size), but adding characters to your password's length increases the exponent itself — and exponents dominate. A 16-character password using only lowercase letters (26 options per character) actually has more entropy than an 8-character password using all four character types (94 options per character), because 26¹⁶ vastly exceeds 94⁸. This is why long passphrases are often both stronger and easier to remember than short, "complex" passwords.</p>
+
+    <h3>Tips for Strong Passwords</h3>
     <ul>
-      <li><strong>Length is King:</strong> A long password made of simple words (passphrase) is often stronger and easier to remember than a short, complex one.</li>
-      <li><strong>Use a Manager:</strong> Don't try to remember unique passwords for every site—use a reputable password manager.</li>
-      <li><strong>Avoid Common Patterns:</strong> Dictionary words, "123456", and keyboard patterns (qwerty) are the first things attackers try.</li>
+      <li><strong>Length is king:</strong> A long password made of simple words (a passphrase) is often stronger and easier to remember than a short, complex one.</li>
+      <li><strong>Use a password manager:</strong> Don't try to remember unique passwords for every site — use a reputable manager to generate and store long, random passwords.</li>
+      <li><strong>Avoid common patterns:</strong> Dictionary words, "123456", and keyboard patterns (qwerty) are the first things attackers' cracking dictionaries try.</li>
+      <li><strong>Enable multi-factor authentication:</strong> Even a strong password benefits from a second layer of verification on important accounts.</li>
     </ul>
 
     <details>
       <summary>❓ How long should my password be?</summary>
-      <p>Current security standards recommend a minimum of 12 characters, though 16 or more is preferred for critical accounts like email or banking.</p>
+      <p>Current security guidance recommends a minimum of 12 characters, though 16 or more is preferred for critical accounts like email, banking, or password managers themselves.</p>
     </details>
     <details>
       <summary>❓ Does this tool send my password anywhere?</summary>
-      <p>No. This calculation is performed entirely locally in your browser. Your password never leaves your device.</p>
+      <p>No. This calculation is performed entirely locally in your browser using JavaScript. Your password is never transmitted, logged, or stored — it never leaves your device.</p>
+    </details>
+    <details>
+      <summary>❓ Why does the "time to crack" estimate assume 1 trillion guesses per second?</summary>
+      <p>This reflects a realistic modern offline attack using specialized hardware (GPUs or ASICs) against a leaked password hash database. Online, rate-limited login attempts are far slower, so real-world cracking time against a live login form is typically much longer than the estimate shown here.</p>
     </details>
   `
 });

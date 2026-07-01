@@ -85,28 +85,40 @@ registerTool({
   },
 
   seoContent: `
-    <p>A fraction represents a part of a whole, written as a numerator (top number) over a denominator (bottom number). Converting fractions to decimals is a fundamental math skill used in cooking, carpentry, finance, and virtually every STEM field.</p>
+    <p>A fraction represents a part of a whole, written as a numerator (top number) over a denominator (bottom number). Converting fractions to decimals — and simplifying them to their lowest terms — is a fundamental math skill used constantly in cooking, carpentry, finance, engineering, and virtually every STEM field.</p>
 
     <h3>Fraction to Decimal Conversion</h3>
     <div class="formula-block">Decimal = Numerator ÷ Denominator</div>
-    <p>For example, ¾ = 3 ÷ 4 = 0.75. Some fractions produce terminating decimals (like ½ = 0.5), while others produce repeating decimals (like ⅓ = 0.3333...). To convert to a percentage, multiply the decimal by 100.</p>
+    <p>For example, ¾ = 3 ÷ 4 = 0.75. Some fractions produce terminating decimals (like ½ = 0.5), while others produce repeating decimals that never end (like ⅓ = 0.3333...). To convert a decimal to a percentage, simply multiply by 100 — so ¾ becomes 75%.</p>
 
     <h3>Simplifying Fractions</h3>
-    <p>A fraction is in its simplest form when the numerator and denominator share no common factors other than 1. To simplify, divide both by their Greatest Common Divisor (GCD). For example, 12/16: GCD(12,16) = 4, so 12/16 = 3/4.</p>
+    <p>A fraction is in its simplest form when the numerator and denominator share no common factors other than 1. To simplify, divide both numbers by their Greatest Common Divisor (GCD). For example, 12/16: the GCD of 12 and 16 is 4, so dividing both by 4 gives 12/16 = 3/4 — the simplest equivalent fraction.</p>
 
-    <div class="formula-block">
-      GCD(a, b) — Euclidean Algorithm:
-      gcd(a, 0) = a
-      gcd(a, b) = gcd(b, a mod b)
-    </div>
+    <div class="formula-block">GCD(a, b) — Euclidean Algorithm: gcd(a, 0) = a; gcd(a, b) = gcd(b, a mod b)</div>
+    <p>This recursive algorithm, one of the oldest known algorithms in mathematics, finds the greatest common divisor by repeatedly replacing the larger number with the remainder of dividing it by the smaller number, until the remainder reaches zero.</p>
+
+    <h3>Improper Fractions and Mixed Numbers</h3>
+    <p>When the numerator is larger than the denominator (like 7/4), the fraction is called "improper" and can be rewritten as a mixed number combining a whole number and a proper fraction. Dividing 7 by 4 gives a quotient of 1 with a remainder of 3, so 7/4 = 1¾ (one and three-quarters).</p>
+
+    <h3>Where Fraction-to-Decimal Conversion Matters</h3>
+    <ul>
+      <li><b>Cooking and baking:</b> Recipe measurements like ⅔ cup often need converting for scaling or substitution.</li>
+      <li><b>Carpentry and construction:</b> Tape measures are marked in fractions of an inch (⅛, ¼, ½), which sometimes need decimal equivalents for calculations.</li>
+      <li><b>Finance:</b> Interest rates and stock prices have historically been quoted in fractions before decimalization.</li>
+      <li><b>Engineering and machining:</b> Precise tolerances often require converting fractional dimensions to decimal form.</li>
+    </ul>
 
     <details>
       <summary>❓ What is a mixed number?</summary>
-      <p>A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1¾ (one and three-quarters). To convert an improper fraction to a mixed number: divide the numerator by the denominator. The quotient is the whole number; the remainder becomes the new numerator.</p>
+      <p>A mixed number combines a whole number and a proper fraction. For example, 7/4 = 1¾ (one and three-quarters). To convert an improper fraction to a mixed number: divide the numerator by the denominator — the quotient becomes the whole number, and the remainder becomes the new numerator over the original denominator.</p>
     </details>
     <details>
-      <summary>❓ What are the most common fractions?</summary>
-      <p>½ = 0.5, ⅓ ≈ 0.333, ¼ = 0.25, ⅕ = 0.2, ⅛ = 0.125, ¾ = 0.75, ⅔ ≈ 0.667, ⅜ = 0.375, ⅝ = 0.625, ⅞ = 0.875. These are especially common in cooking measurements and woodworking dimensions.</p>
+      <summary>❓ What are the most common fractions and their decimal equivalents?</summary>
+      <p>½ = 0.5, ⅓ ≈ 0.333, ¼ = 0.25, ⅕ = 0.2, ⅛ = 0.125, ¾ = 0.75, ⅔ ≈ 0.667, ⅜ = 0.375, ⅝ = 0.625, ⅞ = 0.875. These are especially common in cooking measurements and woodworking/construction dimensions, so memorizing them speeds up everyday mental math.</p>
+    </details>
+    <details>
+      <summary>❓ Why do some fractions produce repeating decimals?</summary>
+      <p>A fraction produces a terminating decimal only if, after simplifying, its denominator's prime factors are limited to 2s and 5s (since our number system is base 10). Any other prime factor in the denominator — like 3, 7, or 11 — produces a repeating decimal, such as ⅓ = 0.333... or ⅐ = 0.142857142857...</p>
     </details>
   `
 });

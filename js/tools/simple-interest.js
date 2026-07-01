@@ -78,24 +78,34 @@ registerTool({
   },
 
   seoContent: `
-    <p>Simple interest is a quick and easy method of calculating the interest charge on a loan. It is determined by multiplying the daily interest rate by the principal by the number of days that elapse between payments.</p>
+    <p>Simple interest is the most straightforward method of calculating the interest charge on a loan or investment. Unlike compound interest, it grows in a perfectly straight line — the same dollar amount is added every period, making it easy to predict and easy to reason about.</p>
 
     <h3>The Simple Interest Formula</h3>
-    <div class="formula-block">
-      Interest = Principal × Rate × Time
-    </div>
-    <p>Where "Principal" is the initial amount, "Rate" is the annual interest rate (as a decimal), and "Time" is the duration in years.</p>
+    <div class="formula-block">Interest = Principal × Rate × Time ÷ 100</div>
+    <p>Where "Principal" is the initial amount, "Rate" is the annual interest rate (as a percentage), and "Time" is the duration in years. For example, $1,000 at 5% for 3 years earns (1000 × 5 × 3) ÷ 100 = $150 in total interest, for a final balance of $1,150 — regardless of how that interest is paid out or timed.</p>
 
     <h3>Simple vs. Compound Interest</h3>
-    <p>Unlike compound interest—where interest is earned on both the principal and previously earned interest—simple interest only applies to the original principal. This makes it a preferred calculation for short-term loans and some consumer credit products.</p>
+    <p>With compound interest, interest is earned on both the principal <em>and</em> previously earned interest, so growth accelerates over time. Simple interest only ever applies to the original principal, so the interest earned each year stays exactly the same. Over short periods the difference is small, but over many years compound interest pulls noticeably ahead — which is why long-term savings and investment products almost always use compounding, while simple interest is reserved for shorter, more predictable arrangements.</p>
+
+    <h3>Where Simple Interest Is Used</h3>
+    <ul>
+      <li><b>Auto loans:</b> Many car loans use simple interest calculated on the remaining principal.</li>
+      <li><b>Short-term personal loans:</b> Loans under a year or two often use simple interest for easy transparency.</li>
+      <li><b>Some certificates of deposit (CDs):</b> Certain short-term CDs pay simple interest rather than compounding.</li>
+      <li><b>Late fee and penalty calculations:</b> Many contracts specify simple interest for calculating overdue balances.</li>
+    </ul>
 
     <details>
-      <summary>❓ When is simple interest used?</summary>
-      <p>Simple interest is commonly used for auto loans, short-term personal loans, and certain types of mortgages.</p>
+      <summary>❓ When is simple interest used instead of compound?</summary>
+      <p>Simple interest is commonly used for auto loans, short-term personal loans, and certain types of consumer credit where lenders want a transparent, easy-to-verify interest calculation that doesn't compound over the loan term.</p>
     </details>
     <details>
       <summary>❓ How do I convert months to years for the formula?</summary>
-      <p>Divide the number of months by 12. For example, 6 months is 0.5 years.</p>
+      <p>Divide the number of months by 12. For example, 6 months is 0.5 years, and 18 months is 1.5 years — plug that decimal directly into the Time field.</p>
+    </details>
+    <details>
+      <summary>❓ Does simple interest ever beat compound interest?</summary>
+      <p>Only from a borrower's perspective on longer loans — since compound interest accrues interest-on-interest, a borrower generally pays less total interest under a simple-interest agreement than an equivalent compound-interest one over the same term and rate.</p>
     </details>
   `
 });

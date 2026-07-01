@@ -103,21 +103,39 @@ registerTool({
   },
 
   seoContent: `
-    <p>A circle is a shape consisting of all points in a plane that are at a given distance from a given point, the center. The distance around the circle is called the circumference, and the space inside it is the area.</p>
+    <p>A circle is a shape consisting of all points in a plane that are at a fixed distance from a central point. That distance is the radius, the boundary line around it is the circumference, and the flat space it encloses is the area. Circles show up everywhere from engineering and architecture to everyday cooking (pan sizes) and sports (track distances).</p>
 
     <h3>Circle Formulas</h3>
+    <div class="formula-block">Area = π × r² &nbsp;|&nbsp; Circumference = 2 × π × r</div>
     <ul>
-      <li><strong>Diameter (d):</strong> 2 × radius (r)</li>
-      <li><strong>Circumference (C):</strong> 2 × π × r (or π × d)</li>
-      <li><strong>Area (A):</strong> π × r²</li>
+      <li><strong>Diameter (d):</strong> 2 × radius (r) — the full distance across the circle through its center.</li>
+      <li><strong>Circumference (C):</strong> 2 × π × r, or equivalently π × d — the distance around the circle.</li>
+      <li><strong>Area (A):</strong> π × r² — the space enclosed within the circle.</li>
     </ul>
+    <p>For example, a circle with a radius of 5 units has an area of π × 5² ≈ 78.54 square units and a circumference of 2 × π × 5 ≈ 31.42 units.</p>
 
     <h3>Understanding Pi (π)</h3>
-    <p>Pi is an irrational number approximately equal to 3.14159. It represents the ratio of any circle's circumference to its diameter. No matter how big or small the circle, this ratio remains constant.</p>
+    <p>Pi is an irrational number, approximately 3.14159, representing the ratio of any circle's circumference to its diameter. No matter how large or small the circle — from a coin to a planet's orbit — this ratio never changes, which is what makes pi one of the most fundamental constants in mathematics.</p>
+
+    <h3>Real-World Applications</h3>
+    <ul>
+      <li><b>Construction:</b> Calculating material needed for circular pools, tanks, or roundabouts.</li>
+      <li><b>Manufacturing:</b> Determining pipe cross-sectional area for flow-rate calculations.</li>
+      <li><b>Sports:</b> Measuring the circumference of a running track's curved sections.</li>
+      <li><b>Everyday life:</b> Figuring out how much pizza (area) you're actually getting for the price, or how much fencing (circumference) a circular garden needs.</li>
+    </ul>
 
     <details>
       <summary>❓ What is the difference between radius and diameter?</summary>
-      <p>The radius is the distance from the center to the edge. The diameter is the distance across the circle through the center—exactly twice the radius.</p>
+      <p>The radius is the distance from the center to the edge. The diameter is the distance across the circle through the center — exactly twice the radius. Most formulas use radius, so if you only know the diameter, halve it first.</p>
+    </details>
+    <details>
+      <summary>❓ Why does area use r² but circumference only uses r?</summary>
+      <p>Area measures two-dimensional space, so it scales with the square of the radius — doubling the radius quadruples the area. Circumference measures a one-dimensional distance around the edge, so it scales linearly — doubling the radius simply doubles the circumference.</p>
+    </details>
+    <details>
+      <summary>❓ Is pi ever exactly 3.14?</summary>
+      <p>No — pi is irrational, meaning its decimal digits continue forever without repeating. 3.14 and 22/7 are both common rounded approximations used for everyday calculations, but true precision work uses many more decimal places (this calculator uses JavaScript's built-in high-precision value of π).</p>
     </details>
   `
 });

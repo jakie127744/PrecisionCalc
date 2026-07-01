@@ -97,22 +97,38 @@ registerTool({
   },
 
   seoContent: `
-    <p>Understanding different numeral systems is a cornerstone of computer science and digital logic. This Base Converter allows you to bridge the gap between human-readable decimals and the binary/hexadecimal formats used by hardware.</p>
+    <p>Understanding different numeral systems is a cornerstone of computer science and digital logic. This Base Converter allows you to bridge the gap between human-readable decimal numbers and the binary, hexadecimal, and octal formats used by hardware, low-level programming, and networking.</p>
 
-    <h3>Common Bases</h3>
+    <h3>Common Number Bases</h3>
+    <div class="formula-block">Value = Σ (digit × baseᵖᵒˢⁱᵗⁱᵒⁿ)</div>
     <ul>
-      <li><strong>Decimal (Base 10):</strong> The standard system used by humans. Uses digits 0-9.</li>
-      <li><strong>Binary (Base 2):</strong> The language of computers. Uses only 0 and 1.</li>
-      <li><strong>Hexadecimal (Base 16):</strong> A compact way to represent binary. Uses digits 0-9 and letters A-F.</li>
-      <li><strong>Octal (Base 8):</strong> Less common today, but still used in some legacy systems and Unix file permissions.</li>
+      <li><strong>Decimal (Base 10):</strong> The standard system used by humans day to day. Uses digits 0–9.</li>
+      <li><strong>Binary (Base 2):</strong> The native language of computer hardware, where every value is stored as electrical on/off states. Uses only 0 and 1.</li>
+      <li><strong>Hexadecimal (Base 16):</strong> A compact way to represent binary. Uses digits 0–9 and letters A–F, where A=10 through F=15.</li>
+      <li><strong>Octal (Base 8):</strong> Less common today, but still used in some legacy systems and Unix/Linux file permission notation (like chmod 755).</li>
     </ul>
 
+    <h3>Worked Example</h3>
+    <p>The decimal number 255 converts to binary 11111111 (eight 1s, since 255 is the maximum value a single byte can hold), to hexadecimal FF (F=15, and 15×16 + 15 = 255), and to octal 377. This is exactly why 255 shows up constantly in computing — it's the largest value representable in 8 bits.</p>
+
     <h3>Why Use Hexadecimal?</h3>
-    <p>Hexadecimal is preferred in programming because one hex digit corresponds exactly to 4 bits (a "nibble"). This makes it significantly easier to read memory addresses and color codes than raw binary.</p>
+    <p>Hexadecimal is preferred in programming because one hex digit corresponds exactly to 4 bits (a "nibble"), and two hex digits correspond exactly to one byte (8 bits). This makes it significantly easier to read memory addresses, color codes (like #FF5733 in CSS), and MAC addresses than the equivalent raw binary string, which would be four times longer and much harder to scan visually.</p>
+
+    <h3>Practical Applications</h3>
+    <ul>
+      <li><b>Web development:</b> CSS colors are written in hexadecimal (e.g., #FFFFFF for white).</li>
+      <li><b>Networking:</b> IPv6 addresses and MAC addresses are expressed in hexadecimal.</li>
+      <li><b>Low-level programming:</b> Memory addresses, byte values, and bitwise flags are commonly shown in hex or binary.</li>
+      <li><b>Unix/Linux permissions:</b> File permission codes like 755 or 644 are octal representations of read/write/execute bits.</li>
+    </ul>
 
     <details>
       <summary>❓ How do I convert manually?</summary>
-      <p>To convert from Decimal to another base, repeatedly divide the number by the target base and record the remainders in reverse order. To convert TO Decimal, multiply each digit by the base raised to its positional power.</p>
+      <p>To convert from decimal to another base, repeatedly divide the number by the target base and record the remainders in reverse order. To convert to decimal, multiply each digit by the base raised to its positional power (starting at 0 from the right) and sum the results.</p>
+    </details>
+    <details>
+      <summary>❓ Why does binary use so many more digits than decimal?</summary>
+      <p>Because binary only has two symbols (0 and 1) per digit compared to decimal's ten (0–9), it needs roughly 3.3 times more digits to represent the same value — which is exactly why hexadecimal exists, as a much more compact stand-in for binary.</p>
     </details>
   `
 });

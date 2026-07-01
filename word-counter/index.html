@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="D3fhWMBqx_1gst3WfO1W1wEaM01Sgc4nspaFMgVYYP8" />
+  <title>Word &amp; Character Counter — PrecisionCalc</title>
+  <meta name="description" content="Quickly count words and characters for your essay or assignment. Includes estimated reading and speaking time." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://precisioncalc.com/word-counter/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://precisioncalc.com/word-counter/" />
+  <meta property="og:title" content="Word &amp; Character Counter — PrecisionCalc" />
+  <meta property="og:description" content="Quickly count words and characters for your essay or assignment. Includes estimated reading and speaking time." />
+  <meta property="og:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://precisioncalc.com/word-counter/" />
+  <meta property="twitter:title" content="Word &amp; Character Counter — PrecisionCalc" />
+  <meta property="twitter:description" content="Quickly count words and characters for your essay or assignment. Includes estimated reading and speaking time." />
+  <meta property="twitter:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0c111a" />
+
+  <!-- Favicon / Navicon -->
+  <link rel="icon" type="image/png" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
+  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+  <!-- Structured Data: Calculator (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PrecisionCalc",
+    "url": "https://precisioncalc.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://precisioncalc.com/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Calculators",
+      "description": "A suite of free, professional calculators for finance, health, math, and unit conversions."
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Example Calculator (Mortgage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "FinancialApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Monthly payment calculation",
+      "Amortization schedule",
+      "Total interest computation"
+    ],
+    "url": "https://precisioncalc.com/mortgage/",
+    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOP NAV BAR
+       ═══════════════════════════════════════════════════════ -->
+  <header class="topbar" role="banner" id="topbar">
+    <!-- Mobile: hamburger + logo -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+    </a>
+
+    <!-- Desktop search (in topbar) -->
+    <div class="topbar-search" role="search">
+      <span class="material-symbols-outlined search-icon-el">search</span>
+      <input
+        type="search"
+        id="main-search"
+        class="search-input"
+        placeholder="Search calculators…"
+        autocomplete="off"
+        aria-label="Search calculators"
+      />
+      <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+
+    <!-- Desktop nav links -->
+    <nav class="topbar-nav" aria-label="Quick categories">
+      <a href="#all-calculators-list-finance" class="topbar-link">Finance</a>
+      <a href="#all-calculators-list-health" class="topbar-link">Health</a>
+      <a href="#all-calculators-list-math" class="topbar-link">Math</a>
+      <a href="#all-calculators-list-units" class="topbar-link">Units</a>
+    </nav>
+
+    <!-- Mobile search trigger -->
+    <button class="mobile-search-btn" id="mobile-search-btn" aria-label="Open search">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Mobile search overlay -->
+  <div class="mobile-search-overlay" id="mobile-search-overlay" hidden>
+    <div class="mobile-search-inner">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" id="mobile-search-input" class="search-input" placeholder="Search calculators…" autocomplete="off" aria-label="Mobile search" />
+      <button class="mobile-search-close" id="mobile-search-close" aria-label="Close search">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="mobile-search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE A: HEADER AD BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <div class="ad-zone ad-zone-a" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9907028021598445"
+           data-ad-slot="SLOT_ID_ZONE_A"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN APP SHELL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ── LEFT SIDEBAR (Desktop) ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Calculator categories">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-section-label">DIRECTORY</div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">⏱ Recent</span>
+          <div id="recent-tools" class="sidebar-items">
+            <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Finance</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/mortgage/" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="/compound/" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="/salary/" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="/emi/" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="/credit-card-payoff/" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="/roi/" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="/retirement/" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="/amortization/" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="/autoloan/" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="/freelancetax/" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="/inflation/" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="/simple-interest/" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Health &amp; Wellness</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/bmi/" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="/tdee/" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="/water/" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="/macro/" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="/bodyfat/" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="/bac/" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="/pregnancy/" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="/onerepmax/" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Mathematics</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/percentage/" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="/fraction/" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="/scientific/" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="/prime/" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="/quadratic/" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="/pythagorean/" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="/stddev/" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="/aspect/" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="/binaryhex/" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/matrix-ops/" class="sidebar-item" role="listitem" data-tool="matrix-ops"><span class="material-symbols-outlined sidebar-item-icon">grid_on</span>Matrix Add/Multiply</a>
+          </nav>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Daily Life</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/age/" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="/date-diff/" class="sidebar-item" role="listitem" data-tool="date-diff"><span class="material-symbols-outlined sidebar-item-icon">event</span>Date Difference</a>
+                    <a href="/duration/" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="/time-zone/" class="sidebar-item" role="listitem" data-tool="time-zone"><span class="material-symbols-outlined sidebar-item-icon">public</span>Time Zone Converter</a>
+                    <a href="/tip/" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="/tip-split/" class="sidebar-item" role="listitem" data-tool="tip-split"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Tip Splitter</a>
+                    <a href="/password/" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                  </nav>
+                </div>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Education & Kitchen</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/gpa/" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="/kitchen/" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/cooking-convert/" class="sidebar-item" role="listitem" data-tool="cooking-convert"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Cooking Measurement Converter</a>
+                  </nav>
+                </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Conversion</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/unit/" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+          </nav>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- Tool Stage (populated by JS) -->
+      <div id="tool-stage" aria-live="polite" aria-label="Calculator area">
+        <div id="active-tool-view" class="tool-container">
+    <div class="tool-header">
+      <div class="tool-header-main">
+        <div class="tool-header-icon"><span class="material-symbols-outlined" aria-hidden="true">edit_note</span></div>
+        <div class="tool-header-info">
+          <h1>Essay Analyzer</h1>
+          <p>Count words, characters, and estimate reading time.</p>
+        </div>
+      </div>
+      <div class="tool-header-actions">
+        
+        <button class="action-btn" onclick="shareTool('word-counter', 'Essay Analyzer')" title="Share Tool">
+            <span class="material-symbols-outlined">share</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tool-content-wrap">
+      <div class="input-card" id="input-card-word-counter">
+        
+    <div class="form-row">
+      <div class="field" style="flex:1;">
+        <label for="wc-input">Enter or paste your text</label>
+        <textarea id="wc-input" rows="8" placeholder="Type or paste your content here..." style="background:var(--surface-container); color:var(--on-surface); border:1px solid var(--outline-variant); border-radius:var(--radius-md); padding:12px; font-family:inherit; font-size:1rem; resize:vertical;"></textarea>
+      </div>
+    </div>
+  
+      </div>
+
+      
+        <!-- Zone C: 24px buffer -->
+        <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-slot ad-slot-native" id="ad-zone-c-word-counter">
+            <ins class="adsbygoogle" style="display:block"
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="7781234567"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <div class="result-card" id="result-card-word-counter">
+          <div class="result-placeholder">Enter values above to see results ✦</div>
+        </div>
+        <div id="extra-word-counter"></div>
+      
+
+      
+        <article class="seo-card" aria-label="How Essay Analyzer works">
+          <h2>📖 How Essay Analyzer Works</h2>
+          
+    <p>Writing an essay, blog post, or speech often requires adhering to strict length requirements. This Essay Analyzer goes beyond simple word counting to provide insights into your content's length, structure, and delivery time — all updated live as you type.</p>
+
+    <h3>How the Metrics Are Calculated</h3>
+    <div class="formula-block">Words = trimmed text split on whitespace · Reading Time = Words ÷ 200 wpm · Speaking Time = Words ÷ 130 wpm</div>
+    <p>Word count works by trimming leading/trailing whitespace and splitting the remaining text on any run of spaces, tabs, or line breaks — each resulting chunk counts as one word. Character count is a raw length of the text including spaces and punctuation. Sentence count estimates boundaries by counting periods, exclamation points, and question marks.</p>
+
+    <h3>Word vs. Character Counting</h3>
+    <p>Academic assignments typically use word counts (e.g., a 500-word essay), while social media platforms and SMS often use character limits (e.g., 280 characters on X/Twitter, 160 for a single SMS segment). This tool provides both instantly so you can check against whichever limit applies to what you're writing.</p>
+
+    <h3>Time Estimates Explained</h3>
+    <ul>
+      <li><strong>Reading Time (200 wpm):</strong> Useful for blog posts, articles, and emails — based on the commonly cited average adult silent-reading speed of 200–250 words per minute.</li>
+      <li><strong>Speaking Time (130 wpm):</strong> Vital for presentations, speeches, and video scripts — clear, well-paced spoken delivery averages around 130 words per minute, notably slower than silent reading.</li>
+    </ul>
+
+    <h3>Practical Uses</h3>
+    <ul>
+      <li><b>Academic essays:</b> Verify you're within a professor's minimum or maximum word count before submitting.</li>
+      <li><b>Cover letters and resumes:</b> Keep concise documents within recommended length guidelines.</li>
+      <li><b>Video and podcast scripts:</b> Estimate runtime before recording so episodes hit a target length.</li>
+      <li><b>Social media posts:</b> Check character counts against platform limits before publishing.</li>
+    </ul>
+
+    <details>
+      <summary>❓ Does this count punctuation?</summary>
+      <p>Character counts include all punctuation and spaces. Word counts treat any string of characters separated by whitespace as a single word, so punctuation attached to a word (like "don't" or "well-known") doesn't split it into multiple words.</p>
+    </details>
+    <details>
+      <summary>❓ Why is my speaking time estimate longer than my reading time?</summary>
+      <p>Because speaking naturally happens slower than silent reading — pauses for breath, emphasis, and clarity all add time. The 130 wpm speaking-rate estimate reflects a typical, clearly-paced presentation rather than a rushed reading of the same text.</p>
+    </details>
+    <details>
+      <summary>❓ Is the sentence count always accurate?</summary>
+      <p>It's an estimate based on counting periods, question marks, and exclamation points. Abbreviations (like "Dr." or "e.g."), decimal numbers, and ellipses can occasionally throw off an automated sentence count, so treat it as a close approximation rather than an exact grammatical count.</p>
+    </details>
+  
+        </article>
+      
+    </div>
+  </div>
+      </div>
+    </main>
+
+    <!-- ── RIGHT AD SIDEBAR (Desktop xl+) ── -->
+    <aside class="ad-rail" role="complementary" aria-label="Advertisements">
+      <div class="ad-zone ad-zone-b">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot ad-slot-skyscraper" id="ad-zone-b">
+          <ins class="adsbygoogle"
+               style="display:block;width:300px;height:600px"
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="SLOT_ID_ZONE_B"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.app-shell -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE D: FOOTER AD + FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="ad-zone ad-zone-d" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-slot ad-slot-footer" id="ad-zone-d">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9907028021598445"
+             data-ad-slot="SLOT_ID_ZONE_D"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    <div class="footer-content" style="flex-direction: column; gap: 32px; align-items: center; max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6; opacity: 0.7;">
+        <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
+      </div>
+
+      <div class="footer-more-projects" style="width: 100%; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <h4 class="sidebar-section-label" style="text-align: center;">More from Molave Labs</h4>
+        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
+          <a href="https://chessbotbuddies.org" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">ChessBotBuddies — interactive chess bot trainers</a>
+          <a href="https://obbarcode.com" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">OB Barcode — label & barcode generator</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <div class="footer-brand" style="text-align: left;">
+          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="/contact/">Contact & About</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE BOTTOM NAV
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+      <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="bottom-nav-label">Featured</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-finance" onclick="navigate('mortgage')" aria-label="Finance calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">payments</span>
+      <span class="bottom-nav-label">Finance</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-health" onclick="navigate('bmi')" aria-label="Health calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">monitor_heart</span>
+      <span class="bottom-nav-label">Health</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-math" onclick="navigate('percentage')" aria-label="Math calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
+      <span class="bottom-nav-label">Math</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+      <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
+      <span class="bottom-nav-label">Units</span>
+    </button>
+  </nav>
+
+  <!-- Core Logic -->
+  <script src="/js/registry.js" defer></script>
+  
+  <!-- Pre-loaded Home Page Tools -->
+  <script src="/js/tools/word-counter.js" defer></script>
+
+  <!-- Main Application -->
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

@@ -87,24 +87,39 @@ registerTool({
   },
 
   seoContent: `
-    <p>The "What do I need on my final?" question is a rite of passage for every student. This calculator takes the guesswork out of finals week by providing the exact score required to meet your academic goals.</p>
+    <p>The "What do I need on my final?" question is a rite of passage for every student. This calculator takes the guesswork out of finals week by providing the exact score required to meet your target course grade, so you know precisely how much you need to study — and whether it's realistically achievable.</p>
 
     <h3>The Calculation Logic</h3>
-    <div class="formula-block">
-      Final Score Needed = [Target Grade - Current Grade × (1 - Final Weight)] / Final Weight
-    </div>
-    <p>This formula determines the missing portion of your 100% grade total. It assumes your current grade is representative of the entire non-final portion of the course.</p>
+    <div class="formula-block">Final Score Needed = [Target Grade − Current Grade × (1 − Final Weight)] ÷ Final Weight</div>
+    <p>This formula determines the missing portion of your 100% grade total. It assumes your current grade is representative of the entire non-final portion of the course. For example, if your current grade is 85%, your target is 90%, and the final is worth 20% of the course: needed = [90 − 85 × 0.8] ÷ 0.2 = [90 − 68] ÷ 0.2 = 110% — meaning even a perfect score wouldn't be quite enough without extra credit, since the final only controls a fifth of your grade.</p>
+
+    <h3>Reading the Result</h3>
+    <ul>
+      <li><b>0% or below:</b> You've already secured your target grade regardless of final exam performance.</li>
+      <li><b>Under 90%:</b> Achievable with normal, focused studying.</li>
+      <li><b>90–100%:</b> Challenging but possible — treat this final as high-priority.</li>
+      <li><b>Over 100%:</b> Mathematically impossible on the final alone; you'll need extra credit, grade rounding, or a grade-weight adjustment from your instructor.</li>
+    </ul>
 
     <h3>How to Improve Your Odds</h3>
     <ul>
       <li><strong>Check for Extra Credit:</strong> Some professors offer bonus points that aren't reflected in the syllabus weight.</li>
-      <li><strong>Negotiate Weights:</strong> In rare cases, some instructors allow you to shift weights if you perform better on the final.</li>
-      <li><strong>Start Early:</strong> Knowing you need a 98% is better than finding out the night before!</li>
+      <li><strong>Negotiate Weights:</strong> In rare cases, some instructors allow you to shift weights if you perform better on the final than earlier assessments.</li>
+      <li><strong>Start Early:</strong> Knowing you need a 98% with three weeks to prepare is far more useful than finding out the night before.</li>
+      <li><strong>Ask about grade rounding:</strong> Many courses round a 89.5% up to a 90%, which can meaningfully lower the score you actually need.</li>
     </ul>
 
     <details>
       <summary>❓ Can I get over 100%?</summary>
-      <p>If the calculator says you need over 100%, you must rely on extra credit or high-scaling to reach your target grade.</p>
+      <p>If the calculator says you need over 100%, it means it's mathematically impossible to reach your target using only the final exam — you'd need extra credit, a curve, or an adjustment to grade weighting to close the gap.</p>
+    </details>
+    <details>
+      <summary>❓ What if I don't know my exact current grade?</summary>
+      <p>Check your school's online gradebook portal, or manually average your scored assignments weighted by their syllabus percentages. Even a rough estimate is usually accurate enough to plan your study priorities.</p>
+    </details>
+    <details>
+      <summary>❓ Does this account for a grading curve?</summary>
+      <p>No — the calculator works from raw percentages as entered. If your instructor applies a curve to the final exam or the course overall, treat the result as a pre-curve estimate and adjust your expectations accordingly.</p>
     </details>
   `
 });

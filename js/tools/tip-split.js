@@ -3,7 +3,7 @@
  * Calculates tip and splits bill among people
  */
 registerTool({
-  id: 'tipsplit',
+  id: 'tip-split',
   name: 'Tip Splitter',
   category: 'Daily Life',
   icon: '💵',

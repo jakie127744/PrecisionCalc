@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="D3fhWMBqx_1gst3WfO1W1wEaM01Sgc4nspaFMgVYYP8" />
+  <title>BMI Calculator — PrecisionCalc</title>
+  <meta name="description" content="Calculate your Body Mass Index (BMI) instantly. Supports imperial and metric. See WHO category and healthy weight range for your height." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://precisioncalc.com/bmi/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://precisioncalc.com/bmi/" />
+  <meta property="og:title" content="BMI Calculator — PrecisionCalc" />
+  <meta property="og:description" content="Calculate your Body Mass Index (BMI) instantly. Supports imperial and metric. See WHO category and healthy weight range for your height." />
+  <meta property="og:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://precisioncalc.com/bmi/" />
+  <meta property="twitter:title" content="BMI Calculator — PrecisionCalc" />
+  <meta property="twitter:description" content="Calculate your Body Mass Index (BMI) instantly. Supports imperial and metric. See WHO category and healthy weight range for your height." />
+  <meta property="twitter:image" content="https://precisioncalc.com/og-image.png" />
+
+  <!-- Fonts: Manrope (headlines) + Inter (body) + Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0c111a" />
+
+  <!-- Favicon / Navicon -->
+  <link rel="icon" type="image/png" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
+  <script id="aclib" type="text/javascript" src="//acscdn.com/script/aclib.js"></script>
+
+  <!-- Structured Data: Calculator (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PrecisionCalc",
+    "url": "https://precisioncalc.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://precisioncalc.com/#search={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Online Calculators",
+      "description": "A suite of free, professional calculators for finance, health, math, and unit conversions."
+    }
+  }
+  </script>
+
+  <!-- Structured Data: Example Calculator (Mortgage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Calculator",
+    "operatingSystem": "All",
+    "applicationCategory": "FinancialApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Monthly payment calculation",
+      "Amortization schedule",
+      "Total interest computation"
+    ],
+    "url": "https://precisioncalc.com/mortgage/",
+    "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       TOP NAV BAR
+       ═══════════════════════════════════════════════════════ -->
+  <header class="topbar" role="banner" id="topbar">
+    <!-- Mobile: hamburger + logo -->
+    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+
+    <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+    </a>
+
+    <!-- Desktop search (in topbar) -->
+    <div class="topbar-search" role="search">
+      <span class="material-symbols-outlined search-icon-el">search</span>
+      <input
+        type="search"
+        id="main-search"
+        class="search-input"
+        placeholder="Search calculators…"
+        autocomplete="off"
+        aria-label="Search calculators"
+      />
+      <div id="search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+    </div>
+
+    <!-- Desktop nav links -->
+    <nav class="topbar-nav" aria-label="Quick categories">
+      <a href="#all-calculators-list-finance" class="topbar-link">Finance</a>
+      <a href="#all-calculators-list-health" class="topbar-link">Health</a>
+      <a href="#all-calculators-list-math" class="topbar-link">Math</a>
+      <a href="#all-calculators-list-units" class="topbar-link">Units</a>
+    </nav>
+
+    <!-- Mobile search trigger -->
+    <button class="mobile-search-btn" id="mobile-search-btn" aria-label="Open search">
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </header>
+
+  <!-- Mobile search overlay -->
+  <div class="mobile-search-overlay" id="mobile-search-overlay" hidden>
+    <div class="mobile-search-inner">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" id="mobile-search-input" class="search-input" placeholder="Search calculators…" autocomplete="off" aria-label="Mobile search" />
+      <button class="mobile-search-close" id="mobile-search-close" aria-label="Close search">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div id="mobile-search-dropdown" class="search-dropdown" role="listbox" aria-label="Search results" hidden></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE A: HEADER AD BANNER
+       ═══════════════════════════════════════════════════════ -->
+  <div class="ad-zone ad-zone-a" role="complementary" aria-label="Advertisement">
+    <span class="ad-label">Advertisement</span>
+    <div class="ad-slot ad-slot-leaderboard" id="ad-zone-a">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9907028021598445"
+           data-ad-slot="SLOT_ID_ZONE_A"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+  </div>
+
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       MAIN APP SHELL
+       ═══════════════════════════════════════════════════════ -->
+  <div class="app-shell">
+
+    <!-- ── LEFT SIDEBAR (Desktop) ── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Calculator categories">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-section-label">DIRECTORY</div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">⏱ Recent</span>
+          <div id="recent-tools" class="sidebar-items">
+            <span class="sidebar-empty">No recent tools yet</span>
+          </div>
+        </div>
+
+
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Finance</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/mortgage/" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="/compound/" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="/salary/" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="/emi/" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="/credit-card-payoff/" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="/roi/" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="/retirement/" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="/amortization/" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="/autoloan/" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="/freelancetax/" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="/inflation/" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="/simple-interest/" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Health &amp; Wellness</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/bmi/" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="/tdee/" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="/water/" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="/macro/" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="/bodyfat/" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="/bac/" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="/pregnancy/" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="/onerepmax/" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+          </nav>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Mathematics</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/percentage/" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="/fraction/" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="/scientific/" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="/prime/" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="/quadratic/" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="/pythagorean/" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="/stddev/" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="/aspect/" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="/binaryhex/" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/matrix-ops/" class="sidebar-item" role="listitem" data-tool="matrix-ops"><span class="material-symbols-outlined sidebar-item-icon">grid_on</span>Matrix Add/Multiply</a>
+          </nav>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Daily Life</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/age/" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="/date-diff/" class="sidebar-item" role="listitem" data-tool="date-diff"><span class="material-symbols-outlined sidebar-item-icon">event</span>Date Difference</a>
+                    <a href="/duration/" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="/time-zone/" class="sidebar-item" role="listitem" data-tool="time-zone"><span class="material-symbols-outlined sidebar-item-icon">public</span>Time Zone Converter</a>
+                    <a href="/tip/" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="/tip-split/" class="sidebar-item" role="listitem" data-tool="tip-split"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Tip Splitter</a>
+                    <a href="/password/" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                  </nav>
+                </div>
+                <div class="sidebar-section">
+                  <span class="sidebar-section-title">Education & Kitchen</span>
+                  <nav class="sidebar-items" role="list">
+                    <a href="/gpa/" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="/kitchen/" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/cooking-convert/" class="sidebar-item" role="listitem" data-tool="cooking-convert"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Cooking Measurement Converter</a>
+                  </nav>
+                </div>
+        </div>
+
+        <div class="sidebar-section">
+          <span class="sidebar-section-title">Conversion</span>
+          <nav class="sidebar-items" role="list">
+            <a href="/unit/" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+          </nav>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content" id="main-content" role="main">
+
+      <!-- Tool Stage (populated by JS) -->
+      <div id="tool-stage" aria-live="polite" aria-label="Calculator area">
+        <div id="active-tool-view" class="tool-container">
+    <div class="tool-header">
+      <div class="tool-header-main">
+        <div class="tool-header-icon"><span class="material-symbols-outlined" aria-hidden="true">monitor_weight</span></div>
+        <div class="tool-header-info">
+          <h1>BMI Calculator</h1>
+          <p>Calculate your Body Mass Index (BMI) and see your healthy weight range.</p>
+        </div>
+      </div>
+      <div class="tool-header-actions">
+        
+        <button class="action-btn" onclick="shareTool('bmi', 'BMI Calculator')" title="Share Tool">
+            <span class="material-symbols-outlined">share</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="tool-content-wrap">
+      <div class="input-card" id="input-card-bmi">
+        
+    <div class="toggle-row">
+      <span>Unit System:</span>
+      <div class="toggle-btn" id="bmi-unit-toggle">
+        <button id="bmi-imperial" class="active" onclick="bmiSetUnit('imperial')">Imperial (lbs/in)</button>
+        <button id="bmi-metric"   onclick="bmiSetUnit('metric')">Metric (kg/cm)</button>
+      </div>
+    </div>
+
+    <div id="bmi-imperial-fields">
+      <div class="form-row">
+        <div class="field">
+          <label for="bmi-weight-lbs">Weight (lbs)</label>
+          <input type="number" id="bmi-weight-lbs" placeholder="165" min="0" value="165" />
+        </div>
+        <div class="field">
+          <label>Height</label>
+          <div style="display:flex;gap:8px;">
+            <input type="number" id="bmi-feet" placeholder="5" min="0" max="9" value="5" style="flex:1" aria-label="Feet"/>
+            <input type="number" id="bmi-inches" placeholder="10" min="0" max="11" value="10" style="flex:1" aria-label="Inches"/>
+          </div>
+          <span style="font-size:0.72rem;color:var(--text-muted)">ft &nbsp;&nbsp;&nbsp; in</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="bmi-metric-fields" style="display:none">
+      <div class="form-row">
+        <div class="field">
+          <label for="bmi-weight-kg">Weight (kg)</label>
+          <input type="number" id="bmi-weight-kg" placeholder="75" min="0" value="75" />
+        </div>
+        <div class="field">
+          <label for="bmi-height-cm">Height (cm)</label>
+          <input type="number" id="bmi-height-cm" placeholder="178" min="0" value="178" />
+        </div>
+      </div>
+    </div>
+  
+      </div>
+
+      
+        <!-- Zone C: 24px buffer -->
+        <div class="ad-zone ad-zone-c" role="complementary" aria-label="Advertisement">
+          <span class="ad-label">Advertisement</span>
+          <div class="ad-slot ad-slot-native" id="ad-zone-c-bmi">
+            <ins class="adsbygoogle" style="display:block"
+              data-ad-client="ca-pub-9907028021598445"
+              data-ad-slot="7781234567"
+              data-ad-format="auto"
+              data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+        </div>
+
+        <div class="result-card" id="result-card-bmi">
+          <div class="result-placeholder">Enter values above to see results ✦</div>
+        </div>
+        <div id="extra-bmi"></div>
+      
+
+      
+        <article class="seo-card" aria-label="How BMI Calculator works">
+          <h2>📖 How BMI Calculator Works</h2>
+          
+    <p>Body Mass Index (BMI) is the most widely used screening tool for categorizing body weight status across adult populations. Developed by Belgian statistician Adolphe Quetelet in the 1830s, it was originally designed as a population-level statistical measure — not a diagnostic tool for individual health. Nevertheless, it remains the international standard used by physicians, researchers, and health organizations around the world to identify potential weight-related health risks.</p>
+
+    <h3>The BMI Formula</h3>
+    <div class="formula-block">BMI = weight (kg) ÷ height² (m²)</div>
+    <p>In imperial units: <strong>BMI = 703 × weight (lbs) ÷ height² (inches²)</strong>. For example, a person who is 5'10" (70 inches) and weighs 165 lbs has a BMI of: 703 × 165 ÷ (70²) = 703 × 165 ÷ 4900 ≈ <strong>23.7</strong> — within the Normal range.</p>
+
+    <h3>WHO BMI Categories for Adults</h3>
+    <ul>
+      <li><strong>Below 18.5 — Underweight:</strong> May indicate malnutrition, eating disorders, or underlying illness. Associated with bone density loss and immune suppression.</li>
+      <li><strong>18.5–24.9 — Normal (Healthy) Weight:</strong> Associated with the lowest risk for weight-related conditions, including type 2 diabetes and cardiovascular disease.</li>
+      <li><strong>25.0–29.9 — Overweight:</strong> Elevated risk for hypertension, dyslipidemia, sleep apnea, and insulin resistance.</li>
+      <li><strong>30.0–34.9 — Obese Class I:</strong> High risk. Moderate interventions (diet, exercise, behavioral therapy) are typically recommended.</li>
+      <li><strong>35.0–39.9 — Obese Class II:</strong> Very high risk. Medical supervision and potentially pharmaceutical intervention are often advised.</li>
+      <li><strong>40.0+ — Obese Class III (Severe/Morbid Obesity):</strong> Extremely high risk. Bariatric surgery may be considered.</li>
+    </ul>
+
+    <h3>Limitations of BMI</h3>
+    <p>BMI is a useful screening tool, but it has significant well-documented limitations:</p>
+    <ul>
+      <li><strong>Muscle Mass vs. Fat:</strong> BMI does not distinguish between fat and lean muscle tissue. A competitive bodybuilder may have a BMI of 30+ while having very low body fat. Conversely, a sedentary person with low muscle mass may have a "normal" BMI with high body fat.</li>
+      <li><strong>Fat Distribution:</strong> BMI says nothing about where fat is stored. Visceral fat (around organs in the abdomen) is far more dangerous than subcutaneous fat stored under the skin. A person with a normal BMI but high waist circumference may be at greater metabolic risk than their BMI suggests.</li>
+      <li><strong>Ethnic Variations:</strong> Research shows that people of Asian descent have higher health risks at lower BMI thresholds. Some health organizations recommend adjusted BMI cutoffs (e.g., overweight starting at 23.0, not 25.0) for Asian populations.</li>
+      <li><strong>Age:</strong> Older adults naturally lose muscle mass and gain fat, so the same BMI number represents different body compositions at age 25 vs. age 70.</li>
+      <li><strong>Sex:</strong> Women naturally carry more body fat than men at the same BMI due to hormonal differences and reproductive physiology.</li>
+    </ul>
+
+    <h3>Better Alternatives and Complementary Measures</h3>
+    <p>For a more complete picture of health, consider these additional metrics:</p>
+    <ul>
+      <li><strong>Waist Circumference:</strong> A waist above 35 inches (women) or 40 inches (men) indicates elevated cardiovascular risk regardless of BMI.</li>
+      <li><strong>Waist-to-Hip Ratio (WHR):</strong> A WHR above 0.9 (men) or 0.85 (women) signals increased metabolic risk.</li>
+      <li><strong>Body Fat Percentage:</strong> Measured via DEXA scan, hydrostatic weighing, or bioelectrical impedance (BIA). Most accurate but less accessible than BMI.</li>
+      <li><strong>Waist-to-Height Ratio:</strong> A simple rule of thumb: your waist should be less than half your height. This metric has shown strong predictive value for cardiometabolic risk.</li>
+    </ul>
+
+    <details>
+      <summary>❓ Is BMI the same for men and women?</summary>
+      <p>The WHO uses the same BMI cutoffs for both sexes. However, women naturally carry approximately 5–8% more body fat than men at the same BMI due to hormonal differences, pregnancy storage, and breast tissue. Some researchers advocate for sex-specific cutoffs, but international clinical guidelines continue to use the universal scale for simplicity and comparability.</p>
+    </details>
+    <details>
+      <summary>❓ How accurate is BMI for children and teens?</summary>
+      <p>For children ages 2–19, BMI is interpreted with age- and sex-specific percentile charts (CDC growth charts), not the adult WHO thresholds. "Healthy weight" for a child is defined as BMI in the 5th–85th percentile. The same BMI number means different things at age 8 vs. age 16, because bodies change dramatically during growth and puberty.</p>
+    </details>
+    <details>
+      <summary>❓ What is a healthy BMI for my age?</summary>
+      <p>For adults 20 and older, the standard WHO ranges apply regardless of age. However, some clinicians adjust informally — a BMI of 25–27 may be acceptable for adults over 65, as slightly higher weight is associated with better outcomes in older populations (a phenomenon sometimes called the "obesity paradox" in geriatrics).</p>
+    </details>
+    <details>
+      <summary>❓ How can I lower my BMI?</summary>
+      <p>BMI decreases when you reduce body weight and/or increase lean muscle mass. Sustainable strategies include: a modest caloric deficit (250–500 calories/day for 0.5–1 lb weight loss per week), strength training to preserve/build muscle during weight loss, increased cardiovascular activity, improved sleep quality (poor sleep increases hunger hormones), and working with a registered dietitian for personalized guidance.</p>
+    </details>
+  
+        </article>
+      
+    </div>
+  </div>
+      </div>
+    </main>
+
+    <!-- ── RIGHT AD SIDEBAR (Desktop xl+) ── -->
+    <aside class="ad-rail" role="complementary" aria-label="Advertisements">
+      <div class="ad-zone ad-zone-b">
+        <span class="ad-label">Advertisement</span>
+        <div class="ad-slot ad-slot-skyscraper" id="ad-zone-b">
+          <ins class="adsbygoogle"
+               style="display:block;width:300px;height:600px"
+               data-ad-client="ca-pub-9907028021598445"
+               data-ad-slot="SLOT_ID_ZONE_B"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+      </div>
+    </aside>
+
+  </div><!-- /.app-shell -->
+
+  <!-- ═══════════════════════════════════════════════════════
+       ZONE D: FOOTER AD + FOOTER
+       ═══════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="ad-zone ad-zone-d" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <div class="ad-slot ad-slot-footer" id="ad-zone-d">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9907028021598445"
+             data-ad-slot="SLOT_ID_ZONE_D"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
+    </div>
+    <div class="footer-content" style="flex-direction: column; gap: 32px; align-items: center; max-width: 1200px; margin: 0 auto; text-align: center;">
+      <div style="max-width: 800px; color: var(--on-surface-variant); font-size: 0.8rem; line-height: 1.6; opacity: 0.7;">
+        <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
+      </div>
+
+      <div class="footer-more-projects" style="width: 100%; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <h4 class="sidebar-section-label" style="text-align: center;">More from Molave Labs</h4>
+        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
+          <a href="https://chessbotbuddies.org" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">ChessBotBuddies — interactive chess bot trainers</a>
+          <a href="https://obbarcode.com" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">OB Barcode — label & barcode generator</a>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <div class="footer-brand" style="text-align: left;">
+          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="/contact/">Contact & About</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       MOBILE BOTTOM NAV
+       ═══════════════════════════════════════════════════════ -->
+  <nav class="bottom-nav" role="navigation" aria-label="Mobile navigation">
+    <button class="bottom-nav-item active" id="bn-featured" onclick="navigate('home')" aria-label="Home">
+      <span class="material-symbols-outlined bottom-nav-icon" style="font-variation-settings:'FILL' 1;">star</span>
+      <span class="bottom-nav-label">Featured</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-finance" onclick="navigate('mortgage')" aria-label="Finance calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">payments</span>
+      <span class="bottom-nav-label">Finance</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-health" onclick="navigate('bmi')" aria-label="Health calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">monitor_heart</span>
+      <span class="bottom-nav-label">Health</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-math" onclick="navigate('percentage')" aria-label="Math calculators">
+      <span class="material-symbols-outlined bottom-nav-icon">calculate</span>
+      <span class="bottom-nav-label">Math</span>
+    </button>
+    <button class="bottom-nav-item" id="bn-units" onclick="navigate('unit')" aria-label="Unit converter">
+      <span class="material-symbols-outlined bottom-nav-icon">straighten</span>
+      <span class="bottom-nav-label">Units</span>
+    </button>
+  </nav>
+
+  <!-- Core Logic -->
+  <script src="/js/registry.js" defer></script>
+  
+  <!-- Pre-loaded Home Page Tools -->
+  <script src="/js/tools/bmi.js" defer></script>
+
+  <!-- Main Application -->
+  <script src="/js/app.js" defer></script>
+</body>
+</html>

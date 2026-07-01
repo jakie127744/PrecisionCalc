@@ -30,15 +30,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 
   <!-- PWA -->
-  <link rel="manifest" href="manifest.json" />
+  <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#0c111a" />
 
   <!-- Favicon / Navicon -->
-  <link rel="icon" type="image/png" href="icon-512.png" />
-  <link rel="apple-touch-icon" href="icon-512.png" />
+  <link rel="icon" type="image/png" href="/icon-512.png" />
+  <link rel="apple-touch-icon" href="/icon-512.png" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css" />
 
   <!-- AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9907028021598445" crossorigin="anonymous"></script>
@@ -82,7 +82,7 @@
       "Amortization schedule",
       "Total interest computation"
     ],
-    "url": "https://precisioncalc.com/#mortgage",
+    "url": "https://precisioncalc.com/mortgage/",
     "description": "Calculate your monthly mortgage payment, total interest, and see your full amortization schedule."
   }
   </script>
@@ -98,8 +98,8 @@
       <span class="material-symbols-outlined">menu</span>
     </button>
 
-    <a href="#" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
-      <img src="logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
+    <a href="/" class="brand" onclick="navigate('home'); return false;" aria-label="PrecisionCalc Home">
+      <img src="/logo.png" alt="PrecisionCalc Logo" class="brand-logo" style="height: 32px; width: auto;">
     </a>
 
     <!-- Desktop search (in topbar) -->
@@ -183,62 +183,67 @@
         <div class="sidebar-section">
           <span class="sidebar-section-title">Finance</span>
           <nav class="sidebar-items" role="list">
-            <a href="#mortgage" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
-            <a href="#compound" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
-            <a href="#salary" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
-            <a href="#emi" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
-            <a href="#credit-card-payoff" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
-            <a href="#roi" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
-            <a href="#retirement" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
-            <a href="#amortization" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
-            <a href="#autoloan" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
-            <a href="#freelancetax" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
-            <a href="#inflation" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
-            <a href="#simple-interest" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
+            <a href="/mortgage/" class="sidebar-item" role="listitem" data-tool="mortgage"><span class="material-symbols-outlined sidebar-item-icon">home</span>Mortgage</a>
+            <a href="/compound/" class="sidebar-item" role="listitem" data-tool="compound"><span class="material-symbols-outlined sidebar-item-icon">monitoring</span>Compound Interest</a>
+            <a href="/salary/" class="sidebar-item" role="listitem" data-tool="salary"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Salary to Hourly</a>
+            <a href="/emi/" class="sidebar-item" role="listitem" data-tool="emi"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Loan/EMI</a>
+            <a href="/credit-card-payoff/" class="sidebar-item" role="listitem" data-tool="credit-card-payoff"><span class="material-symbols-outlined sidebar-item-icon">credit_card</span>Credit Card Payoff</a>
+            <a href="/roi/" class="sidebar-item" role="listitem" data-tool="roi"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>ROI</a>
+            <a href="/retirement/" class="sidebar-item" role="listitem" data-tool="retirement"><span class="material-symbols-outlined sidebar-item-icon">savings</span>401k/Retirement</a>
+            <a href="/amortization/" class="sidebar-item" role="listitem" data-tool="amortization"><span class="material-symbols-outlined sidebar-item-icon">table_chart</span>Amortization Table</a>
+            <a href="/autoloan/" class="sidebar-item" role="listitem" data-tool="autoloan"><span class="material-symbols-outlined sidebar-item-icon">directions_car</span>Auto Loan & Lease</a>
+            <a href="/freelancetax/" class="sidebar-item" role="listitem" data-tool="freelancetax"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Freelance Tax</a>
+            <a href="/inflation/" class="sidebar-item" role="listitem" data-tool="inflation"><span class="material-symbols-outlined sidebar-item-icon">trending_up</span>Inflation</a>
+            <a href="/simple-interest/" class="sidebar-item" role="listitem" data-tool="simple-interest"><span class="material-symbols-outlined sidebar-item-icon">savings</span>Simple Interest</a>
           </nav>
         </div>
 
         <div class="sidebar-section">
           <span class="sidebar-section-title">Health &amp; Wellness</span>
           <nav class="sidebar-items" role="list">
-            <a href="#bmi" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
-            <a href="#tdee" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
-            <a href="#water" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
-            <a href="#macro" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
-            <a href="#bodyfat" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
-            <a href="#bac" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
-            <a href="#pregnancy" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
-            <a href="#onerepmax" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
+            <a href="/bmi/" class="sidebar-item" role="listitem" data-tool="bmi"><span class="material-symbols-outlined sidebar-item-icon">monitor_weight</span>BMI</a>
+            <a href="/tdee/" class="sidebar-item" role="listitem" data-tool="tdee"><span class="material-symbols-outlined sidebar-item-icon">local_fire_department</span>TDEE</a>
+            <a href="/water/" class="sidebar-item" role="listitem" data-tool="water"><span class="material-symbols-outlined sidebar-item-icon">water_drop</span>Water Intake</a>
+            <a href="/macro/" class="sidebar-item" role="listitem" data-tool="macro"><span class="material-symbols-outlined sidebar-item-icon">restaurant</span>Macro Calculator</a>
+            <a href="/bodyfat/" class="sidebar-item" role="listitem" data-tool="bodyfat"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>Body Fat %</a>
+            <a href="/bac/" class="sidebar-item" role="listitem" data-tool="bac"><span class="material-symbols-outlined sidebar-item-icon">local_bar</span>BAC</a>
+            <a href="/pregnancy/" class="sidebar-item" role="listitem" data-tool="pregnancy"><span class="material-symbols-outlined sidebar-item-icon">pregnant_woman</span>Pregnancy Due Date</a>
+            <a href="/onerepmax/" class="sidebar-item" role="listitem" data-tool="onerepmax"><span class="material-symbols-outlined sidebar-item-icon">fitness_center</span>One-Rep Max</a>
           </nav>
         </div>
 
         <div class="sidebar-section">
           <span class="sidebar-section-title">Mathematics</span>
           <nav class="sidebar-items" role="list">
-            <a href="#percentage" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
-            <a href="#fraction" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
-            <a href="#scientific" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
-            <a href="#prime" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
-            <a href="#quadratic" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
-            <a href="#pythagorean" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
-            <a href="#stddev" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
-            <a href="#aspect" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
-            <a href="#binaryhex" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/percentage/" class="sidebar-item" role="listitem" data-tool="percentage"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Percentage</a>
+            <a href="/fraction/" class="sidebar-item" role="listitem" data-tool="fraction"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Fraction</a>
+            <a href="/scientific/" class="sidebar-item" role="listitem" data-tool="scientific"><span class="material-symbols-outlined sidebar-item-icon">science</span>Scientific</a>
+            <a href="/prime/" class="sidebar-item" role="listitem" data-tool="prime"><span class="material-symbols-outlined sidebar-item-icon">123</span>Prime Checker</a>
+            <a href="/quadratic/" class="sidebar-item" role="listitem" data-tool="quadratic"><span class="material-symbols-outlined sidebar-item-icon">calculate</span>Quadratic Solver</a>
+            <a href="/pythagorean/" class="sidebar-item" role="listitem" data-tool="pythagorean"><span class="material-symbols-outlined sidebar-item-icon">square_foot</span>Pythagorean</a>
+            <a href="/stddev/" class="sidebar-item" role="listitem" data-tool="stddev"><span class="material-symbols-outlined sidebar-item-icon">functions</span>Std Deviation</a>
+            <a href="/aspect/" class="sidebar-item" role="listitem" data-tool="aspect"><span class="material-symbols-outlined sidebar-item-icon">aspect_ratio</span>Aspect Ratio</a>
+            <a href="/binaryhex/" class="sidebar-item" role="listitem" data-tool="binaryhex"><span class="material-symbols-outlined sidebar-item-icon">123</span>Binary/Hex/Decimal</a>
+            <a href="/matrix-ops/" class="sidebar-item" role="listitem" data-tool="matrix-ops"><span class="material-symbols-outlined sidebar-item-icon">grid_on</span>Matrix Add/Multiply</a>
           </nav>
                 <div class="sidebar-section">
                   <span class="sidebar-section-title">Daily Life</span>
                   <nav class="sidebar-items" role="list">
-                    <a href="#age" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
-                    <a href="#duration" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
-                    <a href="#tip" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
-                    <a href="#password" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
+                    <a href="/age/" class="sidebar-item" role="listitem" data-tool="age"><span class="material-symbols-outlined sidebar-item-icon">calendar_month</span>Age Calculator</a>
+                    <a href="/date-diff/" class="sidebar-item" role="listitem" data-tool="date-diff"><span class="material-symbols-outlined sidebar-item-icon">event</span>Date Difference</a>
+                    <a href="/duration/" class="sidebar-item" role="listitem" data-tool="duration"><span class="material-symbols-outlined sidebar-item-icon">schedule</span>Time Duration</a>
+                    <a href="/time-zone/" class="sidebar-item" role="listitem" data-tool="time-zone"><span class="material-symbols-outlined sidebar-item-icon">public</span>Time Zone Converter</a>
+                    <a href="/tip/" class="sidebar-item" role="listitem" data-tool="tip"><span class="material-symbols-outlined sidebar-item-icon">percent</span>Tip Calculator</a>
+                    <a href="/tip-split/" class="sidebar-item" role="listitem" data-tool="tip-split"><span class="material-symbols-outlined sidebar-item-icon">payments</span>Tip Splitter</a>
+                    <a href="/password/" class="sidebar-item" role="listitem" data-tool="password"><span class="material-symbols-outlined sidebar-item-icon">password</span>Password Strength</a>
                   </nav>
                 </div>
                 <div class="sidebar-section">
                   <span class="sidebar-section-title">Education & Kitchen</span>
                   <nav class="sidebar-items" role="list">
-                    <a href="#gpa" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
-                    <a href="#kitchen" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/gpa/" class="sidebar-item" role="listitem" data-tool="gpa"><span class="material-symbols-outlined sidebar-item-icon">school</span>GPA/CGPA</a>
+                    <a href="/kitchen/" class="sidebar-item" role="listitem" data-tool="kitchen"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Kitchen Converter</a>
+                    <a href="/cooking-convert/" class="sidebar-item" role="listitem" data-tool="cooking-convert"><span class="material-symbols-outlined sidebar-item-icon">kitchen</span>Cooking Measurement Converter</a>
                   </nav>
                 </div>
         </div>
@@ -246,7 +251,7 @@
         <div class="sidebar-section">
           <span class="sidebar-section-title">Conversion</span>
           <nav class="sidebar-items" role="list">
-            <a href="#unit" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
+            <a href="/unit/" class="sidebar-item" role="listitem" data-tool="unit"><span class="material-symbols-outlined sidebar-item-icon">straighten</span>Unit Converter</a>
           </nav>
         </div>
 
@@ -298,7 +303,7 @@
 
           <div class="featured-grid">
             <!-- Large Feature Card -->
-            <a href="#mortgage" class="feature-card-large" aria-label="Open Mortgage Calculator">
+            <a href="/mortgage/" class="feature-card-large" aria-label="Open Mortgage Calculator">
               <div class="feature-card-accent-bar"></div>
               <div class="feature-card-watermark" aria-hidden="true"></div>
               <div class="feature-card-content">
@@ -369,28 +374,6 @@
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
       </div>
-
-      <div class="partner-apps-sidebar partner-apps">
-        <h4 class="sidebar-section-label" style="text-align: center; margin-top: 32px;">Partner Tools</h4>
-        <div class="partner-grid">
-          <a href="https://chessbotbuddies.org" target="_blank" class="partner-card">
-            <div class="partner-ribbon">Sponsored</div>
-            <h4 class="partner-title">ChessBotBuddies</h4>
-            <div class="partner-asset">
-              <img src="assets/partners/chess-mascot.png" alt="Chess Mascot" style="max-width: 80%; max-height: 80%;">
-            </div>
-            <p class="partner-desc">Master chess with our interactive bot trainers!</p>
-          </a>
-          <a href="https://obbarcode.com" target="_blank" class="partner-card">
-            <div class="partner-ribbon">Sponsored</div>
-            <h4 class="partner-title">OB Barcode</h4>
-            <div class="partner-asset">
-              <img src="assets/partners/ob-logo.svg" alt="OB Logo" style="max-width: 80%; max-height: 80%;">
-            </div>
-            <p class="partner-desc">Professional label & barcode generator.</p>
-          </a>
-        </div>
-      </div>
     </aside>
 
   </div><!-- /.app-shell -->
@@ -416,15 +399,23 @@
         <strong>Disclaimer:</strong> PrecisionCalc.com provides general calculation tools for informational and educational purposes only. Results are estimates and should not be considered professional financial, medical, or legal advice. Always consult with a qualified professional before making significant decisions.
       </div>
 
+      <div class="footer-more-projects" style="width: 100%; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
+        <h4 class="sidebar-section-label" style="text-align: center;">More from Molave Labs</h4>
+        <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 12px;">
+          <a href="https://chessbotbuddies.org" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">ChessBotBuddies — interactive chess bot trainers</a>
+          <a href="https://obbarcode.com" target="_blank" rel="noopener" style="color: var(--on-surface-variant); font-size: 0.85rem;">OB Barcode — label & barcode generator</a>
+        </div>
+      </div>
+
       <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--outline-variant); padding-top: 24px;">
         <div class="footer-brand" style="text-align: left;">
-          <img src="logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
+          <img src="/logo.png" alt="PrecisionCalc" style="height: 38px; width: auto; margin-bottom: 8px;">
           <p class="footer-copy">© 2026 Molave Labs. All rights reserved.</p>
         </div>
         <nav class="footer-links" aria-label="Footer links" style="display: flex; gap: 24px;">
-          <a href="#privacy">Privacy Policy</a>
-          <a href="#terms">Terms of Service</a>
-          <a href="#contact">Contact & About</a>
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Service</a>
+          <a href="/contact/">Contact & About</a>
         </nav>
       </div>
     </div>
@@ -457,15 +448,15 @@
   </nav>
 
   <!-- Core Logic -->
-  <script src="js/registry.js" defer></script>
+  <script src="/js/registry.js" defer></script>
   
   <!-- Pre-loaded Home Page Tools -->
-  <script src="js/tools/mortgage.js" defer></script>
-  <script src="js/tools/compound.js" defer></script>
-  <script src="js/tools/bmi.js" defer></script>
-  <script src="js/tools/kitchen.js" defer></script>
+  <script src="/js/tools/mortgage.js" defer></script>
+  <script src="/js/tools/compound.js" defer></script>
+  <script src="/js/tools/bmi.js" defer></script>
+  <script src="/js/tools/kitchen.js" defer></script>
 
   <!-- Main Application -->
-  <script src="js/app.js" defer></script>
+  <script src="/js/app.js" defer></script>
 </body>
 </html>

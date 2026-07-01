@@ -3,7 +3,7 @@
  * Calculates the difference between two dates
  */
 registerTool({
-  id: 'datediff',
+  id: 'date-diff',
   name: 'Date Difference Calculator',
   category: 'Daily Life',
   icon: '📅',
@@ -16,14 +16,39 @@ registerTool({
   },
 
   seoContent: `
-    <h2>Date Difference Calculator</h2>
-    <p>Calculate the number of days, months, and years between two dates. Enter your dates to get instant results. Useful for planning, scheduling, and time management.</p>
+    <p>Whether you're counting down to a deadline, figuring out how many days are left until an event, or calculating someone's exact age in days, manually counting across months (with their uneven lengths and leap years) is tedious and error-prone. This calculator finds the exact difference between any two dates instantly.</p>
+
+    <h3>How the Calculation Works</h3>
+    <div class="formula-block">Days = (End Date − Start Date) ÷ 86,400,000 ms</div>
+    <p>The calculator converts both dates to milliseconds since the Unix epoch, subtracts them, and converts back to whole days. From there, months are estimated by dividing days by the average month length (30.4375 days, which accounts for the mix of 28, 29, 30, and 31-day months across a year), and years by dividing months by 12.</p>
+
+    <h3>Why "Months Between Dates" Is Approximate</h3>
+    <p>Unlike days, which are a fixed, unambiguous unit, "months" don't have a single consistent length — February has 28 or 29 days while January has 31. Because of this, any date-difference calculator showing months is necessarily using an average or calendar-based approximation rather than an exact count. For legal or financial contexts where exact month boundaries matter (like a one-month notice period), always cross-check against a calendar rather than relying purely on the averaged figure.</p>
+
+    <h3>Common Use Cases</h3>
     <ul>
-      <li><b>Days:</b> Total days between dates</li>
-      <li><b>Months:</b> Approximate months between dates</li>
-      <li><b>Years:</b> Approximate years between dates</li>
+      <li><b>Project deadlines:</b> Count exactly how many days remain until a due date.</li>
+      <li><b>Contract terms:</b> Calculate the length of a lease, warranty, or service agreement.</li>
+      <li><b>Pregnancy and medical tracking:</b> Determine days since a specific milestone or event.</li>
+      <li><b>Anniversaries and milestones:</b> Find out how many days you've been together, employed, or sober.</li>
+      <li><b>Billing and invoicing:</b> Calculate the exact number of days in a billing period for prorated charges.</li>
     </ul>
-    <p>This free online date difference calculator is easy to use and accurate.</p>
+
+    <h3>Leap Years and Edge Cases</h3>
+    <p>Because the calculator works directly with JavaScript's native Date object and raw millisecond differences, leap years are handled automatically and correctly — February 29th in a leap year is counted like any other calendar day, so no manual adjustment is needed.</p>
+
+    <details>
+      <summary>❓ Does this calculator count the start and end dates as full days?</summary>
+      <p>The result reflects the number of complete 24-hour periods between midnight of the start date and midnight of the end date. If you need an "inclusive" count (counting both the first and last day as full days), add 1 to the result.</p>
+    </details>
+    <details>
+      <summary>❓ Why do days and months not always divide evenly?</summary>
+      <p>Because months vary in length (28–31 days), a whole number of days rarely maps to a whole number of months. The calculator uses the average month length across a year to give the closest practical approximation.</p>
+    </details>
+    <details>
+      <summary>❓ Can I use this to calculate age in days instead of years?</summary>
+      <p>Yes — enter your birth date as the start date and today's date as the end date. The "Days" result gives your exact age in days, which is often more precise than age in years for tracking things like infant development milestones.</p>
+    </details>
   `,
 
   template: () => `

@@ -57,8 +57,9 @@ registerTool({
       container.querySelector('#result-card-emi').innerHTML = calc();
     });
     container.querySelector('#result-card-emi').innerHTML = calc();
-  ,
-    seoContent: `
+  },
+
+  seoContent: `
       <h2>Loan/EMI Calculator</h2>
       <p>The Loan/EMI Calculator is an essential tool for anyone considering a loan—whether for a car, home, education, or personal needs. EMI stands for Equated Monthly Installment, which is the fixed payment you make each month to repay your loan, including both principal and interest. Understanding your EMI helps you plan your budget, compare loan offers, and avoid surprises down the road.</p>
 
@@ -90,9 +91,8 @@ registerTool({
         <li>Use the calculator to experiment with different scenarios before committing to a loan.</li>
         <li>Try to keep your total EMIs below 40% of your monthly income for financial safety.</li>
         <li>Read the fine print on loan offers, including fees, penalties, and insurance requirements.</li>
-      </ul>"
+      </ul>
 
       <p>With the Loan/EMI Calculator, you can make informed decisions, avoid debt traps, and manage your finances with confidence. Try different combinations and find the loan that works best for you!</p>
     `
-  }
 });

@@ -107,21 +107,34 @@ registerTool({
   },
 
   seoContent: `
-    <p>A Weighted Grade Calculator is an essential tool for students to track their academic progress throughout a semester. Unlike a simple average, a weighted average accounts for the relative importance of different assessments, such as finals, midterms, and weekly assignments.</p>
+    <p>A Weighted Grade Calculator is an essential tool for students to track their academic progress throughout a semester. Unlike a simple average, a weighted average accounts for the relative importance of different assessments — a final exam worth 40% of your grade should influence your total far more than a 5%-weighted homework set.</p>
 
     <h3>How to Calculate Weighted Grades</h3>
-    <p>To find your weighted grade, multiply each score by its percentage weight (as a decimal), and then sum those values. For example, if a midterm is worth 30% and you scored 90%, it contributes 27 points (90 x 0.3) to your final grade.</p>
+    <div class="formula-block">Weighted Grade = Σ (Score × Weight ÷ 100)</div>
+    <p>To find your weighted grade, multiply each score by its percentage weight (as a decimal), and then sum those values. For example, if a midterm is worth 30% and you scored 90%, it contributes 27 points (90 × 0.3) to your final grade. If a final exam is worth 40% and you scored 85%, it contributes 34 points (85 × 0.4). Add all the contributions together to get your overall weighted grade.</p>
+
+    <h3>Weighted Average vs. Simple Average</h3>
+    <p>A simple average treats every assessment equally, regardless of how much it actually counts toward your final grade. If you scored 60% on a 5%-weighted quiz and 95% on a 40%-weighted final, a simple average would understate how well you actually did, since it doesn't reflect that the final mattered eight times more than the quiz. Weighted averages fix this by scaling each score's contribution to match its real importance in the syllabus.</p>
 
     <h3>Tips for Using This Tool</h3>
     <ul>
-      <li><strong>Check Your Syllabus:</strong> Always refer to the official weights provided by your instructor.</li>
+      <li><strong>Check Your Syllabus:</strong> Always refer to the official weights provided by your instructor rather than guessing.</li>
       <li><strong>Handle Extra Credit:</strong> If you have extra credit, you can enter scores above 100% or weights that lead to a sum greater than 100%.</li>
-      <li><strong>Plan Ahead:</strong> Use the tool to see how a potential score on an upcoming exam will impact your final grade.</li>
+      <li><strong>Plan Ahead:</strong> Use the tool to see how a potential score on an upcoming exam will impact your final grade before you take it.</li>
+      <li><strong>Track incrementally:</strong> Add a new row each time a new assignment or exam is graded to keep a running total throughout the term.</li>
     </ul>
 
     <details>
       <summary>❓ What if my weights don't add up to 100%?</summary>
-      <p>The tool shows your current weighted total. To see what your equivalent percentage is based <i>only</i> on completed work, look at the "Average Performance" value.</p>
+      <p>The "Weighted Grade" result shows your current weighted total, treating any unentered weight as not-yet-completed. To see your equivalent percentage based <i>only</i> on the work entered so far, look at the "Average Performance" value instead.</p>
+    </details>
+    <details>
+      <summary>❓ Should I include ungraded or upcoming assignments?</summary>
+      <p>You can enter an estimated or hypothetical score for an upcoming assignment to see how it would affect your final grade — this is a common way to plan how much you need to study for a remaining exam.</p>
+    </details>
+    <details>
+      <summary>❓ Why is weighted grading used instead of a simple average?</summary>
+      <p>It reflects how courses are actually graded — instructors intentionally assign more weight to comprehensive assessments (finals, major projects) than to smaller ones (weekly quizzes), and a weighted average is the only way to accurately capture that in a single percentage.</p>
     </details>
   `
 });

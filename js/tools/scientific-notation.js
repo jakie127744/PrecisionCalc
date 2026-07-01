@@ -76,22 +76,37 @@ registerTool({
   },
 
   seoContent: `
-    <p>Scientific notation is a way of expressing numbers that are too large or too small to be conveniently written in decimal form. It is widely used by scientists, mathematicians, and engineers to simplify complex calculations and comparisons.</p>
+    <p>Scientific notation is a way of expressing numbers that are too large or too small to be conveniently written in decimal form. It is widely used by scientists, mathematicians, engineers, and programmers to simplify complex calculations, comparisons, and storage of extreme values.</p>
 
     <h3>How to Read Scientific Notation</h3>
-    <p>In the form <b>m × 10<sup>n</sup></b>:</p>
-    <ul>
-      <li><b>m:</b> The coefficient (a number between 1 and 10).</li>
-      <li><b>n:</b> The exponent (an integer representing the power of ten).</li>
-    </ul>
-    <p>A positive exponent means the number is large (greater than 1), while a negative exponent means the number is small (between 0 and 1).</p>
+    <div class="formula-block">Standard Form = m × 10ⁿ</div>
+    <p>In the form <b>m × 10<sup>n</sup></b>: <b>m</b> is the coefficient (a number between 1 and 10), and <b>n</b> is the exponent, an integer representing the power of ten. A positive exponent means the number is large (greater than 1) — for example, 150,000,000 becomes 1.5 × 10⁸. A negative exponent means the number is small (between 0 and 1) — for example, 0.000001 becomes 1.0 × 10⁻⁶.</p>
+
+    <h3>Worked Example</h3>
+    <p>Convert 6,022,000,000,000,000,000,000,000 (Avogadro's number, roughly) to scientific notation: move the decimal point left until only one non-zero digit remains before it — that takes 23 places — giving 6.022 × 10²³. Converting back, you'd move the decimal point 23 places to the right.</p>
 
     <h3>E-Notation</h3>
-    <p>In calculators and computer programming, scientific notation often appears as "E-notation" (e.g., 1.5e8). The 'e' stands for "exponential" and represents "times ten to the power of."</p>
+    <p>In calculators and computer programming, scientific notation often appears as "E-notation" (e.g., 1.5e8, meaning 1.5 × 10⁸). The letter "e" stands for "exponential" and represents "times ten to the power of." This format lets software display and store extremely large or small numbers without running out of readable digits.</p>
+
+    <h3>Why Scientific Notation Matters</h3>
+    <ul>
+      <li><b>Astronomy:</b> Distances like light-years (9.46 × 10¹⁵ meters) would be unreadable in full decimal form.</li>
+      <li><b>Chemistry:</b> Atomic and molecular quantities, like Avogadro's number (6.022 × 10²³), are always expressed this way.</li>
+      <li><b>Computing:</b> Floating-point numbers in programming languages are stored internally using a form of scientific notation.</li>
+      <li><b>Engineering:</b> Tolerances and measurements at the micro or nano scale (10⁻⁶, 10⁻⁹) are far easier to compare in exponential form.</li>
+    </ul>
 
     <details>
       <summary>❓ Why do we use scientific notation?</summary>
-      <p>Imagine writing the mass of the Earth (5,970,000,000,000,000,000,000,000 kg) or the size of a cell. Scientific notation makes these numbers readable and allows for much easier multiplication and division.</p>
+      <p>Imagine writing the mass of the Earth (5,970,000,000,000,000,000,000,000 kg) or the diameter of a human cell (0.00001 meters). Scientific notation makes these numbers readable and allows for much easier multiplication, division, and comparison of magnitude.</p>
+    </details>
+    <details>
+      <summary>❓ What's the difference between scientific notation and engineering notation?</summary>
+      <p>Scientific notation always keeps the coefficient between 1 and 10. Engineering notation restricts the exponent to multiples of 3 (matching metric prefixes like kilo, mega, micro), so the coefficient can range from 1 to 999 — useful when working with SI units.</p>
+    </details>
+    <details>
+      <summary>❓ How do I know how many significant figures to keep?</summary>
+      <p>Significant figures reflect the precision of your original measurement or data. If a value was measured to three significant figures, the scientific-notation coefficient should also be rounded to three significant figures rather than showing false precision.</p>
     </details>
   `
 });

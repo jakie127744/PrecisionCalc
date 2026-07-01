@@ -82,20 +82,40 @@ registerTool({
   },
 
   seoContent: `
-    <p>Writing an essay or preparing a speech often requires adhering to strict length requirements. This Essay Analyzer goes beyond simple word counting to provide insights into your content's length and delivery time.</p>
+    <p>Writing an essay, blog post, or speech often requires adhering to strict length requirements. This Essay Analyzer goes beyond simple word counting to provide insights into your content's length, structure, and delivery time — all updated live as you type.</p>
+
+    <h3>How the Metrics Are Calculated</h3>
+    <div class="formula-block">Words = trimmed text split on whitespace · Reading Time = Words ÷ 200 wpm · Speaking Time = Words ÷ 130 wpm</div>
+    <p>Word count works by trimming leading/trailing whitespace and splitting the remaining text on any run of spaces, tabs, or line breaks — each resulting chunk counts as one word. Character count is a raw length of the text including spaces and punctuation. Sentence count estimates boundaries by counting periods, exclamation points, and question marks.</p>
 
     <h3>Word vs. Character Counting</h3>
-    <p>Academic assignments typically use word counts (e.g., 500-word essay), while social media and web platforms often use character limits (e.g., 280 characters). This tool provides both instantly.</p>
+    <p>Academic assignments typically use word counts (e.g., a 500-word essay), while social media platforms and SMS often use character limits (e.g., 280 characters on X/Twitter, 160 for a single SMS segment). This tool provides both instantly so you can check against whichever limit applies to what you're writing.</p>
 
-    <h3>Time Estimates</h3>
+    <h3>Time Estimates Explained</h3>
     <ul>
-      <li><strong>Reading Time:</strong> Useful for blog posts and articles. The average adult reads at about 200-250 words per minute.</li>
-      <li><strong>Speaking Time:</strong> Vital for presentations and speeches. The average speaking rate is approximately 130 words per minute for clear delivery.</li>
+      <li><strong>Reading Time (200 wpm):</strong> Useful for blog posts, articles, and emails — based on the commonly cited average adult silent-reading speed of 200–250 words per minute.</li>
+      <li><strong>Speaking Time (130 wpm):</strong> Vital for presentations, speeches, and video scripts — clear, well-paced spoken delivery averages around 130 words per minute, notably slower than silent reading.</li>
+    </ul>
+
+    <h3>Practical Uses</h3>
+    <ul>
+      <li><b>Academic essays:</b> Verify you're within a professor's minimum or maximum word count before submitting.</li>
+      <li><b>Cover letters and resumes:</b> Keep concise documents within recommended length guidelines.</li>
+      <li><b>Video and podcast scripts:</b> Estimate runtime before recording so episodes hit a target length.</li>
+      <li><b>Social media posts:</b> Check character counts against platform limits before publishing.</li>
     </ul>
 
     <details>
       <summary>❓ Does this count punctuation?</summary>
-      <p>Character counts include all punctuation and spaces. Word counts treat any string of characters separated by a space as a single word.</p>
+      <p>Character counts include all punctuation and spaces. Word counts treat any string of characters separated by whitespace as a single word, so punctuation attached to a word (like "don't" or "well-known") doesn't split it into multiple words.</p>
+    </details>
+    <details>
+      <summary>❓ Why is my speaking time estimate longer than my reading time?</summary>
+      <p>Because speaking naturally happens slower than silent reading — pauses for breath, emphasis, and clarity all add time. The 130 wpm speaking-rate estimate reflects a typical, clearly-paced presentation rather than a rushed reading of the same text.</p>
+    </details>
+    <details>
+      <summary>❓ Is the sentence count always accurate?</summary>
+      <p>It's an estimate based on counting periods, question marks, and exclamation points. Abbreviations (like "Dr." or "e.g."), decimal numbers, and ellipses can occasionally throw off an automated sentence count, so treat it as a close approximation rather than an exact grammatical count.</p>
     </details>
   `
 });

@@ -3,7 +3,7 @@
  * Converts between common kitchen units
  */
 registerTool({
-  id: 'cookingconvert',
+  id: 'cooking-convert',
   name: 'Cooking Measurement Converter',
   category: 'Daily Life',
   icon: '🥄',
@@ -16,13 +16,42 @@ registerTool({
   },
 
   seoContent: `
-    <h2>Cooking Measurement Converter</h2>
-    <p>Convert between cups, tablespoons, teaspoons, milliliters, and ounces. Enter your value and select units for instant conversion. Useful for cooking, baking, and kitchen tasks.</p>
+    <p>Recipes rarely agree on units — a British cookbook might call for milliliters, an American one for cups and tablespoons, and a nutrition label for ounces. This converter handles the five most common kitchen volume units instantly, so you can follow any recipe without reaching for a conversion chart taped inside a cabinet door.</p>
+
+    <h3>Standard Kitchen Conversion Factors</h3>
+    <div class="formula-block">1 cup = 16 tbsp = 48 tsp ≈ 236.6 mL ≈ 8 fl oz</div>
+    <p>These U.S. customary measurements are what this calculator uses. For example, if a recipe calls for ¾ cup of milk and you only have a tablespoon on hand, ¾ × 16 = 12 tablespoons. Converting the other direction, 30 mL of oil is roughly 2 tablespoons (30 ÷ 14.79 ≈ 2.03).</p>
+
+    <h3>Quick Reference Table</h3>
     <ul>
-      <li><b>Supported Units:</b> Cup, Tablespoon, Teaspoon, mL, Ounce</li>
-      <li><b>Instant Conversion:</b> Accurate and easy to use</li>
+      <li><b>1 teaspoon (tsp):</b> ≈ 4.93 mL</li>
+      <li><b>1 tablespoon (tbsp):</b> ≈ 14.79 mL = 3 teaspoons</li>
+      <li><b>1 fluid ounce (oz):</b> ≈ 29.57 mL = 2 tablespoons</li>
+      <li><b>1 cup:</b> ≈ 236.59 mL = 16 tablespoons = 8 fluid ounces</li>
     </ul>
-    <p>This free online cooking converter is perfect for home cooks and chefs.</p>
+
+    <h3>Why Kitchen Units Get Confusing</h3>
+    <p>The biggest trap is that "ounce" can mean either a unit of volume (fluid ounce, used for liquids) or a unit of weight (used for solids like flour or sugar) — and the two are only equivalent for water-like liquids. A cup of flour weighs far less than a cup of honey, even though both fill the same 236.6 mL of space. This calculator converts volume-to-volume only, so for ingredients denser or lighter than water, a kitchen scale is more accurate than volume conversion alone.</p>
+
+    <h3>Tips for Accurate Measuring</h3>
+    <ul>
+      <li>Use dry measuring cups for solids (flour, sugar) and liquid measuring cups (with a pour spout) for liquids — they're calibrated differently.</li>
+      <li>Level off dry ingredients with a flat edge rather than packing them, unless a recipe specifically calls for "packed" measurement (common with brown sugar).</li>
+      <li>For small volumes like teaspoons, use standardized measuring spoons rather than flatware, which vary in actual size.</li>
+    </ul>
+
+    <details>
+      <summary>❓ Is a US cup the same as a metric cup?</summary>
+      <p>No. A US cup is 236.59 mL, while a metric cup (used in Australia, for example) is exactly 250 mL. The difference is small but can matter in precise baking — this calculator uses US customary units.</p>
+    </details>
+    <details>
+      <summary>❓ Why does my converted ounce value look off for flour?</summary>
+      <p>Because "ounce" here refers to fluid ounces (volume), not weight ounces. One cup of all-purpose flour weighs about 4.5 weight-ounces (125g), even though it equals 8 fluid ounces by volume. For weight-sensitive baking, always use a kitchen scale.</p>
+    </details>
+    <details>
+      <summary>❓ How many tablespoons are in a stick of butter?</summary>
+      <p>A standard US stick of butter is ½ cup, which equals 8 tablespoons — a fact worth memorizing since butter is usually measured by the stick rather than poured.</p>
+    </details>
   `,
 
   template: () => `

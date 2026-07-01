@@ -42,21 +42,43 @@ registerTool({
   `,
 
   seoContent: `
-    <p>The Kitchen Converter is a must-have tool for home cooks, bakers, chefs, and anyone who loves spending time in the kitchen. It makes converting between common cooking units—volume, weight, and temperature—fast, accurate, and stress-free.</p>
+    <p>The Kitchen Converter is a must-have tool for home cooks, bakers, chefs, and anyone who loves spending time in the kitchen. It makes converting between common cooking units — volume, weight, and temperature — fast, accurate, and stress-free, all in one place instead of juggling three separate charts.</p>
+
+    <h3>Volume, Weight, and Temperature Formulas</h3>
+    <div class="formula-block">Converted Value = Input × (From Factor ÷ To Factor)</div>
+    <p>Volume and weight conversions both work by converting your input into a common base unit (milliliters for volume, grams for weight) and then back out into your target unit. Temperature is different because it isn't a simple ratio — Celsius to Fahrenheit uses <b>°F = °C × 9/5 + 32</b>, and Celsius to Kelvin uses <b>K = °C + 273.15</b>, since these scales don't share a common zero point.</p>
 
     <h3>Why Use a Kitchen Converter?</h3>
     <ul>
-      <li><strong>Recipe Scaling:</strong> Double or halve recipes with confidence by converting ingredient amounts precisely.</li>
-      <li><strong>International Cooking:</strong> Easily switch between metric and US customary units.</li>
-      <li><strong>Oven Temperatures:</strong> Convert between Celsius and Fahrenheit for baking and roasting success.</li>
+      <li><strong>Recipe Scaling:</strong> Double or halve recipes with confidence by converting ingredient amounts precisely, rather than eyeballing measurements.</li>
+      <li><strong>International Cooking:</strong> Easily switch between metric (grams, milliliters, Celsius) and US customary units (cups, ounces, Fahrenheit) found in recipes from different countries.</li>
+      <li><strong>Oven Temperatures:</strong> Convert between Celsius and Fahrenheit for baking and roasting success — a 20-degree oven temperature mistake can ruin bread or overcook meat.</li>
+      <li><strong>Ingredient Substitution:</strong> Swap between weight-based and volume-based recipes when a scale isn't available.</li>
+    </ul>
+
+    <h3>Common Conversion Reference Points</h3>
+    <ul>
+      <li><b>1 cup</b> ≈ 240 mL (volume)</li>
+      <li><b>1 pound</b> ≈ 453.6 grams (weight)</li>
+      <li><b>350°F</b> = 177°C (a very common baking oven temperature)</li>
+      <li><b>1 liter</b> = 1000 mL = about 4.2 cups</li>
     </ul>
 
     <h3>How to Use</h3>
     <ol>
-      <li>Select the conversion type (Volume, Weight, or Temp).</li>
-      <li>Enter your value and select the specific units.</li>
-      <li>The result updates instantly in the large display area.</li>
+      <li>Select the conversion type (Volume, Weight, or Temperature).</li>
+      <li>Enter your value and select the specific from/to units.</li>
+      <li>The result updates instantly in the large display area, sized for quick reading while your hands are busy in the kitchen.</li>
     </ol>
+
+    <details>
+      <summary>❓ Why does the same volume of flour and sugar weigh differently?</summary>
+      <p>Volume measures the space an ingredient takes up, while weight measures its mass — and different ingredients pack together at different densities. A cup of flour weighs roughly 125g while a cup of granulated sugar weighs roughly 200g, even though both fill the same cup. This is why professional bakers prefer weighing ingredients over measuring by volume.</p>
+    </details>
+    <details>
+      <summary>❓ Why isn't temperature conversion just a simple multiplication?</summary>
+      <p>Celsius, Fahrenheit, and Kelvin all define their "zero" point differently — 0°C is water's freezing point, 0°F was originally based on a brine mixture, and 0K is absolute zero. Because the scales don't share a starting point, converting between them requires both multiplying and adding/subtracting an offset, unlike simple unit conversions like cups to milliliters.</p>
+    </details>
   `,
 
   mount(container) {

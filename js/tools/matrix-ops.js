@@ -3,7 +3,7 @@
  * Supports 2x2 and 3x3 matrices
  */
 registerTool({
-  id: 'matrixops',
+  id: 'matrix-ops',
   name: 'Matrix Addition/Multiplication',
   category: 'Math',
   icon: '⧉',
@@ -16,13 +16,44 @@ registerTool({
   },
 
   seoContent: `
-    <h2>Matrix Addition & Multiplication Calculator</h2>
-    <p>Add or multiply 2x2 and 3x3 matrices. Enter your matrix values and select the operation for instant results. Useful for algebra, linear algebra, and engineering.</p>
+    <p>Matrices are the backbone of linear algebra, computer graphics, engineering simulations, and machine learning. This calculator performs the two most common operations — addition and multiplication — on 2×2 and 3×3 matrices, showing the exact result instantly as you change any value.</p>
+
+    <h3>Matrix Addition</h3>
+    <div class="formula-block">(A + B)ᵢⱼ = Aᵢⱼ + Bᵢⱼ</div>
+    <p>Addition is element-wise: you simply add each entry in matrix A to the entry in the same position in matrix B. Both matrices must have the same dimensions. For example, adding [[1,2],[3,4]] and [[5,6],[7,8]] gives [[6,8],[10,12]] — each cell is just the sum of its two corresponding cells.</p>
+
+    <h3>Matrix Multiplication</h3>
+    <div class="formula-block">(AB)ᵢⱼ = Σₖ Aᵢₖ × Bₖⱼ</div>
+    <p>Multiplication is more involved than addition: each entry in the result is the dot product of a row from A and a column from B. This is why matrix multiplication is <em>not</em> commutative — A×B usually does not equal B×A, unlike ordinary number multiplication. For a 2×2 example, multiplying [[1,2],[3,4]] by [[5,6],[7,8]] gives [[19,22],[43,50]], where the top-left entry 19 comes from (1×5 + 2×7).</p>
+
+    <h3>Where Matrix Operations Are Used</h3>
     <ul>
-      <li><b>Addition:</b> Element-wise sum of matrices</li>
-      <li><b>Multiplication:</b> Standard matrix multiplication</li>
+      <li><b>Computer graphics:</b> Rotating, scaling, and translating 2D/3D objects on screen uses matrix multiplication.</li>
+      <li><b>Machine learning:</b> Neural network layers are essentially chained matrix multiplications applied to input data.</li>
+      <li><b>Engineering & physics:</b> Systems of linear equations (structural loads, circuit analysis) are solved using matrix methods.</li>
+      <li><b>Economics:</b> Input-output models that track how industries depend on each other use matrix multiplication.</li>
     </ul>
-    <p>This free online matrix calculator is perfect for students and professionals.</p>
+
+    <h3>Key Rules to Remember</h3>
+    <ul>
+      <li>Addition requires both matrices to be the exact same size.</li>
+      <li>Multiplication requires the number of columns in A to equal the number of rows in B.</li>
+      <li>The identity matrix (1s on the diagonal, 0s elsewhere) leaves any matrix unchanged when multiplied.</li>
+      <li>Matrix multiplication is associative — (AB)C = A(BC) — but not commutative.</li>
+    </ul>
+
+    <details>
+      <summary>❓ Why isn't matrix multiplication commutative?</summary>
+      <p>Because each entry of the product depends on a specific row-by-column combination. Swapping the order changes which rows pair with which columns, producing a different (or sometimes undefined) result. This is one of the biggest conceptual differences from ordinary arithmetic.</p>
+    </details>
+    <details>
+      <summary>❓ Can I multiply matrices of different sizes?</summary>
+      <p>Only if the number of columns in the first matrix equals the number of rows in the second. A 2×3 matrix can be multiplied by a 3×2 matrix (producing a 2×2 result), but not by another 2×3 matrix.</p>
+    </details>
+    <details>
+      <summary>❓ What's a real-world example of matrix addition?</summary>
+      <p>Combining two sales spreadsheets for the same regions and product categories — adding this month's numbers to last month's, cell by cell, is literally matrix addition.</p>
+    </details>
   `,
 
   template: () => `
